@@ -1,27 +1,25 @@
 package com.project.clinic.clinic.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name="patient")
 public class Patient {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private  int patient_id;
+        private  Long patient_id;
         private String patient_name, patient_address, patient_phoneno, patient_dob, patient_age, patient_gender;
 
-        public int getPatient_id() {
-            return patient_id;
-        }
+    public Long getPatient_id() {
+        return patient_id;
+    }
 
-        public void setPatient_id(int patient_id) {
-            this.patient_id = patient_id;
-        }
+    public void setPatient_id(Long patient_id) {
+        this.patient_id = patient_id;
+    }
 
-        public String getPatient_name() {
+    public String getPatient_name() {
             return patient_name;
         }
 

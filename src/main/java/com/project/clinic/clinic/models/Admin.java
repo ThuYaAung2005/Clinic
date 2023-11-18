@@ -1,18 +1,17 @@
 package com.project.clinic.clinic.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import org.hibernate.type.descriptor.converter.spi.JpaAttributeConverter;
+import jakarta.persistence.*;
 @Entity
+@Table(name="admin")
 public class Admin  {
         @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        private int admin_id;
-        private String admin_name, admin_email,admin_phoneno, admin_password;
-
-        public Admin(int admin_id, String admin_name, String admin_email, String admin_phoneno, String admin_password) {
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long admin_id;
+        private String admin_name;
+        private String admin_email;
+        private String admin_phoneno;
+        private String admin_password;
+        public Admin(Long admin_id, String admin_name, String admin_email, String admin_phoneno, String admin_password) {
             this.admin_id = admin_id;
             this.admin_name = admin_name;
             this.admin_email = admin_email;
@@ -25,15 +24,15 @@ public class Admin  {
             this.admin_password = admin_password;
         }
 
-        public int getAdmin_id() {
-            return admin_id;
-        }
+    public Long getAdmin_id() {
+        return admin_id;
+    }
 
-        public void setAdmin_id(int admin_id) {
-            this.admin_id = admin_id;
-        }
+    public void setAdmin_id(Long admin_id) {
+        this.admin_id = admin_id;
+    }
 
-        public String getAdmin_name() {
+    public String getAdmin_name() {
             return admin_name;
         }
 
