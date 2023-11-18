@@ -11,4 +11,9 @@ public class PageController {
     public String home(){
         return "index";
     }
+
+    @GetMapping("/login")
+    public String login(){
+        return "sigin";
+    }
 }
