@@ -2,7 +2,7 @@ package com.project.clinic.clinic.models;
 
 import jakarta.persistence.*;
 
-@Entity
+@Entity 
 @Table(name ="doctor")
 public class Doctor  {
 
