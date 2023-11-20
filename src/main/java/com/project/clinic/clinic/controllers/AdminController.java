@@ -18,7 +18,7 @@ public class AdminController {
 
     @GetMapping("/admincreate")
     public String adminCreateGet(){
-        return "/admin/admindashboard";
+        return "/admin/admincreate";
     }
     @PostMapping("/admincreate")
     public String adminCreatePost(@RequestParam String admin_name,String admin_email ,String admin_phone,String admin_password){
@@ -28,7 +28,7 @@ public class AdminController {
         admin.setAdmin_phone(admin_phone);
         admin.setAdmin_password(admin_password);
         dao.save(admin);
-        return "/admincreate/adminview";
+        return "/admin/adminview";
     }
     @GetMapping("/adminview")
     public String adminview(Model model){
@@ -48,7 +48,7 @@ public class AdminController {
         Admin admin =dao.findById(admin_id).orElseThrow();
         return new ModelAndView("/admin/adminedit","adminBean",admin);
     }
-    @GetMapping()
+    @GetMapping("update/admin")
     public String updateAdmin(@ModelAttribute("adminBean")Admin admin){
         dao.save(admin);
         return "redirect:/admin/admindashboard";

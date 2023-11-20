@@ -3,10 +3,20 @@
 <head >
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
 <div></div><br>
+<!-- Sidebar -->
+<<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%" >
+    <h3 class="w3-bar-item">HomeTown Clinic</h3>
+    <a href="/adminview" class="w3-bar-item w3-button">Admin</a>
+    <a href="/doctorview" class="w3-bar-item w3-button">Doctor</a>
+    <a href="/patientview" class="w3-bar-item w3-button">Patient</a>
+</div>
 
+<!-- Page Content -->
+<div style="margin-left:25%">
 
 <div class="container" >
     <table class="table">
@@ -16,7 +26,7 @@
             <th scope="col">Admin Name</th>
             <th scope="col">Admin Email</th>
             <th scope="col">Admin Phone</th>
-            <th scope="col">Admin Password</th>
+<!--            <th scope="col">Admin Password</th>-->
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
         </tr>
@@ -27,10 +37,10 @@
             <td th:text="${admin.admin_name}"></td>
             <td th:text="${admin.admin_email}"></td>
             <td th:text="${admin.admin_phone}"></td>
-            <td th:text="${admin.admin_password}"></td>
-            <td>Edit</td>
-            <td>Delete</td>
-        </tr>
+<!--            <td th:text="${admin.admin_password}"></td>-->
+            <td><a th:href="@{/edit/admin/{admin_id}(id=${admin.admin_id})}">Edit</a></td>
+            <td><a th:href="@{/delete/admin/{admin_id}(id=${admin.admin_id})}">Delete</a></td>
+
 
         </tbody>
     </table>
@@ -38,4 +48,5 @@
 </div>
 
 <div></div>
+</div>
 </body>
