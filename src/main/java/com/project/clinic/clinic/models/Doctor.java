@@ -8,7 +8,7 @@ public class Doctor  {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long doctorid;
+        private Long doctor_id;
 
     private String doctor_name;
 
@@ -23,7 +23,7 @@ public class Doctor  {
     private String doctor_dob;
 
     public void setDoctorid(Long doctorid) {
-        this.doctorid = doctorid;
+        this.doctor_id = doctorid;
     }
 
     public void setDoctor_dob(String doctor_dob) {
