@@ -69,5 +69,5 @@ public class AdminController {
         model.addAttribute("patient",patients);
         return "/patient/patientview";
     }
-    
+
 }
