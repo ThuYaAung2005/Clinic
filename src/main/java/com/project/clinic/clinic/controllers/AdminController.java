@@ -50,7 +50,7 @@ public class AdminController {
         Admin admin =dao.findById(admin_id).orElseThrow();
         return new ModelAndView("/admin/adminedit","adminBean",admin);
     }
-    @GetMapping()
+    @PostMapping("/update/admin")
     public String updateAdmin(@ModelAttribute("adminBean")Admin admin){
         dao.save(admin);
         return "redirect:/admin/admindashboard";

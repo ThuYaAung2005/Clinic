@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.thymeleaf.model.IDocType;
 
 import java.util.List;
@@ -31,11 +33,11 @@ public class DoctorController {
         return "/doctor/doctorschedule";
     }
 
-    @GetMapping("/create")
+    @GetMapping("/doctorcreate")
     public String createDoctorGet(){
         return"/doctor/createdoctor";
     }
-    @PostMapping("/create")
+    @PostMapping("/doctorcreate")
     public String createDoctorPost(@RequestParam String doctor_name, String doctor_email, String doctor_address, String doctor_phone, String doctor_specialty , String doctor_dob  ){
         Doctor doctor=new Doctor();
         doctor.setDoctor_name(doctor_name);
@@ -54,6 +56,14 @@ public class DoctorController {
         model.addAttribute("doctors",doctors);
         return "/doctor/doctorview";
     }
-    
-
+    @GetMapping("/delete/doctor/{doctor_id}")
+    public String deletedoctor(@PathVariable("doctor_id")Long doctor_id){
+        dao.deleteById(doctor_id);
+        return  "/adminview";
+    }
+    @GetMapping("/edit/doctor/{doctor_id}")
+    public ModelAndView adminedit(@PathVariable("admin_id")Long doctor_id){
+        Doctor doctor =dao.findById(doctor_id).orElseThrow();
+        return new ModelAndView("/admin/adminedit","adminBean",doctor);
+    }
 }

@@ -18,7 +18,7 @@ public class PatientController {
 
     @GetMapping("/Sigin")
     public String signin(){
-        return "/patient/patient_reg";
+        return "/patient/patientcreate";
     }
     @GetMapping("/patientview")
     public String patientview(Model model){
@@ -27,12 +27,12 @@ public class PatientController {
         return "/patient/patientview";
     }
 
-    @GetMapping("/create")
+    @GetMapping("/patientcreate")
     public String patientcreateGet(){
-        return "patient/patient_dashboard.html";
+        return "patient/patient_dashboard";
     }
 
-    @PostMapping("/create")
+    @PostMapping("/patientcreate")
     public String patientcreatePost(@RequestParam String patient_name,String patient_address,String patient_phoneno,String patient_dob,String patient_age,String patient_gender){
         Patient patient=new Patient();
         patient.setPatient_name(patient_name);
@@ -41,8 +41,6 @@ public class PatientController {
         patient.setPatient_dob(patient_dob);
         patient.setPatient_age(patient_age);
         patient.setPatient_gender(patient_gender);
-        return "patient/patient_dashboard.html";
-
+        return "patient/patient_dashboard";
     }
-
 }
