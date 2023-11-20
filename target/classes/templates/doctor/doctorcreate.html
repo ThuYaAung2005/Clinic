@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head >
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div></div><br>
+
+<div class="container col-md-6 offset-md-3">
+    <form class="form-inline" method="post">
+
+
+        <div class="row mb-4">
+            <div class="col-md-2"></div>
+            <label for="doctor_name" class="col-md-2 col-form-label">Doctor Name</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="doctor_name" name="doctor_name" >
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-2"></div>
+            <label for="doctor_email" class="col-md-2 col-form-label">Doctor Email</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="doctor_email" name="doctor_email" >
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-2"></div>
+            <label for="doctor_address" class="col-md-2 col-form-label">Doctor Address</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="doctor_address" name="doctor_address" >
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-2"></div>
+            <label for="doctor_phone" class="col-md-2 col-form-label">Doctor Phone</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="doctor_phone" name="doctor_phone" >
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-2"></div>
+            <label for="doctor_specialty" class="col-md-2 col-form-label">Doctor Specialty</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="doctor_specialty" name="doctor_specialty" >
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-2"></div>
+            <label for="doctor_dob" class="col-md-2 col-form-label">Doctor DOB</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="doctor_dob" name="doctor_dob" >
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Create</button>
+    </form>
+</div>
+
+<div class="container" >
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Doctor Id</th>
+            <th scope="col">Doctor Name</th>
+            <th scope="col">Doctor Email</th>
+            <th scope="col">Doctor Address</th>
+            <th scope="col">Doctor Phone</th>
+            <th scope="col">Doctor Specialty</th>
+            <th scope="col">Doctor DOB</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="Doctor : ${schedules}">
+            <td th:text="${Doctor.doctor_id}"></td>
+            <td th:text="${Doctor.doctor_name}"></td>
+            <td th:text="${Doctor.doctor_email}"></td>
+            <td th:text="${Doctor.doctor_address}"></td>
+            <td th:text="${Doctor.doctor_phone}"></td>
+            <td th:text="${Doctor.doctor_specialty}"></td>
+            <td th:text="${Doctor.doctor_dob}"></td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+</div>
+
+<div></div>
+</body>
