@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long bookingid;
+    private Long booking_id;
 
     private String booking_time;
 
@@ -16,11 +16,11 @@ public class Booking {
     private String doctor_name;
 
     public Long getBookingid() {
-        return bookingid;
+        return booking_id;
     }
 
-    public void setBookingid(Long bookingid) {
-        this.bookingid = bookingid;
+    public void setBookingid(Long booking_id) {
+        this.booking_id = booking_id;
     }
 
     public String getBooking_time() {

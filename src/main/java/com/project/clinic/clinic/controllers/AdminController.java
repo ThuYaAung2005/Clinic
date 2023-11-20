@@ -2,8 +2,10 @@ package com.project.clinic.clinic.controllers;
 
 import com.project.clinic.clinic.daos.AdminDao;
 import com.project.clinic.clinic.daos.DoctorDao;
+import com.project.clinic.clinic.daos.PatientDao;
 import com.project.clinic.clinic.models.Admin;
 import com.project.clinic.clinic.models.Doctor;
+import com.project.clinic.clinic.models.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,13 +20,16 @@ public class AdminController {
         @Autowired
          AdminDao dao;
         @Autowired
-        DoctorDao dao1;
+        DoctorDao doadoctor;
+        @Autowired
+    PatientDao patientDao;
+
+
 
     @GetMapping("/create")
     public String createDoctorGet(){
         return"/doctor/createdoctor";
     }
-
     @PostMapping("/create")
     public String createDoctorPost(@RequestParam String doctor_name, String doctor_email, String doctor_address, String doctor_phone, String doctor_specialty , String doctor_dob  ){
         Doctor doctor=new Doctor();
@@ -34,7 +39,7 @@ public class AdminController {
         doctor.setDoctor_phone(doctor_phone);
         doctor.setDoctor_specialty(doctor_specialty);
         doctor.setDoctor_dob(doctor_dob);
-         dao1.save(doctor);
+        doadoctor.save(doctor);
         return "admin/doctorview";
 
     }
@@ -58,6 +63,11 @@ public class AdminController {
         model.addAttribute("admins",admins);
         return "/admin/adminview";
     }
+    @GetMapping("/patientview")
+    public String patientview(Model model){
+        List<Patient> patients = patientDao.findAll();
+        model.addAttribute("patient",patients);
+        return "/patient/patientview";
+    }
     
-
 }
