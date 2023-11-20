@@ -1,10 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head >
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<div></div><br>
 
+
+<div class="container" >
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Admin Id</th>
+            <th scope="col">Admin Name</th>
+            <th scope="col">Admin Email</th>
+            <th scope="col">Admin Phone</th>
+            <th scope="col">Admin Password</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="admin : ${admins}">
+            <td th:text="${admin.admin_id}"></td>
+            <td th:text="${admin.admin_name}"></td>
+            <td th:text="${admin.admin_email}"></td>
+            <td th:text="${admin.admin_phone}"></td>
+            <td th:text="${admin.admin_password}"></td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+</div>
+
+<div></div>
 </body>
-</html>

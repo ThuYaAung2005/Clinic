@@ -8,13 +8,14 @@ public class Patient {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
+
         private  Long patient_id;
         private String patient_name;
-    private String patient_address;
-    private String patient_phoneno;
-    private String patient_dob;
-    private String patient_age;
-    private String patient_gender;
+        private String patient_address;
+        private String patient_phone;
+        private String patient_dob;
+        private String patient_age;
+        private String patient_gender;
 
     public Long getPatient_id() {
         return patient_id;
@@ -40,12 +41,12 @@ public class Patient {
             this.patient_address = patient_address;
         }
 
-        public String getPatient_phoneno() {
-            return patient_phoneno;
+        public String getPatient_phone() {
+            return patient_phone;
         }
 
-        public void setPatient_phoneno(String patient_phoneno) {
-            this.patient_phoneno = patient_phoneno;
+        public void setPatient_phone(String patient_phone) {
+            this.patient_phone = patient_phone;
         }
 
         public String getPatient_dob() {
