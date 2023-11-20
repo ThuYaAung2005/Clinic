@@ -1,10 +1,14 @@
 package com.project.clinic.clinic.models;
 
+import jakarta.persistence.*;
+@Entity
+@Table(name = "Schedule")
 public class DoctorSchedule {
     private Long scheduleid;
     private String stattime;
     private String endtime;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getScheduleid() {
         return scheduleid;
     }
