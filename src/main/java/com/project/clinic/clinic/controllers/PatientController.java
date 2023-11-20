@@ -13,8 +13,5 @@ public class PatientController {
     public String signin(){
         return "/patient/patient_reg";
     }
-    @GetMapping("/paitentDeskboard")
-    public String paitentDeskBoard(){
-        return "/patient/patient_deskboard";
-    }
+
 }

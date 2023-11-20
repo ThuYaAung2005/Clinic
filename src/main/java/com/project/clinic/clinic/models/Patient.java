@@ -9,7 +9,12 @@ public class Patient {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private  Long patient_id;
-        private String patient_name, patient_address, patient_phoneno, patient_dob, patient_age, patient_gender;
+        private String patient_name;
+    private String patient_address;
+    private String patient_phoneno;
+    private String patient_dob;
+    private String patient_age;
+    private String patient_gender;
 
     public Long getPatient_id() {
         return patient_id;

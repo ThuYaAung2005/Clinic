@@ -9,20 +9,17 @@ public class Admin  {
         private Long admin_id;
         private String admin_name;
         private String admin_email;
-        private String admin_phoneno;
+        private String admin_phone;
         private String admin_password;
-        public Admin(Long admin_id, String admin_name, String admin_email, String admin_phoneno, String admin_password) {
-            this.admin_id = admin_id;
-            this.admin_name = admin_name;
+
+    public Admin() {
+    }
+
+    public Admin(String  admin_email, String admin_password) {
             this.admin_email = admin_email;
-            this.admin_phoneno = admin_phoneno;
             this.admin_password = admin_password;
         }
 
-        public Admin(String  admin_email, String admin_password) {
-            this.admin_email = admin_email;
-            this.admin_password = admin_password;
-        }
 
     public Long getAdmin_id() {
         return admin_id;
@@ -48,12 +45,12 @@ public class Admin  {
             this.admin_email = admin_email;
         }
 
-        public String getAdmin_phoneno() {
-            return admin_phoneno;
+        public String getAdmin_phone() {
+            return admin_phone;
         }
 
-        public void setAdmin_phoneno(String admin_phoneno) {
-            this.admin_phoneno = admin_phoneno;
+        public void setAdmin_phone(String admin_phone) {
+            this.admin_phone = admin_phone;
         }
 
         public String getAdmin_password() {
