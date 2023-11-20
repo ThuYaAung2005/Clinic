@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class PatientController {
     @Autowired
     PatientDao dao ;
+
     @GetMapping("/Sigin")
     public String signin(){
         return "/patient/patient_reg";
