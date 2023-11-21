@@ -1,10 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head >
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<h1>Doctor view</h1>
+<div></div><br>
+
+
+<div class="container" >
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Doctor Id</th>
+            <th scope="col">Doctor Name</th>
+            <th scope="col">Doctor Email</th>
+            <th scope="col">Doctor Address</th>
+            <th scope="col">Doctor Phone</th>
+            <th scope="col">Doctor Specialty</th>
+            <th scope="col">Doctor DOB</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="doctor : ${doctors}">
+            <td th:text="${doctor.doctor_id}"></td>
+            <td th:text="${doctor.doctor_name}"></td>
+            <td th:text="${doctor.doctor_email}"></td>
+            <td th:text="${doctor.doctor_address}"></td>
+            <td th:text="${doctor.doctor_phone}"></td>
+            <td th:text="${doctor.doctor_specialty}"></td>
+            <td th:text="${doctor.doctor_dob}"></td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+</div>
+
+<div></div>
 </body>
-</html>

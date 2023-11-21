@@ -33,7 +33,7 @@ public class DoctorController {
 
     @GetMapping("/create")
     public String createDoctorGet(){
-        return"/doctor/createdoctor";
+        return"/doctor/doctorcreate";
     }
     @PostMapping("/create")
     public String createDoctorPost(@RequestParam String doctor_name, String doctor_email, String doctor_address, String doctor_phone, String doctor_specialty , String doctor_dob  ){

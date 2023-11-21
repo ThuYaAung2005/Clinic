@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head >
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<div></div><br>
+
+<div class="container col-md-6 offset-md-3">
+    <form class="form-inline" method="post">
+
+
+        <div class="row mb-4">
+            <div class="col-md-2"></div>
+            <label for="admin_name" class="col-md-2 col-form-label">Admin Name</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="admin_name" name="admin_name" >
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-2"></div>
+            <label for="admin_email" class="col-md-2 col-form-label">Admin Email</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="admin_email" name="admin_email" >
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-2"></div>
+            <label for="admin_phone" class="col-md-2 col-form-label">Admin Phone</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="admin_phone" name="admin_phone" >
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-2"></div>
+            <label for="admin_password" class="col-md-2 col-form-label">Admin Password</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="admin_password" name="admin_password" >
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Admin Create</button>
+    </form>
+</div>
 
 </body>
-</html>

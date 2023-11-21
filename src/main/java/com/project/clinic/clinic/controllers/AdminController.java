@@ -16,9 +16,6 @@ public class AdminController {
         @Autowired
          AdminDao dao;
 
-
-
-
     @GetMapping("/admincreate")
     public String adminCreateGet(){
         return "/admin/admindashboard";
@@ -45,12 +42,13 @@ public class AdminController {
       dao.deleteById(admin_id);
      return  "/adminview";
     }
+
     @GetMapping("/edit/admin/{admin_id}")
     public ModelAndView adminedit(@PathVariable("admin_id")Long admin_id){
         Admin admin =dao.findById(admin_id).orElseThrow();
         return new ModelAndView("/admin/adminedit","adminBean",admin);
     }
-    @GetMapping()
+    @GetMapping("/update/admin")
     public String updateAdmin(@ModelAttribute("adminBean")Admin admin){
         dao.save(admin);
         return "redirect:/admin/admindashboard";

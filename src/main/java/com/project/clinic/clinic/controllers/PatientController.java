@@ -14,35 +14,38 @@ import java.util.List;
 @Controller
 public class PatientController {
     @Autowired
-    PatientDao dao ;
+    PatientDao dao;
 
     @GetMapping("/Sigin")
-    public String signin(){
-        return "/patient/patient_reg";
+    public String signin() {
+        return "/patient/patientcreate";
     }
+
     @GetMapping("/patientview")
-    public String patientview(Model model){
+    public String patientview(Model model) {
         List<Patient> patients = dao.findAll();
-        model.addAttribute("patient",patients);
+        model.addAttribute("patients", patients);
         return "/patient/patientview";
     }
 
-    @GetMapping("/create")
-    public String patientcreateGet(){
-        return "patient/patient_dashboard.html";
+    @GetMapping("/patientcreate")
+    public String patientcreateGet() {
+        return "patient/patientcreate";
     }
 
-    @PostMapping("/create")
-    public String patientcreatePost(@RequestParam String patient_name,String patient_address,String patient_phoneno,String patient_dob,String patient_age,String patient_gender){
-        Patient patient=new Patient();
+    @PostMapping("/patientcreate")
+    public String patientcreatePost(@RequestParam String patient_name, String patient_address, String patient_phone, String patient_dob, String patient_age, String patient_gender) {
+        Patient patient = new Patient();
         patient.setPatient_name(patient_name);
         patient.setPatient_address(patient_address);
-        patient.setPatient_phoneno(patient_phoneno);
+        patient.setPatient_phone(patient_phone);
         patient.setPatient_dob(patient_dob);
         patient.setPatient_age(patient_age);
         patient.setPatient_gender(patient_gender);
-        return "patient/patient_dashboard.html";
+        dao.save(patient);
+        return "patient/patientview";
 
     }
-
 }
+
+

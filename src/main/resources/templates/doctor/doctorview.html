@@ -24,14 +24,14 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="Doctor : ${doctors}">
-            <td th:text="${Doctor.doctor_id}"></td>
-            <td th:text="${Doctor.doctor_name}"></td>
-            <td th:text="${Doctor.doctor_email}"></td>
-            <td th:text="${Doctor.doctor_address}"></td>
-            <td th:text="${Doctor.doctor_phone}"></td>
-            <td th:text="${Doctor.doctor_specialty}"></td>
-            <td th:text="${Doctor.doctor_dob}"></td>
+        <tr th:each="doctor : ${doctors}">
+            <td th:text="${doctor.doctor_id}"></td>
+            <td th:text="${doctor.doctor_name}"></td>
+            <td th:text="${doctor.doctor_email}"></td>
+            <td th:text="${doctor.doctor_address}"></td>
+            <td th:text="${doctor.doctor_phone}"></td>
+            <td th:text="${doctor.doctor_specialty}"></td>
+            <td th:text="${doctor.doctor_dob}"></td>
             <td>Edit</td>
             <td>Delete</td>
         </tr>
