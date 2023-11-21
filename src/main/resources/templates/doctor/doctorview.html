@@ -44,8 +44,8 @@
             <td th:text="${doctor.doctor_phone}"></td>
             <td th:text="${doctor.doctor_specialty}"></td>
             <td th:text="${doctor.doctor_dob}"></td>
-            <td>Edit</td>
-            <td>Delete</td>
+            <td><a th:href="@{/edit/doctor/{doctor_id}(doctor_id=${doctor.doctor_id})}">Edit</a></td>
+            <td><a th:href="@{/delete/doctor/{doctor_id}(doctor_id=${doctor.doctor_id})}">Delete</a></td>
         </tr>
 
         </tbody>
