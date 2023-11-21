@@ -64,7 +64,8 @@
                 <li><a class="nav-link scrollto" href="#about">About</a></li>
                 <!--          <li><a class="nav-link scrollto" href="#services"></a></li>-->
                 <!--          <li><a class="nav-link scrollto" href="#departments"></a></li>-->
-                <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
+                <li><a class="nav-link scrollto" href="/doctorcreate">Doctorcreate</a></li>
+                <li><a class="nav-link scrollto" href="/admincreate">Admin</a></li>
 <!--                <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>-->
 <!--                    <ul>-->
 <!--                        <li><a href="#">Drop Down 1</a></li>-->
@@ -111,7 +112,7 @@
             <div class="row">
                 <div class="col-lg-4 d-flex align-items-stretch">
                     <div class="content">
-                        <h3>Why Choose Super Clinic?</h3>
+                        <h3>Why Choose Hometown Clinic?</h3>
                         <p>
                             Personalized, Compassionate Care
 
@@ -149,8 +150,8 @@
                             <div class="col-xl-4 d-flex align-items-stretch">
                                 <div class="icon-box mt-4 mt-xl-0">
                                     <i class="bx bx-images"></i>
-                                    <h4>Labore consequatur</h4>
-                                    <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                                    <h4>INTERNAL MEDICINE</h4>
+                                    <p>General medicine is the prevention of diseases common to all adults. It means the science of detection and treatment. Doctors who specialize in this field are called generalists.</p>
                                 </div>
                             </div>
                         </div>
@@ -176,20 +177,14 @@
 
                     <div class="icon-box">
                         <div class="icon"><i class="bx bx-fingerprint"></i></div>
-                        <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-                        <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+                        <h4 class="title"><a href="">Print for privacy</a></h4>
+                        <p class="description">Fingerprint scanners are used to grant access into buildings, obtain medical records, and identify patients.</p>
                     </div>
 
                     <div class="icon-box">
                         <div class="icon"><i class="bx bx-gift"></i></div>
-                        <h4 class="title"><a href="">Nemo Enim</a></h4>
-                        <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-                    </div>
-
-                    <div class="icon-box">
-                        <div class="icon"><i class="bx bx-atom"></i></div>
-                        <h4 class="title"><a href="">Dine Pad</a></h4>
-                        <p class="description">Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut deserunt minus aut eligendi omnis</p>
+                        <h4 class="title"><a href="">Gift Plan</a></h4>
+                        <p class="description">Sometime we give something that is present for children who attend in hospital.</p>
                     </div>
 
                 </div>
@@ -204,7 +199,7 @@
 
             <div class="section-title">
                 <h2>Make an Appointment</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                <p>Please write down yours information in an appointment to meet the doctor.</p>
             </div>
 
             <form action="forms/appointment.php" method="post" role="form" class="php-email-form">
@@ -222,12 +217,17 @@
                         <div class="validate"></div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-4 form-group mt-3">
-                        <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                        <div class="validate"></div>
-                    </div>
-                    <div class="col-md-4 form-group mt-3">
+                <script src="https://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+
+                <script>
+                    $(function(){
+                        $("#calender").datepicker();
+                    });
+                </script>
+
+                <p>Calender: <input type="text" id="calender"></p>
+
+                <div class="col-md-4 form-group mt-3">
                         <select name="department" id="department" class="form-select">
                             <option value="">Select Department</option>
                             <option value="Department 1">Department 1</option>
@@ -242,6 +242,7 @@
                             <option value="Doctor 1">Doctor 1</option>
                             <option value="Doctor 2">Doctor 2</option>
                             <option value="Doctor 3">Doctor 3</option>
+                            <option value="Doctor 4">Doctor 4</option>
                         </select>
                         <div class="validate"></div>
                     </div>
@@ -268,7 +269,7 @@
 
             <div class="section-title">
                 <h2>Doctors</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                <p></p>
             </div>
 
             <div class="row">
@@ -277,9 +278,8 @@
                     <div class="member d-flex align-items-start">
                         <div class="pic"><img src="assets/img/doctors/doctors-1.jpg" class="img-fluid" alt=""></div>
                         <div class="member-info">
-                            <h4>Walter White</h4>
-                            <span>Chief Medical Officer</span>
-                            <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
+                            <h4>Prof. Walter White</h4>
+                            <span>General Physician</span>
                             <div class="social">
                                 <a href=""><i class="ri-twitter-fill"></i></a>
                                 <a href=""><i class="ri-facebook-fill"></i></a>
@@ -294,9 +294,8 @@
                     <div class="member d-flex align-items-start">
                         <div class="pic"><img src="assets/img/doctors/doctors-2.jpg" class="img-fluid" alt=""></div>
                         <div class="member-info">
-                            <h4>Sarah Jhonson</h4>
-                            <span>Anesthesiologist</span>
-                            <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
+                            <h4>Dr. Sarah Jhonson</h4>
+                            <span>General Physician</span>
                             <div class="social">
                                 <a href=""><i class="ri-twitter-fill"></i></a>
                                 <a href=""><i class="ri-facebook-fill"></i></a>
@@ -311,9 +310,8 @@
                     <div class="member d-flex align-items-start">
                         <div class="pic"><img src="assets/img/doctors/doctors-3.jpg" class="img-fluid" alt=""></div>
                         <div class="member-info">
-                            <h4>William Anderson</h4>
-                            <span>Cardiology</span>
-                            <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
+                            <h4>Dr. William Anderson</h4>
+                            <span>General Physician</span>
                             <div class="social">
                                 <a href=""><i class="ri-twitter-fill"></i></a>
                                 <a href=""><i class="ri-facebook-fill"></i></a>
@@ -328,9 +326,8 @@
                     <div class="member d-flex align-items-start">
                         <div class="pic"><img src="assets/img/doctors/doctors-4.jpg" class="img-fluid" alt=""></div>
                         <div class="member-info">
-                            <h4>Amanda Jepson</h4>
-                            <span>Neurosurgeon</span>
-                            <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
+                            <h4>Assistant Amanda Jepson</h4>
+                            <span>General Physician</span>
                             <div class="social">
                                 <a href=""><i class="ri-twitter-fill"></i></a>
                                 <a href=""><i class="ri-facebook-fill"></i></a>
@@ -352,7 +349,7 @@
 
             <div class="section-title">
                 <h2>Contact</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                <p></p>
             </div>
         </div>
 
@@ -370,11 +367,11 @@
                 <div class="col-lg-3 col-md-6 footer-contact">
                     <h3>Medilab</h3>
                     <p>
-                        A108 Adam Street <br>
-                        New York, NY 535022<br>
-                        United States <br><br>
-                        <strong>Phone:</strong> +1 5589 55488 55<br>
-                        <strong>Email:</strong> info@example.com<br>
+                       12 Padonmar Street <br>
+                        Hlaing, Yangon<br>
+                        Myanmar <br><br>
+                        <strong>Phone:</strong> +95 9739280848<br>
+                        <strong>Email:</strong> hometownclinic@example.com<br>
                     </p>
                 </div>
 
@@ -402,7 +399,6 @@
 
                 <div class="col-lg-4 col-md-6 footer-newsletter">
                     <h4>Join Our Newsletter</h4>
-                    <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
                     <form action="" method="post">
                         <input type="email" name="email"><input type="submit" value="Subscribe">
                     </form>
