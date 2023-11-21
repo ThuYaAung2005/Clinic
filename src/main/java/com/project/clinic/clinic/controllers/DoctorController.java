@@ -44,14 +44,14 @@ public class DoctorController {
         doctor.setDoctor_specialty(doctor_specialty);
         doctor.setDoctor_dob(doctor_dob);
         dao.save(doctor);
-        return "admin/doctorview";
+        return "redirect:/doctorview";
 
     }
     @GetMapping("/doctorview")
     public String doctorview(Model model){
         List<Doctor> doctors=dao.findAll();
         model.addAttribute("doctors",doctors);
-        return "/doctor/doctorview";
+        return "//doctor/doctorview";
     }
     @GetMapping("/delete/doctor/{doctor_id}")
     public String deletedoctor(@PathVariable("doctor_id")Long doctor_id){
