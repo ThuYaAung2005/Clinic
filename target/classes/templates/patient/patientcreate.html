@@ -22,84 +22,104 @@
     <!-- CSS Libraries -->
 </head>
 
-    <body class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed aside-enabled aside-fixed">
-        <div class="d-flex flex-column flex-root">
-         <div
+<body
+        class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed aside-enabled aside-fixed">
+<div class="d-flex flex-column flex-root">
+    <div
             class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed authImage">
         <div class="d-flex flex-column flex-column-fluid align-items-center justify-content-center p-4">
             <div class="col-12 text-center">
-                <a href="https://infycare.infyom.com" class="image mb-7 mb-sm-10">
-                    <img alt="Logo" src="https://infycare-demo.nyc3.digitaloceanspaces.com/58/infyCare-logo.png" class="img-fluid" style="width:90px;">
+                <a href="/" class="image mb-7 mb-sm-10">
+                    <img alt="Logo" src="assets/img/image.jpg" class="img-fluid" style="width:90px;">
                 </a>
             </div>
             <div class="width-540">
             </div>
             <div class="bg-white rounded-15 shadow-md width-540 px-5 px-sm-7 py-10 mx-auto">
                 <h1 class="text-center mb-7">Patient Registration</h1>
-                <form method="POST" action="https://infycare.infyom.com/register" >
-                    <input type="hidden" name="_token" value="nrJBUDf7PbXGdrow8oYvhldW21DJXw4gsjE28BqT">                <div class="row">
-
-                    <div class="col-md-12 mb-sm-7 mb-4">
-                        <label for="patient_name" class="form-label">Patient Name:<span class="required"></span></label>
-                        <input type="text" class="form-control" id="patient_name" aria-describedby="patient_name" placeholder="Name" name="patient_name" required value="">
+                <form method="POST" action="/patientcreate">
+<!--                    <input type="hidden" name="_token" value="nrJBUDf7PbXGdrow8oYvhldW21DJXw4gsjE28BqT">-->
+                    <div class="container">
+                        <label  class="form-label">
+                            Patient Name:<span class="required"></span>
+                        </label>
+                        <input name="patient_name" type="text" class="form-control" id="name" aria-describedby="firstName" placeholder="Patient Name" v required>
                     </div>
-                </div>
-                    <div class="row">
-                        <div class="col-md-12 mb-sm-7 mb-4">
-                            <label for="patient_address" class="form-label">Patient Email:<span class="required"></span></label>
-                            <input type="email" class="form-control" id="patient_address" aria-describedby="email" placeholder="Address" name="patient_address"value="" required>
+                    <div class="container">
+                        <label for="last_name" class="form-label">
+                            Address:<span class="required"></span>
+                        </label>
+                        <input name="patient_address" type="text" class="form-control" id="last_name" aria-describedby="lastName" placeholder=" Enter Your Address" required value="">
+                    </div>
+
+                    <div class="container">
+                    <label  class="form-label">
+                         Phone:<span class="required"></span>
+                    </label>
+                    </div>
+                    <input name="phone" type="tel" class="form-control" id="" aria-describedby="firstName" placeholder="Enter Your Phone number" v required>
+                    <div class="container-md">
+                        <div class="container-sm">
+                            <label for="email" class="form-label">
+                                Email:<span class="required"></span>
+                            </label>
+                            <input name="email" type="email" class="form-control" id="email" aria-describedby="email" placeholder="Email" value="" required>
                         </div>
                     </div>
-                    <div class="mb-5 fv-row">
-                        <div class="row">
-                            <div class="col-md-6 mb-sm-7 mb-4">
-                                <label for="patient_phone" class="form-label">Patient Phone:<span class="required"></span></label>
-                                <input type="text" class="form-control" aria-describedby="patient_phone" id="patient_phone" name="patient_phone" placeholder="Phone"  required value="">
-                            </div>
-                            <div class="col-md-6 mb-sm-7 mb-4">
-                                <label for="patient_dob" class="form-label">Patient DOB:<span class="required"></span></label>
-                                <input type="text" class="form-control" placeholder="DOB" id="patient_dob" name="patient_dob" aria-describedby="patient_dob" required value="">
-                            </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-2"></div>
+                        <label for="dob" class="col-md-2 col-form-label">DOB</label>
+                        <div class="col-md-4">
+                            <input type="date" class="form-control" id="dob" name="dob">
                         </div>
-
-                        <div class="row">
-                            <div class="col-md-12 mb-sm-7 mb-4">
-                                <label for="patient_age" class="form-label">Patient Age:<span class="required"></span></label>
-                                <input type="text" class="form-control" id="patient_age" aria-describedby="patient_age" placeholder="Age" name="patient_age" required value="" >
+                    </div>
+                            <div class="container">
+                                <label for="password_confirmation" class="form-label">
+                                    patient_age:<span class="required"></span>
+                                </label>
+                                <input name="patient_age" type="text"  placeholder="" id="password_confirmation" aria-describedby="" required>
                             </div>
-                        </div>
 
 
-                        <form>
-                            <div class="row">
-                            <div> Gender :
-                                <input type="radio" id="contactChoice1" name="contact" value="male" />
-                                <label for="contactChoice1">Male</label>
+<!--                        <div class="mb-sm-7 mb-4 form-check">-->
+<!--                            <input type="checkbox" class="form-check-input" name="toc" value="1" required/>-->
+<!--                            <span class="text-gray-700 me-2 ml-1">I Agree-->
+<!--									<a href="https://infycare.infyom.com/terms-conditions"-->
+<!--                                       class="ms-1 link-primary">Terms and conditions</a>.-->
+<!--                        </span>-->
+<!--                        </div>-->
 
-                                <input type="radio" id="contactChoice2" name="contact" value="female" />
-                                <label for="contactChoice2">Female</label>
+                        <fieldset class="row mb-4">
+                            <div class="col-md-2"></div>
+                            <legend class="col-form-label col-md-2 pt-0">Gender</legend>
+                            <div class="col-md-4">
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" value="Male">
+                                    <label class="form-check-label">
+                                        Male
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" value="Female" >
+                                    <label class="form-check-label">
+                                        Female
+                                    </label>
+                                </div>
                             </div>
-                            </div>
-                        </form>
-
-
-                        <div class="mb-sm-7 mb-4 form-check">
-                            <input type="checkbox" class="form-check-input" name="toc" value="1" required/>
-                            <span class="text-gray-700 me-2 ml-1">I Agree
-								<a href="https://infycare.infyom.com/terms-conditions" class="ms-1 link-primary">Terms and conditions</a>.
-                        </span>
-                        </div>
+                        </fieldset>
 
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                         <div class="d-flex align-items-center mt-4">
                             <span class="text-gray-700 me-2">Already have an account?</span>
-                            <a href="https://infycare.infyom.com/login" class="link-info fs-6 text-decoration-none">
+                            <a href="/login" class="link-info fs-6 text-decoration-none">
                                 Sign in here
+
                             </a>
+
                         </div>
-                    </div>
                 </form>
             </div>
         </div>
@@ -111,9 +131,7 @@
         <div class="row align-items-center justify-content-center">
             <div class="col-xl-6">
                 <div class="copyright text-center text-muted">
-                    All rights reserved &copy; 2023 <a href="/"
-                                                       class="font-weight-bold ml-1"
-                                                       target="_blank">Clinic Appointment Management</a>
+                    All rights reserved &copy; 2023 <a href="/"class="font-weight-bold ml-1" target="_blank">Clinic Appointment Management</a>
                 </div>
             </div>
         </div>
