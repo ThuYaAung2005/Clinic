@@ -21,6 +21,7 @@ public class PatientController {
     public String signin() {
         return "/patient/patientcreate";
     }
+
     @GetMapping("/patientview")
     public String patientview(Model model){
         List<Patient> patients = dao.findAll();
@@ -28,8 +29,7 @@ public class PatientController {
         return "/patient/patientview";
     }
 
-
-    @PostMapping("/patientcreate")
+    @PostMapping("/Sigin")
     public String patientCreatePost(@RequestParam String patient_name,String patient_address,String patient_phone,String patient_dob,String patient_age,String patient_gender){
         Patient patient=new Patient();
         patient.setPatient_name(patient_name);
@@ -44,7 +44,7 @@ public class PatientController {
     @GetMapping("/delete/patient/{patient_id}")
     public String deletePatient(@PathVariable("patient_id")Long patient_id){
         dao.deleteById(patient_id);
-        return  "/patient/patientview";
+        return  "redirect:/patientview";
     }
 //    @GetMapping("/patientview")
 //    public String patientView(Model model){
@@ -58,10 +58,10 @@ public class PatientController {
         Patient patient =dao.findById(patient_id).orElseThrow();
         return new ModelAndView("/patient/patientedit","patientBean",patient);
     }
-    @GetMapping("update/patient")
+    @PostMapping("/update/patient")
     public String updatePatient(@ModelAttribute("patientBean")Patient patient){
         dao.save(patient);
-        return "redirect:/patient/patientview";
+        return "redirect:/patientview";
     }
 
 }

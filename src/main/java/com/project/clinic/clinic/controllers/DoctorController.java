@@ -51,21 +51,21 @@ public class DoctorController {
     public String doctorview(Model model){
         List<Doctor> doctors=dao.findAll();
         model.addAttribute("doctors",doctors);
-        return "//doctor/doctorview";
+        return "/doctor/doctorview";
     }
     @GetMapping("/delete/doctor/{doctor_id}")
     public String deletedoctor(@PathVariable("doctor_id")Long doctor_id){
         dao.deleteById(doctor_id);
-        return  "doctor/doctorview";
+        return  "redirect:/doctorview";
     }
     @GetMapping("/edit/doctor/{doctor_id}")
     public ModelAndView doctoredit(@PathVariable("doctor_id")Long doctor_id){
         Doctor doctor =dao.findById(doctor_id).orElseThrow();
         return new ModelAndView("/doctor/doctoredit","doctorBean",doctor);
     }
-    @GetMapping("update/doctor")
+    @PostMapping("/update/doctor")
     public String updateAdmin(@ModelAttribute("doctorBean")Doctor doctor){
         dao.save(doctor);
-        return "redirect:/doctor/doctorview";
+        return "redirect:/doctorview";
     }
 }

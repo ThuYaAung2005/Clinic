@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>    Register
-        | Clinic Appointment Management</title>
+    <title>    Register Clinic Appointment Management</title>
     <!-- Favicon -->
     <link rel="icon" href="assets/img/image.jpg" type="image/png">
     <meta name="csrf-token" content="nrJBUDf7PbXGdrow8oYvhldW21DJXw4gsjE28BqT">
@@ -35,51 +34,40 @@
             </div>
             <div class="width-540">
             </div>
+
+
+            <h1 style="text-align:center">Patient Registration</h1>
             <div class="bg-white rounded-15 shadow-md width-540 px-5 px-sm-7 py-10 mx-auto">
-                <h1 class="text-center mb-7">Patient Registration</h1>
-                <form method="POST" action="/patientcreate">
+                <form method="post">
 <!--                    <input type="hidden" name="_token" value="nrJBUDf7PbXGdrow8oYvhldW21DJXw4gsjE28BqT">-->
                     <div class="container">
-                        <label  class="form-label">
-                            Patient Name:<span class="required"></span>
-                        </label>
-                        <input name="patient_name" type="text" class="form-control" id="name" aria-describedby="firstName" placeholder="Patient Name" v required>
+                        <label for="name">Patient Name:<span class="required"></span></label>
+                        <input type="text" class="form-control" id="name"  placeholder="Patient Name" name="patient_name">
                     </div>
                     <div class="container">
-                        <label for="last_name" class="form-label">
-                            Address:<span class="required"></span>
-                        </label>
-                        <input name="patient_address" type="text" class="form-control" id="last_name" aria-describedby="lastName" placeholder=" Enter Your Address" required value="">
+                        <label for="address" >Address:<span class="required"></span></label>
+                        <input  type="text" class="form-control" id="address"  placeholder=" Enter Your Address" name="patient_address">
                     </div>
 
                     <div class="container">
-                    <label  class="form-label">
-                         Phone:<span class="required"></span>
-                    </label>
+                        <label  for="phone">Phone:<span class="required"></span></label>
+                         <input type="tel" class="form-control" id="phone"  placeholder="Enter Your Phone number" name="patient_phone">
                     </div>
-                    <input name="phone" type="tel" class="form-control" id="" aria-describedby="firstName" placeholder="Enter Your Phone number" v required>
+
+                        <div class="container-md">
+                            <label for="email" >Email:<span class="required"></span></label>
+                            <input  type="email" class="form-control" id="email"  placeholder="Email" name="patient_email">
+                        </div>
+
                     <div class="container-md">
-                        <div class="container-sm">
-                            <label for="email" class="form-label">
-                                Email:<span class="required"></span>
-                            </label>
-                            <input name="email" type="email" class="form-control" id="email" aria-describedby="email" placeholder="Email" value="" required>
-                        </div>
+                        <label for="dob">DOB</label>
+                            <input type="date" class="form-control" id="dob" name="patient_dob">
                     </div>
 
-                    <div class="row mb-4">
-                        <div class="col-md-2"></div>
-                        <label for="dob" class="col-md-2 col-form-label">DOB</label>
-                        <div class="col-md-4">
-                            <input type="date" class="form-control" id="dob" name="dob">
-                        </div>
-                    </div>
-                            <div class="container">
-                                <label for="password_confirmation" class="form-label">
-                                    patient_age:<span class="required"></span>
-                                </label>
-                                <input name="patient_age" type="text"  placeholder="" id="password_confirmation" aria-describedby="" required>
-                            </div>
+                    <div class="container-md">
+                        <label for="age">Patient Age<span class="required"></span></label>
+                        <input  type="text"  class="form-control"  id="age" name="patient_age">
+                    </div>    <br>
 
 
 <!--                        <div class="mb-sm-7 mb-4 form-check">-->
@@ -90,35 +78,22 @@
 <!--                        </span>-->
 <!--                        </div>-->
 
-                        <fieldset class="row mb-4">
-                            <div class="col-md-2"></div>
-                            <legend class="col-form-label col-md-2 pt-0">Gender</legend>
-                            <div class="col-md-4">
-                                <div class="form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" value="Male">
-                                    <label class="form-check-label">
-                                        Male
-                                    </label>
-                                </div>
-                                <div class="form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" value="Female" >
-                                    <label class="form-check-label">
-                                        Female
-                                    </label>
-                                </div>
-                            </div>
-                        </fieldset>
+                    <fieldset>
+                        <div lass="container-md">
+                            Choose gender:<input type="radio" id="radioMale" name = "patient_gender" value="Male">Male</input>
+                            <input type="radio" id="radioFemale" name = "patient_gender" value="Female">Female</input>
+                        </div>
+                    </fieldset>
 
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
+
                         <div class="d-flex align-items-center mt-4">
                             <span class="text-gray-700 me-2">Already have an account?</span>
                             <a href="/login" class="link-info fs-6 text-decoration-none">
                                 Sign in here
-
                             </a>
-
                         </div>
                 </form>
             </div>

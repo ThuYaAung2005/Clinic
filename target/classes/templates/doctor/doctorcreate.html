@@ -8,53 +8,38 @@
 </head>
 <body>
 <div></div><br>
-    <h1 text-align="center">Doctor create</h1>
+    <h1 style=" text-align:center">Doctor create</h1>
 <div class="container col-md-6 offset-md-3">
-    <form class="form-inline" method="post" >
-
-
-        <div class="row mb-4">
-            <div class="col-md-2"></div>
-            <label for="doctor_name" class="col-md-2 col-form-label">Doctor Name</label>
-            <div class="col-md-4">
+    <form method="post" >
+        <div class="form-group">
+            <label for="doctor_name" >Doctor Name</label>
                 <input type="text" class="form-control" id="doctor_name" name="doctor_name" >
             </div>
-        </div>
-        <div class="row mb-4">
-            <div class="col-md-2"></div>
-            <label for="doctor_email" class="col-md-2 col-form-label">Doctor Email</label>
-            <div class="col-md-4">
+
+            <div class="form-group">
+            <label for="doctor_email">Doctor Email</label>
                 <input type="text" class="form-control" id="doctor_email" name="doctor_email" >
             </div>
-        </div>
-        <div class="row mb-4">
-            <div class="col-md-2"></div>
-            <label for="doctor_address" class="col-md-2 col-form-label">Doctor Address</label>
-            <div class="col-md-4">
+
+        <div class="form-group">
+            <label for="doctor_address" >Doctor Address</label>
                 <input type="text" class="form-control" id="doctor_address" name="doctor_address" >
-            </div>
         </div>
-        <div class="row mb-4">
-            <div class="col-md-2"></div>
-            <label for="doctor_phone" class="col-md-2 col-form-label">Doctor Phone</label>
-            <div class="col-md-4">
+
+        <div class="form-group">
+            <label for="doctor_phone">Doctor Phone</label>
                 <input type="text" class="form-control" id="doctor_phone" name="doctor_phone" >
             </div>
-        </div>
-        <div class="row mb-4">
-            <div class="col-md-2"></div>
-            <label for="doctor_specialty" class="col-md-2 col-form-label">Doctor Specialty</label>
-            <div class="col-md-4">
+
+        <div class="form-group">
+            <label for="doctor_specialty" >Doctor Specialty</label>
                 <input type="text" class="form-control" id="doctor_specialty" name="doctor_specialty" >
             </div>
-        </div>
-        <div class="row mb-4">
-            <div class="col-md-2"></div>
-            <label for="doctor_dob" class="col-md-2 col-form-label">Doctor DOB</label>
-            <div class="col-md-4">
+
+        <div class="form-group">
+            <label for="doctor_dob" >Doctor DOB</label>
                 <input type="text" class="form-control" id="doctor_dob" name="doctor_dob" >
             </div>
-        </div>
         <button type="submit" class="btn btn-primary mb-2">Doctor Create</button>
     </form>
 </div>
