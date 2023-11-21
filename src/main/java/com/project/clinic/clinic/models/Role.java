@@ -1,6 +1,12 @@
 package com.project.clinic.clinic.models;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "role")
 public class Role {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long roleid;
     String rolename;
 
@@ -15,6 +21,7 @@ public class Role {
     public String getRolename() {
         return rolename;
     }
+
 
     public void setRolename(String rolename) {
         this.rolename = rolename;

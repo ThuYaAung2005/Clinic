@@ -10,7 +10,8 @@
     <meta name="csrf-token" content="nrJBUDf7PbXGdrow8oYvhldW21DJXw4gsjE28BqT">
     <!-- Fonts -->
     <!-- General CSS Files -->
-    <link rel="stylesheet" type="text/css" href="https://infycare.infyom.com/assets/css/style.css">
+<!--    <link rel="stylesheet" type="text/css" href="https://infycare.infyom.com/assets/css/style.css">-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <!-- Fonts -->
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"/>
@@ -22,8 +23,7 @@
     <!-- CSS Libraries -->
 </head>
 
-<body
-        class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed aside-enabled aside-fixed">
+<body >
 <div class="d-flex flex-column flex-root">
     <div
             class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed authImage">
@@ -38,92 +38,73 @@
             <div class="bg-white rounded-15 shadow-md width-540 px-5 px-sm-7 py-10 mx-auto">
                 <h1 class="text-center mb-7">Patient Registration</h1>
                 <form method="POST" action="/patientcreate">
-<!--                    <input type="hidden" name="_token" value="nrJBUDf7PbXGdrow8oYvhldW21DJXw4gsjE28BqT">-->
-                    <div class="container">
-                        <label  class="form-label">
-                            Patient Name:<span class="required"></span>
-                        </label>
-                        <input name="patient_name" type="text" class="form-control" id="name" aria-describedby="firstName" placeholder="Patient Name" v required>
-                    </div>
-                    <div class="container">
-                        <label for="last_name" class="form-label">
-                            Address:<span class="required"></span>
-                        </label>
-                        <input name="patient_address" type="text" class="form-control" id="last_name" aria-describedby="lastName" placeholder=" Enter Your Address" required value="">
-                    </div>
-
-                    <div class="container">
-                    <label  class="form-label">
-                         Phone:<span class="required"></span>
-                    </label>
-                    </div>
-                    <input name="phone" type="tel" class="form-control" id="" aria-describedby="firstName" placeholder="Enter Your Phone number" v required>
-                    <div class="container-md">
-                        <div class="container-sm">
-                            <label for="email" class="form-label">
-                                Email:<span class="required"></span>
-                            </label>
-                            <input name="email" type="email" class="form-control" id="email" aria-describedby="email" placeholder="Email" value="" required>
-                        </div>
-                    </div>
 
                     <div class="row mb-4">
                         <div class="col-md-2"></div>
-                        <label for="dob" class="col-md-2 col-form-label">DOB</label>
+                        <label for="patient_name" class="col-md-2 col-form-label">Patient Name</label>
                         <div class="col-md-4">
-                            <input type="date" class="form-control" id="dob" name="dob">
+                            <input type="text" class="form-control" id="patient_name" name="patient_name" >
                         </div>
                     </div>
-                            <div class="container">
-                                <label for="password_confirmation" class="form-label">
-                                    patient_age:<span class="required"></span>
+                    <div class="row mb-4">
+                        <div class="col-md-2"></div>
+                        <label for="patient_email" class="col-md-2 col-form-label">patient Email</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="patient_email" name="patient_email" >
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-2"></div>
+                        <label for="patient_address" class="col-md-2 col-form-label">Patient Address</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="patient_address" name="patient_address" >
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-2"></div>
+                        <label for="patient_phone" class="col-md-2 col-form-label">Patient Phone</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="patient_phone" name="patient_phone" >
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-2"></div>
+                        <label for="" class="col-md-2 col-form-label">Patient Age</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="" name="patien_age" >
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-2"></div>
+                        <label for="patient_dob" class="col-md-2 col-form-label">Patient DOB</label>
+                        <div class="col-md-4">
+                            <input type="date" class="form-control" id="patient_dob" name="patient_dob" >
+                        </div>
+                    </div>
+
+                    <fieldset class="row mb-4">
+                        <div class="col-md-2"></div>
+                        <legend class="col-form-label col-md-2 pt-0">Gender</legend>
+                        <div class="col-md-4">
+                            <div class="form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" value="Male">
+                                <label class="form-check-label">
+                                    Male
                                 </label>
-                                <input name="patient_age" type="text"  placeholder="" id="password_confirmation" aria-describedby="" required>
                             </div>
-
-
-<!--                        <div class="mb-sm-7 mb-4 form-check">-->
-<!--                            <input type="checkbox" class="form-check-input" name="toc" value="1" required/>-->
-<!--                            <span class="text-gray-700 me-2 ml-1">I Agree-->
-<!--									<a href="https://infycare.infyom.com/terms-conditions"-->
-<!--                                       class="ms-1 link-primary">Terms and conditions</a>.-->
-<!--                        </span>-->
-<!--                        </div>-->
-
-                        <fieldset class="row mb-4">
-                            <div class="col-md-2"></div>
-                            <legend class="col-form-label col-md-2 pt-0">Gender</legend>
-                            <div class="col-md-4">
-                                <div class="form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" value="Male">
-                                    <label class="form-check-label">
-                                        Male
-                                    </label>
-                                </div>
-                                <div class="form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" value="Female" >
-                                    <label class="form-check-label">
-                                        Female
-                                    </label>
-                                </div>
+                            <div class="form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" value="Female" >
+                                <label class="form-check-label">
+                                    Female
+                                </label>
                             </div>
-                        </fieldset>
-
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
-                        <div class="d-flex align-items-center mt-4">
-                            <span class="text-gray-700 me-2">Already have an account?</span>
-                            <a href="/login" class="link-info fs-6 text-decoration-none">
-                                Sign in here
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary mb-2"> Create</button>
 
-                            </a>
 
-                        </div>
                 </form>
-            </div>
-        </div>
-    </div>
+            </div></div></div>
 </div>
 
 <footer>
@@ -141,6 +122,10 @@
 <script src="https://infycare.infyom.com/backend/js/vendor.js"></script>
 <script src="/assets/js/auto_fill/auto_fill.js?id=2ce01d55e867c3ab0651"></script>
 <script src="https://infycare.infyom.com/backend/js/3rd-party-custom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+
 <script>
     $(document).ready(function () {
         $('.alert').delay(5000).slideUp(300);
