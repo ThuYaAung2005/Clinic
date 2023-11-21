@@ -38,20 +38,20 @@ public class AdminController {
     }
 
     @GetMapping("/delete/admin/{admin_id}")
-    public String deleteadim(@PathVariable("admin_id")Long admin_id){
+    public String deleteadim(@PathVariable("admin_id") Long admin_id){
       dao.deleteById(admin_id);
-     return  "/adminview";
+     return  "redirect:/adminview";
     }
 
     @GetMapping("/edit/admin/{admin_id}")
-    public ModelAndView adminedit(@PathVariable("admin_id")Long admin_id){
+    public ModelAndView adminedit(@PathVariable("admin_id") Long admin_id){
         Admin admin =dao.findById(admin_id).orElseThrow();
         return new ModelAndView("/admin/adminedit","adminBean",admin);
     }
-    @GetMapping("update/admin")
-    public String updateAdmin(@ModelAttribute("adminBean")Admin admin){
+    @PostMapping("/update/admin")
+    public String updateAdmin(@ModelAttribute("adminBean") Admin admin){
         dao.save(admin);
-        return "redirect:/admin/admindashboard";
+        return "redirect:/adminview";
     }
 
 }
