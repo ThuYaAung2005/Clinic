@@ -20,6 +20,7 @@ public class AdminController {
     public String adminCreateGet(){
         return "/admin/admincreate";
     }
+
     @PostMapping("/admincreate")
     public String adminCreatePost(@RequestParam String admin_name,String admin_email ,String admin_phone,String admin_password){
         Admin admin= new Admin();

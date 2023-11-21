@@ -58,7 +58,7 @@ public class PatientController {
         Patient patient =dao.findById(patient_id).orElseThrow();
         return new ModelAndView("/patient/patientedit","patientBean",patient);
     }
-    @PostMapping("update/patient")
+    @PostMapping("/update/patient")
     public String updatePatient(@ModelAttribute("patientBean")Patient patient){
         dao.save(patient);
         return "redirect:/patient/patientview";
