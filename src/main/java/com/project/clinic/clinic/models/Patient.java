@@ -72,8 +72,5 @@ public class Patient {
         public void setPatient_gender(String patient_gender) {
             this.patient_gender = patient_gender;
         }
-
-    public void setPatient_phoneno(String patient_phoneno) {
-    }
 }
 

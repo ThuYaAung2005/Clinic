@@ -28,7 +28,7 @@ public class AdminController {
         admin.setAdmin_phone(admin_phone);
         admin.setAdmin_password(admin_password);
         dao.save(admin);
-        return "/admin/adminview";
+        return "redirect:/adminview";
     }
     @GetMapping("/adminview")
     public String adminview(Model model){

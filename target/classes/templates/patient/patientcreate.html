@@ -37,63 +37,89 @@
             </div>
             <div class="bg-white rounded-15 shadow-md width-540 px-5 px-sm-7 py-10 mx-auto">
                 <h1 class="text-center mb-7">Patient Registration</h1>
-                <form method="POST" action="https://infycare.infyom.com/register" >
-                    <input type="hidden" name="_token" value="nrJBUDf7PbXGdrow8oYvhldW21DJXw4gsjE28BqT">                <div class="row">
-                    <div class="col-md-6 mb-sm-7 mb-4">
+                <form method="POST" action="/patientcreate">
+<!--                    <input type="hidden" name="_token" value="nrJBUDf7PbXGdrow8oYvhldW21DJXw4gsjE28BqT">-->
+                    <div class="container">
                         <label  class="form-label">
-                            First Name:<span class="required"></span>
+                            Patient Name:<span class="required"></span>
                         </label>
-                        <input name="first_name" type="text" class="form-control" id="name" aria-describedby="firstName" placeholder="First Name" value="" required>
+                        <input name="patient_name" type="text" class="form-control" id="name" aria-describedby="firstName" placeholder="Patient Name" v required>
                     </div>
-                    <div class="col-md-6 mb-sm-7 mb-4">
+                    <div class="container">
                         <label for="last_name" class="form-label">
-                            Last Name:<span class="required"></span>
+                            Address:<span class="required"></span>
                         </label>
-                        <input name="last_name" type="text" class="form-control" id="last_name" aria-describedby="lastName" placeholder="Last Name" required value="">
+                        <input name="patient_address" type="text" class="form-control" id="last_name" aria-describedby="lastName" placeholder=" Enter Your Address" required value="">
                     </div>
-                </div>
-                    <div class="row">
-                        <div class="col-md-12 mb-sm-7 mb-4">
+
+                    <div class="container">
+                    <label  class="form-label">
+                         Phone:<span class="required"></span>
+                    </label>
+                    </div>
+                    <input name="phone" type="tel" class="form-control" id="" aria-describedby="firstName" placeholder="Enter Your Phone number" v required>
+                    <div class="container-md">
+                        <div class="container-sm">
                             <label for="email" class="form-label">
                                 Email:<span class="required"></span>
                             </label>
                             <input name="email" type="email" class="form-control" id="email" aria-describedby="email" placeholder="Email" value="" required>
                         </div>
                     </div>
-                    <div class="mb-5 fv-row">
-                        <div class="row">
-                            <div class="col-md-6 mb-sm-7 mb-4">
-                                <label for="password" class="form-label">
-                                    Password:<span class="required"></span>
-                                </label>
-                                <input type="password" name="password" class="form-control" id="password" placeholder="Password" aria-describedby="password" required>
-                            </div>
-                            <div class="col-md-6 mb-sm-7 mb-4">
-                                <label for="password_confirmation" class="form-label">
-                                    Confirm Password:<span class="required"></span>
-                                </label>
-                                <input name="password_confirmation" type="password" class="form-control" placeholder="Confirm Password" id="password_confirmation" aria-describedby="confirmPassword" required>
-                            </div>
-                        </div>
 
-                        <div class="mb-sm-7 mb-4 form-check">
-                            <input type="checkbox" class="form-check-input" name="toc" value="1" required/>
-                            <span class="text-gray-700 me-2 ml-1">I Agree
-									<a href="https://infycare.infyom.com/terms-conditions"
-                                       class="ms-1 link-primary">Terms and conditions</a>.
-                        </span>
+                    <div class="row mb-4">
+                        <div class="col-md-2"></div>
+                        <label for="dob" class="col-md-2 col-form-label">DOB</label>
+                        <div class="col-md-4">
+                            <input type="date" class="form-control" id="dob" name="dob">
                         </div>
+                    </div>
+                            <div class="container">
+                                <label for="password_confirmation" class="form-label">
+                                    patient_age:<span class="required"></span>
+                                </label>
+                                <input name="patient_age" type="text"  placeholder="" id="password_confirmation" aria-describedby="" required>
+                            </div>
+
+
+<!--                        <div class="mb-sm-7 mb-4 form-check">-->
+<!--                            <input type="checkbox" class="form-check-input" name="toc" value="1" required/>-->
+<!--                            <span class="text-gray-700 me-2 ml-1">I Agree-->
+<!--									<a href="https://infycare.infyom.com/terms-conditions"-->
+<!--                                       class="ms-1 link-primary">Terms and conditions</a>.-->
+<!--                        </span>-->
+<!--                        </div>-->
+
+                        <fieldset class="row mb-4">
+                            <div class="col-md-2"></div>
+                            <legend class="col-form-label col-md-2 pt-0">Gender</legend>
+                            <div class="col-md-4">
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" value="Male">
+                                    <label class="form-check-label">
+                                        Male
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" value="Female" >
+                                    <label class="form-check-label">
+                                        Female
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
 
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                         <div class="d-flex align-items-center mt-4">
                             <span class="text-gray-700 me-2">Already have an account?</span>
-                            <a href="https://infycare.infyom.com/login" class="link-info fs-6 text-decoration-none">
+                            <a href="/login" class="link-info fs-6 text-decoration-none">
                                 Sign in here
+
                             </a>
+
                         </div>
-                    </div>
                 </form>
             </div>
         </div>

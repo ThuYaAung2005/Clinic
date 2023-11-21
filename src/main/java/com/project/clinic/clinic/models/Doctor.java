@@ -22,6 +22,10 @@ public class Doctor  {
 
     private String doctor_dob;
 
+    public String getDoctor_dob() {
+        return doctor_dob;
+    }
+
     public void setDoctorid(Long doctorid) {
         this.doctor_id = doctorid;
     }

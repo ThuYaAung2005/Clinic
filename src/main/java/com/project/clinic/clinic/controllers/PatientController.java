@@ -24,26 +24,22 @@ public class PatientController {
     @GetMapping("/patientview")
     public String patientview(Model model){
         List<Patient> patients = dao.findAll();
-        model.addAttribute("patient",patients);
+        model.addAttribute("patients",patients);
         return "/patient/patientview";
     }
 
-    @GetMapping("/patientcreate")
-    public String patientcreateGet(){
-        return "patient/patient_dashboard.html";
-    }
 
     @PostMapping("/patientcreate")
-    public String patientCreatePost(@RequestParam String patient_name,String patient_address,String patient_phoneno,String patient_dob,String patient_age,String patient_gender){
+    public String patientCreatePost(@RequestParam String patient_name,String patient_address,String patient_phone,String patient_dob,String patient_age,String patient_gender){
         Patient patient=new Patient();
         patient.setPatient_name(patient_name);
         patient.setPatient_address(patient_address);
-        patient.setPatient_phoneno(patient_phoneno);
+        patient.setPatient_phone(patient_phone);
         patient.setPatient_dob(patient_dob);
         patient.setPatient_age(patient_age);
         patient.setPatient_gender(patient_gender);
         dao.save(patient);
-        return "patient/patientview";
+        return "redirect:/patientview";
     }
     @GetMapping("/delete/patient/{patient_id}")
     public String deletePatient(@PathVariable("patient_id")Long patient_id){
