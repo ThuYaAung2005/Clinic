@@ -39,8 +39,8 @@
             <td th:text="${admin.admin_email}"></td>
             <td th:text="${admin.admin_phone}"></td>
 <!--            <td th:text="${admin.admin_password}"></td>-->
-            <td><a th:href="@{/edit/admin/{admin_id}(id=${admin.admin_id})}">Edit</a></td>
-            <td><a th:href="@{/delete/admin/{admin_id}(id=${admin.admin_id})}">Delete</a></td>
+            <td><a th:href="@{/edit/admin/{admin_id}(admin_id=${admin.admin_id})}">Edit</a></td>
+            <td><a th:href="@{/delete/admin/{admin_id}(admin_id=${admin.admin_id})}">Delete</a></td>
 
 
         </tbody>

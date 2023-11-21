@@ -8,11 +8,11 @@
 </head>
 <body>
 <div class="container col-md-6 offset-md-3">
-    <form th:action="update/admin" method="post" th:object="${adminBean}">
+    <form action="/update/admin" method="post" th:object="${adminBean}">
         <h1 text-align="center">Admin</h1>
         <div class="form-group">
             <label for="name"> Admin Id</label>
-            <input type="text" class="form-control" id="id"  th:field="*{Admin_id}" readonly>
+            <input type="text" class="form-control" id="id"  th:field="*{admin_id}" readonly>
         </div>
         <div class="form-group">
             <label for="name"> Admin name</label>
@@ -24,12 +24,12 @@
         </div>
         <div class="form-group">
             <label for="phone"> Phone Number</label>
-            <input type="email" class="form-control" id="phone" th:field="*{admin_phone}>
+            <input type="tel" class="form-control" id="phone" th:field="*{admin_phone}" >
         </div>
 
         <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1"  th:field="*{admin_password}>
+            <input type="password" class="form-control" id="exampleInputPassword1"  th:field="*{admin_password}"  >
         </div>
 
         <div class="form-group form-check">
