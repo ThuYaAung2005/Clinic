@@ -63,7 +63,7 @@ public class DoctorController {
         Doctor doctor =dao.findById(doctor_id).orElseThrow();
         return new ModelAndView("/doctor/doctoredit","doctorBean",doctor);
     }
-    @GetMapping("/update/doctor")
+    @PostMapping("/update/doctor")
     public String updateAdmin(@ModelAttribute("doctorBean")Doctor doctor){
         dao.save(doctor);
         return "redirect:/doctorview";
