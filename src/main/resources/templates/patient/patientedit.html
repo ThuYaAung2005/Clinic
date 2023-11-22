@@ -40,8 +40,8 @@
         <fieldset >
             <div class="col-md-4">
                 <div class="form-check-inline"></div>
-               Choose gender: <input type="radio" id="radioMale" value="Male">Male</input>
-                 <input type="radio" id="radioFemale" value="Female">Female</input>
+               Choose gender: <input type="radio" id="radioMale" th:field="*{patient_gender}"value="Male">Male</input>
+                 <input type="radio" id="radioFemale" th:field="*{patient_gender}"value="Female">Female</input>
                 <br>
             </div>
         </fieldset>
