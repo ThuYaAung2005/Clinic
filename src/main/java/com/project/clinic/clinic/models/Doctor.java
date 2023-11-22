@@ -8,6 +8,7 @@ public class Doctor  {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
+
         private Long doctor_id;
 
     private String doctor_name;
