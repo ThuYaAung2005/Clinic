@@ -1,17 +1,30 @@
 package com.project.clinic.clinic.models;
 
 import jakarta.persistence.*;
+
+import java.util.List;
+
 @Entity
 @Table(name="admin")
 public class Admin  {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long admin_id;
+
         private String admin_name;
+
         private String admin_email;
+
         private String admin_phone;
+
         private String admin_password;
 
+
+        @OneToMany(mappedBy = "admin")
+        private List<Patient> patients;
+
+    @OneToMany(mappedBy = "doctoradmin")
+    private List<Doctor>  doctors;
     public Admin() {
     }
 

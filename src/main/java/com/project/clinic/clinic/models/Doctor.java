@@ -5,11 +5,9 @@ import jakarta.persistence.*;
 @Entity 
 @Table(name ="doctor")
 public class Doctor  {
-
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-        private Long doctor_id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long doctor_id;
 
     private String doctor_name;
 
@@ -22,6 +20,10 @@ public class Doctor  {
     private String doctor_specialty;
 
     private String doctor_dob;
+
+    @ManyToOne
+    @JoinColumn(name = "admin_id")
+    private Admin doctoradmin;
 
     public String getDoctor_dob() {
         return doctor_dob;

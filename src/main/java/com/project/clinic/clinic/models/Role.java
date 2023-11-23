@@ -8,6 +8,7 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long roleid;
+
     String rolename;
 
     public long getRoleid() {

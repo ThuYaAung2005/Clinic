@@ -4,8 +4,12 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "schedule")
 public class DoctorSchedule {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long scheduleid;
+
     private String stattime;
+
     private String endtime;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
