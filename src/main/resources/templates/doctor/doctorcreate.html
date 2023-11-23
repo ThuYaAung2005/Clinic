@@ -8,55 +8,34 @@
 </head>
 <body>
 <div></div><br>
-    <h1 style=" text-align:center">Doctor create</h1>
+<h1 style= "text-align:center"> Doctor Create</h1>
 <div class="container col-md-6 offset-md-3">
-    <form class="form-inline" method="post" >
-        <div class="row mb-4">
-            <div class="col-md-2"></div>
-            <label for="doctor_name" class="col-md-2 col-form-label">Doctor Name</label>
-            <div class="col-md-4">
-    <form method="post" >
+    <form  method="post" >
         <div class="form-group">
-            <label for="doctor_name" >Doctor Name</label>
-                <input type="text" class="form-control" id="doctor_name" name="doctor_name" >
-            </div>
+            <label for="name"> Doctor Name</label>
+            <input type="text" class="form-control" id="name" name="doctor_name">
         </div>
-        <div class="row mb-4">
-            <div class="col-md-2"></div>
-            <label for="doctor_email" class="col-md-2 col-form-label">Doctor Email</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" id="doctor_email" name="doctor_email" >
-            </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Doctor Email </label>
+            <input type="email" class="form-control" id="exampleInputEmail1" name="doctor_email">
         </div>
-        <div class="row mb-4">
-            <div class="col-md-2"></div>
-            <label for="doctor_address" class="col-md-2 col-form-label">Doctor Address</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" id="doctor_address" name="doctor_address" >
-            </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Doctor Address</label>
+            <input type="address" class="form-control" id="exampleInputPassword1" name="doctor_address">
         </div>
-        <div class="row mb-4">
-            <div class="col-md-2"></div>
-            <label for="doctor_phone" class="col-md-2 col-form-label">Doctor Phone</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" id="doctor_phone" name="doctor_phone" >
-            </div>
+        <div class="form-group">
+            <label for="phone">Doctor Phone</label>
+            <input type="tel" class="form-control" id="phone" name="doctor_phone">
         </div>
-        <div class="row mb-4">
-            <div class="col-md-2"></div>
-            <label for="doctor_specialty" class="col-md-2 col-form-label">Doctor Specialty</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" id="doctor_specialty" name="doctor_specialty" >
-            </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Doctor Speciality</label>
+            <input type="address" class="form-control" id="doctor_speciality" name="doctor_speciality">
         </div>
-        <div class="row mb-4">
-            <div class="col-md-2"></div>
-            <label for="doctor_dob" class="col-md-2 col-form-label">Doctor DOB</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" id="doctor_dob" name="doctor_dob" >
-            </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Doctor Dob</label>
+            <input type="address" class="form-control" id="doctor_dob" name="doctor_dob">
         </div>
-        <button type="submit" class="btn btn-primary mb-2">Doctor Create</button>
+        <button type="submit" class="btn btn-primary">Create</button>
     </form>
 </div>
 
