@@ -10,12 +10,22 @@ public class Patient {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
 
         private  Long patient_id;
+
         private String patient_name;
+
         private String patient_address;
+
         private String patient_phone;
+
         private String patient_dob;
+
         private String patient_age;
+
         private String patient_gender;
+
+        @ManyToOne
+        @JoinColumn (name = "admin_id")
+        private Admin admin;
 
     public Long getPatient_id() {
         return patient_id;

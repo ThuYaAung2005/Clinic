@@ -8,9 +8,13 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long booking_id;
+
     private String booking_time;
+
     private String booking_date;
+
     private String patient_name;
+
     private String doctor_name;
 
     public Long getBookingid() {
