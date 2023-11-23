@@ -35,13 +35,13 @@ public class DoctorController {
         return"/doctor/doctorcreate";
     }
     @PostMapping("/doctorcreate")
-    public String createDoctorPost(@RequestParam String doctor_name, String doctor_email, String doctor_address, String doctor_phone, String doctor_specialty , String doctor_dob  ){
+    public String createDoctorPost(@RequestParam String doctor_name, String doctor_email, String doctor_address, String doctor_phone, String doctor_speciality , String doctor_dob  ){
         Doctor doctor=new Doctor();
         doctor.setDoctor_name(doctor_name);
         doctor.setDoctor_email(doctor_email);
         doctor.setDoctor_address(doctor_address);
         doctor.setDoctor_phone(doctor_phone);
-        doctor.setDoctor_specialty(doctor_specialty);
+        doctor.setDoctor_specialty(doctor_speciality);
         doctor.setDoctor_dob(doctor_dob);
         dao.save(doctor);
         return "redirect:/doctorview";
