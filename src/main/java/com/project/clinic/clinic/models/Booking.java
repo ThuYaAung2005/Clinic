@@ -2,6 +2,8 @@ package com.project.clinic.clinic.models;
 
 import jakarta.persistence.*;
 
+import javax.print.Doc;
+
 @Entity
 @Table(name = "booking")
 public class Booking {
@@ -13,9 +15,14 @@ public class Booking {
 
     private String booking_date;
 
-    private String patient_name;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "patiend_name")
+    private Patient patient_name;
 
-    private String doctor_name;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "docotor_id")
+    private Doctor doctor;
 
     public Long getBookingid() {
         return booking_id;
@@ -41,19 +48,6 @@ public class Booking {
         this.booking_date = booking_date;
     }
 
-    public String getPatient_name() {
-        return patient_name;
-    }
 
-    public void setPatient_name(String patient_name) {
-        this.patient_name = patient_name;
-    }
-
-    public String getDoctor_name() {
-        return doctor_name;
-    }
-
-    public void setDoctor_name(String doctor_name) {
-        this.doctor_name = doctor_name;
-    }
 }
+

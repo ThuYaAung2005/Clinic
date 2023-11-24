@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -37,8 +37,14 @@
             </div>
             <div class="bg-white rounded-15 shadow-md width-540 px-5 px-sm-7 py-10 mx-auto">
                 <h1 class="text-center mb-7">Sign In</h1>
+                <div th:if="${param.error}">
+                    Invalid username and password.
+                </div>
+                <div th:if="${param.logout}">
+                    You have been logged out.
+                </div>
 
-                <form method="POST" action="">
+                <form method="POST" th:action="@{/login}">
                 <div class="mb-sm-7 mb-4">
                     <label for="email" class="form-label">
                         Email:<span class="required"></span>

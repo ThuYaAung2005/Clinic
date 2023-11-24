@@ -19,9 +19,9 @@ public class PageController {
         return "sigin";
     }
     @PostMapping("/login")
-        public String loginPost(@RequestParam String email,String password){
+    public String loginPost(@RequestParam String email,String password){
 
-            return "";
+            return "admin/admindashboard";
         }
     }
 

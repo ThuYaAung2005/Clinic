@@ -1,7 +1,9 @@
 package com.project.clinic.clinic.controllers;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -24,15 +26,13 @@ public class WebSecurityConfig  {
                             .permitAll()
                     )
                     .logout((logout) -> logout.permitAll());
-
             return http.build();
         }
 
         @Bean
         public UserDetailsService userDetailsService() {
-            UserDetails user =
-                    User.withDefaultPasswordEncoder()
-                            .username("user")
+            UserDetails user = User.withDefaultPasswordEncoder()
+                            .username("user@gamil.com")
                             .password("password")
                             .roles("USER")
                             .build();

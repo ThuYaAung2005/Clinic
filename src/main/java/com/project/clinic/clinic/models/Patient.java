@@ -23,9 +23,11 @@ public class Patient {
 
         private String patient_gender;
 
-        @ManyToOne
-        @JoinColumn (name = "admin_id")
-        private Admin admin;
+
+
+//        @ManyToOne
+//        @JoinColumn (name = "admin_id")
+//        private Admin admin;
 
     public Long getPatient_id() {
         return patient_id;
