@@ -17,7 +17,7 @@ public class Doctor  {
 
     private String doctor_phone;
 
-    private String doctor_specialty;
+    private String doctor_speciality;
 
     private String doctor_dob;
 
@@ -78,10 +78,10 @@ public class Doctor  {
     }
 
     public String getDoctor_specialty() {
-        return doctor_specialty;
+        return doctor_speciality;
     }
 
     public void setDoctor_specialty(String doctor_specialty) {
-        this.doctor_specialty = doctor_specialty;
+        this.doctor_speciality = doctor_speciality;
     }
 }
