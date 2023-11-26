@@ -2,6 +2,8 @@ package com.project.clinic.clinic.models;
 
 import jakarta.persistence.*;
 
+import java.awt.print.Book;
+
 @Entity 
 @Table(name ="doctor")
 public class Doctor  {
@@ -21,9 +23,15 @@ public class Doctor  {
 
     private String doctor_dob;
 
-    @ManyToOne
-    @JoinColumn(name = "admin_id")
-    private Admin doctoradmin;
+    @OneToOne
+    @JoinColumn(name = "schedule_id")
+    private DcoSchedule dcoSchedule;
+
+    @OneToOne
+    @JoinColumn(name="booking_id")
+    private Booking booking;
+
+
 
     public String getDoctor_dob() {
         return doctor_dob;

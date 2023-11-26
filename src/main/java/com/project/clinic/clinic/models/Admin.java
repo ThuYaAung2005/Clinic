@@ -19,6 +19,58 @@ public class Admin  {
 
         private String admin_password;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //        @OneToMany(mappedBy = "admin")
 //        private List<Patient> patients;
 //

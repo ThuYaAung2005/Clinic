@@ -3,7 +3,7 @@ package com.project.clinic.clinic.models;
 import jakarta.persistence.*;
 @Entity
 @Table(name = "schedule")
-public class DoctorSchedule {
+public class DcoSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long scheduleid;
@@ -11,8 +11,12 @@ public class DoctorSchedule {
     private String stattime;
 
     private String endtime;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @OneToOne
+    @JoinColumn(name = "doctor_id")
+    private Doctor doctor;
+
+
     public Long getScheduleid() {
         return scheduleid;
     }

@@ -3,6 +3,7 @@ package com.project.clinic.clinic.models;
 import jakarta.persistence.*;
 
 import javax.print.Doc;
+import java.util.List;
 
 @Entity
 @Table(name = "booking")
@@ -15,14 +16,47 @@ public class Booking {
 
     private String booking_date;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "patiend_name")
-    private Patient patient_name;
+    @OneToMany(mappedBy = "booking")
+    private List<Patient> patients;
 
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "docotor_id")
+    @OneToOne
+    @JoinColumn(name = "")
     private Doctor doctor;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public Long getBookingid() {
         return booking_id;

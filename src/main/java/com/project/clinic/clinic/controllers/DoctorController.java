@@ -2,15 +2,13 @@ package com.project.clinic.clinic.controllers;
 
 import com.project.clinic.clinic.daos.DoctorDao;
 import com.project.clinic.clinic.daos.DoctorScheduleDao;
-import com.project.clinic.clinic.models.Admin;
 import com.project.clinic.clinic.models.Doctor;
-import com.project.clinic.clinic.models.DoctorSchedule;
+import com.project.clinic.clinic.models.DcoSchedule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.thymeleaf.model.IDocType;
 
 import java.util.List;
 
@@ -25,7 +23,7 @@ public class DoctorController {
     @GetMapping("/viewdoctorschedule")
     public String viewDoctorSchedule(Model model){
 
-        List<DoctorSchedule> schedules = doctordao.findAll();
+        List<DcoSchedule> schedules = doctordao.findAll();
         model.addAttribute("schedules",schedules);
         return "/doctor/doctorschedule";
     }
