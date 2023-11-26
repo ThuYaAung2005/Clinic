@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,7 +19,8 @@ public class WebSecurityConfig  {
         public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
             http
                     .authorizeHttpRequests((requests) -> requests
-                            .requestMatchers("/", "/home").permitAll()
+                            .requestMatchers("/").permitAll()
+                            .requestMatchers("/doctorcreate").permitAll()
                             .anyRequest().authenticated()
                     )
                     .formLogin((form) -> form
@@ -38,5 +40,9 @@ public class WebSecurityConfig  {
                             .build();
 
             return new InMemoryUserDetailsManager(user);
+        }
+        @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() throws Exception{
+            return (web) ->web.ignoring().requestMatchers("/assets/**","/forms/**");
         }
     }

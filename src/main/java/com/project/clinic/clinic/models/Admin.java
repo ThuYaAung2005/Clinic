@@ -19,13 +19,16 @@ public class Admin  {
 
         private String admin_password;
 
-        @OneToMany(mappedBy = "admin")
-        private List<Patient> patients;
+//        @OneToMany(mappedBy = "admin")
+//        private List<Patient> patients;
+//
+//        @OneToMany(mappedBy = "doctoradmin")
+//        private List<Doctor>  doctors;
 
-        @OneToMany(mappedBy = "doctoradmin")
-        private List<Doctor>  doctors;
         public Admin() {
+
         }
+
 
     public Admin(String  admin_email, String admin_password) {
             this.admin_email = admin_email;
