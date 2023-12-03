@@ -64,14 +64,21 @@
                     </div>
                     <div class="d-grid mb-4">
                         <button type="submit" class="btn btn-primary">Login</button>
-                        <button type="button" class="btn btn-warning w-100 admin-login mt-5" tabindex="4">Admin</button>
-                        <div class="row justify-content-between mt-5">
-                            <div class="col-6">
-                                <button type="button" class="btn btn-success w-100 doctor-login" tabindex="4">Doctor</button>
-                            </div>
-                            <div class="col-6">
-                                <button type="button" class="btn btn-danger w-100 patient-login" tabindex="4">Patient</button>
-                            </div>
+                            <a href="/adminlogin">
+                                <button type="button" class="btn btn-warning w-100 admin-login mt-5" tabindex="4" >Admin</button>
+                            </a>
+
+                            <div class="row justify-content-between mt-5">
+                                <div class="col-6">
+                                    <a href="/doctorlogin">
+                                        <button type="button" class="btn btn-success w-100 doctor-login" tabindex="4">Doctor</button>
+                                    </a>
+                                </div>
+                                <div class="col-6">
+                                    <a href="/patientlogin">
+                                        <button type="button" class="btn btn-danger w-100 patient-login" tabindex="4">Patient</button>
+                                    </a>
+                                </div>
                         </div>
                     </div>
                     <div class="d-flex align-items-center mb-10 mt-4">

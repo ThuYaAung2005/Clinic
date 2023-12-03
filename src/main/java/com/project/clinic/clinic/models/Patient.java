@@ -13,6 +13,8 @@ public class Patient {
 
         private String patient_name;
 
+        private String patient_email;
+
         private String patient_address;
 
         private String patient_phone;
@@ -20,6 +22,22 @@ public class Patient {
         private String patient_dob;
 
         private String patient_age;
+
+    public String getPatient_email() {
+        return patient_email;
+    }
+
+    public void setPatient_email(String patient_email) {
+        this.patient_email = patient_email;
+    }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
 
     public String getPatient_password() {
         return patient_password;

@@ -19,6 +19,17 @@ public class PageController {
         return "sigin";
     }
 
-
+    @GetMapping("/adminlogin")
+    public String adminLogin(){
+        return "admin/adminlogin";
+    }
+    @GetMapping("/doctorlogin")
+    public String doctorLogin(){
+        return "doctor/doctorlogin";
+    }
+    @GetMapping("/patientlogin")
+    public String patientLogin(){
+        return "patient/patientlogin";
+    }
 }
 
