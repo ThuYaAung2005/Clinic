@@ -1,9 +1,6 @@
 package com.project.clinic.clinic.models;
 
 import jakarta.persistence.*;
-
-import java.awt.print.Book;
-
 @Entity 
 @Table(name ="doctor")
 public class Doctor  {
@@ -20,6 +17,24 @@ public class Doctor  {
     private String doctor_phone;
 
     private String doctor_speciality;
+
+    private String doctor_password;
+
+    public String getDoctor_speciality() {
+        return doctor_speciality;
+    }
+
+    public void setDoctor_speciality(String doctor_speciality) {
+        this.doctor_speciality = doctor_speciality;
+    }
+
+    public String getDoctor_password() {
+        return doctor_password;
+    }
+
+    public void setDoctor_password(String doctor_password) {
+        this.doctor_password = doctor_password;
+    }
 
     private String doctor_dob;
 

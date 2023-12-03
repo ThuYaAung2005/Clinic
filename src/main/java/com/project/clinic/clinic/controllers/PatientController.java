@@ -18,7 +18,7 @@ public class PatientController {
     PatientDao dao ;
 
     @GetMapping("/Sigin")
-    public String signin() {
+    public String sigin() {
         return "/patient/patientcreate";
     }
     @GetMapping("/patientview")
@@ -30,7 +30,7 @@ public class PatientController {
 
 
     @PostMapping("/patientcreate")
-    public String patientCreatePost(@RequestParam String patient_name,String patient_address,String patient_phone,String patient_dob,String patient_age,String patient_gender){
+    public String patientCreatePost(@RequestParam String patient_password, String patient_name,String patient_address,String patient_phone,String patient_dob,String patient_age,String patient_gender){
         Patient patient=new Patient();
         patient.setPatient_name(patient_name);
         patient.setPatient_address(patient_address);
@@ -38,6 +38,7 @@ public class PatientController {
         patient.setPatient_dob(patient_dob);
         patient.setPatient_age(patient_age);
         patient.setPatient_gender(patient_gender);
+        patient.setPatient_password(patient_password);
         dao.save(patient);
         return "redirect:/patientview";
     }

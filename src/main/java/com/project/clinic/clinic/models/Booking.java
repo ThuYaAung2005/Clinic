@@ -20,7 +20,7 @@ public class Booking {
     private List<Patient> patients;
 
     @OneToOne
-    @JoinColumn(name = "")
+    @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
 

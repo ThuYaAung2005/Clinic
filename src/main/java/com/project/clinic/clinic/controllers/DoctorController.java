@@ -22,7 +22,6 @@ public class DoctorController {
 
     @GetMapping("/viewdoctorschedule")
     public String viewDoctorSchedule(Model model){
-
         List<DcoSchedule> schedules = doctordao.findAll();
         model.addAttribute("schedules",schedules);
         return "/doctor/doctorschedule";
@@ -33,17 +32,16 @@ public class DoctorController {
         return"/doctor/doctorcreate";
     }
     @PostMapping("/doctorcreate")
-    public String createDoctorPost(@RequestParam String doctor_name, String doctor_email, String doctor_address, String doctor_phone, String doctor_speciality , String doctor_dob  ){
+    public String createDoctorPost(@RequestParam String doctor_name, String doctor_address, String doctor_phone, String doctor_speciality , String doctor_dob, String doctor_password ){
         Doctor doctor=new Doctor();
         doctor.setDoctor_name(doctor_name);
-        doctor.setDoctor_email(doctor_email);
         doctor.setDoctor_address(doctor_address);
         doctor.setDoctor_phone(doctor_phone);
         doctor.setDoctor_specialty(doctor_speciality);
         doctor.setDoctor_dob(doctor_dob);
+        doctor.setDoctor_password(doctor_password);
         dao.save(doctor);
         return "redirect:/doctorview";
-
     }
     @GetMapping("/doctorview")
     public String doctorview(Model model){
