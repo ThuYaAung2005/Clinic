@@ -21,6 +21,8 @@ public class PatientController {
     public String sigin() {
         return "/patient/patientcreate";
     }
+
+
     @GetMapping("/patientview")
     public String patientview(Model model){
         List<Patient> patients = dao.findAll();
