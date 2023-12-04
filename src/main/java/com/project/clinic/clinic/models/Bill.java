@@ -7,7 +7,7 @@ public class Bill {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long bil_id;
 
-    private String bill_result ;//or total;
+    private String bill_result ;
 
     private String bill_time;
 

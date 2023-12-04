@@ -18,10 +18,18 @@ public class PageController {
     public String login(){
         return "sigin";
     }
-    @PostMapping("/login")
-    public String loginPost(@RequestParam String email,String password){
 
-            return "admin/admindashboard";
-        }
+    @GetMapping("/adminlogin")
+    public String adminLogin(){
+        return "admin/adminlogin";
     }
+    @GetMapping("/doctorlogin")
+    public String doctorLogin(){
+        return "doctor/doctorlogin";
+    }
+    @GetMapping("/patientlogin")
+    public String patientLogin(){
+        return "patient/patientlogin";
+    }
+}
 

@@ -22,11 +22,11 @@ public class AdminController {
     }
 
     @PostMapping("/admincreate")
-    public String adminCreatePost(@RequestParam String admin_name,String admin_email ,String admin_phone,String admin_password){
+    public String adminCreatePost(@RequestParam String admin_name ,String admin_email,String admin_phone,String admin_password){
         Admin admin= new Admin();
         admin.setAdmin_name(admin_name);
-        admin.setAdmin_email(admin_email);
         admin.setAdmin_phone(admin_phone);
+        admin.setAdmin_email(admin_email);
         admin.setAdmin_password(admin_password);
         dao.save(admin);
         return "redirect:/adminview";

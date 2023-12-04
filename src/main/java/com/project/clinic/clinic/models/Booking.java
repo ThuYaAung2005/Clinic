@@ -8,8 +8,10 @@ import java.util.List;
 @Entity
 @Table(name = "booking")
 public class Booking {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long booking_id;
 
     private String booking_time;
@@ -20,7 +22,7 @@ public class Booking {
     private List<Patient> patients;
 
     @OneToOne
-    @JoinColumn(name = "")
+    @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
 
