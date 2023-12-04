@@ -27,8 +27,8 @@ public class BookingController {
 
     @GetMapping("/bookingview")
     public String bookingView(Model model){
-        List <Booking> booking = dao.findAll();
-        model.addAttribute("booking",booking);
+        List <Booking> bookings= dao.findAll();
+        model.addAttribute("booking",bookings);
         return "/booking/bookingview";
     }
 
