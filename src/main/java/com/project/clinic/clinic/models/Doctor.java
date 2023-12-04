@@ -46,6 +46,10 @@ public class Doctor  {
     @JoinColumn(name="booking_id")
     private Booking booking;
 
+    @OneToOne
+    @JoinColumn(name="role_id")
+    private Role role;
+
 
 
     public String getDoctor_dob() {

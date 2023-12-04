@@ -7,6 +7,7 @@ import java.util.List;
 @Entity
 @Table(name="admin")
 public class Admin  {
+
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long admin_id;
@@ -19,21 +20,25 @@ public class Admin  {
 
         private String admin_password;
 
-    public String getAdmin_email() {
-        return admin_email;
-    }
+        @OneToOne
+        @JoinColumn(name="role_id")
+        private Role role;
 
-    public void setAdmin_email(String admin_email) {
-        this.admin_email = admin_email;
-    }
+        public String getAdmin_email() {
+            return admin_email;
+        }
 
-    public String getAdmin_password() {
-        return admin_password;
-    }
+        public void setAdmin_email(String admin_email) {
+            this.admin_email = admin_email;
+        }
 
-    public void setAdmin_password(String admin_password) {
-        this.admin_password = admin_password;
-    }
+        public String getAdmin_password() {
+            return admin_password;
+        }
+
+        public void setAdmin_password(String admin_password) {
+            this.admin_password = admin_password;
+        }
 
 
 //        @OneToMany(mappedBy = "admin")
