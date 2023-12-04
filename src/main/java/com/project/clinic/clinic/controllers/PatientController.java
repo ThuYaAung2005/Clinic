@@ -32,9 +32,10 @@ public class PatientController {
 
 
     @PostMapping("/patientcreate")
-    public String patientCreatePost(@RequestParam String patient_password, String patient_name,String patient_address,String patient_phone,String patient_dob,String patient_age,String patient_gender){
+    public String patientCreatePost(@RequestParam String patient_email, String patient_password, String patient_name,String patient_address,String patient_phone,String patient_dob,String patient_age,String patient_gender){
         Patient patient=new Patient();
         patient.setPatient_name(patient_name);
+        patient.setPatient_email(patient_email);
         patient.setPatient_address(patient_address);
         patient.setPatient_phone(patient_phone);
         patient.setPatient_dob(patient_dob);

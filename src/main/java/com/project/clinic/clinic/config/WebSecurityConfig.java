@@ -25,6 +25,9 @@
 //                    .authorizeHttpRequests((requests) -> requests
 //                            .requestMatchers("/").permitAll()
 //                            .requestMatchers("/patientcreate").permitAll()
+//                            .requestMatchers("/adminlogin").permitAll()
+//                            .requestMatchers("/doctrologin").permitAll()
+//                            .requestMatchers("/patientlogin").permitAll()
 //                            .requestMatchers("/Sigin").permitAll()
 //                            .anyRequest().authenticated()
 //                    )
