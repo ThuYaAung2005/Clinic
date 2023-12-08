@@ -17,19 +17,15 @@ public class AdminController {
          AdminDao dao;
 
     @GetMapping("/admincreate")
-    public String adminCreateGet(){
-        return "/admin/admincreate";
+    public ModelAndView adminCreateGet(){
+        return new ModelAndView("/admin/admincreate","admin",new Admin());
     }
 
     @PostMapping("/admincreate")
-    public String adminCreatePost(@RequestParam String admin_name ,String admin_email,String admin_phone,String admin_password){
-        Admin admin= new Admin();
-        admin.setAdmin_name(admin_name);
-        admin.setAdmin_phone(admin_phone);
-        admin.setAdmin_email(admin_email);
-        admin.setAdmin_password(admin_password);
+    public ModelAndView adminCreatePost(@ModelAttribute Admin admin){
+
         dao.save(admin);
-        return "redirect:/adminview";
+        return new ModelAndView("redirect:/admincreate");
     }
     @GetMapping("/adminview")
     public String adminview(Model model){
@@ -44,13 +40,13 @@ public class AdminController {
      return  "redirect:/adminview";
     }
 
-    @GetMapping("/edit/admin/{admin_id}")
+    @GetMapping("/admin/edit/{admin_id}")
     public ModelAndView adminedit(@PathVariable("admin_id") Long admin_id){
         Admin admin =dao.findById(admin_id).orElseThrow();
-        return new ModelAndView("/admin/adminedit","adminBean",admin);
+        return new ModelAndView("/admin/adminedit","admin",admin);
     }
-    @PostMapping("/update/admin")
-    public String updateAdmin(@ModelAttribute("adminBean") Admin admin){
+    @PostMapping("/admin/update")
+    public String updateAdmin(@ModelAttribute("admin") Admin admin){
         dao.save(admin);
         return "redirect:/adminview";
     }

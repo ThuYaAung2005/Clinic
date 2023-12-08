@@ -3,6 +3,7 @@
 <head >
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
@@ -44,8 +45,8 @@
             <td th:text="${admin.admin_email}"></td>
             <td th:text="${admin.admin_phone}"></td>
 <!--            <td th:text="${admin.admin_password}"></td>-->
-            <td><a th:href="@{/edit/admin/{admin_id}(admin_id=${admin.admin_id})}">Edit</a></td>
-            <td><a th:href="@{/delete/admin/{admin_id}(admin_id=${admin.admin_id})}">Delete</a></td>
+            <td><a th:href="@{/admin/edit/{admin_id}(admin_id=${admin.admin_id})}">Edit</a></td>
+            <td><a th:href="@{/admin/delete/{admin_id}(admin_id=${admin.admin_id})}">Delete</a></td>
 
 
         </tbody>

@@ -15,7 +15,10 @@ public class Bill {
     @JoinColumn(name ="booking_id" )
     private Booking booking;
 
+
     @OneToOne
     @JoinColumn(name = "patient_id")
     private Patient patient;
+
+
 }

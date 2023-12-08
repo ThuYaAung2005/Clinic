@@ -24,19 +24,7 @@ public class Doctor  {
         return doctor_speciality;
     }
 
-    public void setDoctor_speciality(String doctor_speciality) {
-        this.doctor_speciality = doctor_speciality;
-    }
 
-    public String getDoctor_password() {
-        return doctor_password;
-    }
-
-    public void setDoctor_password(String doctor_password) {
-        this.doctor_password = doctor_password;
-    }
-
-    private String doctor_dob;
 
     @OneToOne
     @JoinColumn(name = "schedule_id")
@@ -49,20 +37,6 @@ public class Doctor  {
     @OneToOne
     @JoinColumn(name="role_id")
     private Role role;
-
-
-
-    public String getDoctor_dob() {
-        return doctor_dob;
-    }
-
-    public void setDoctorid(Long doctorid) {
-        this.doctor_id = doctorid;
-    }
-
-    public void setDoctor_dob(String doctor_dob) {
-        this.doctor_dob = doctor_dob;
-    }
 
     public Long getDoctor_id() {
         return doctor_id;
@@ -104,11 +78,39 @@ public class Doctor  {
         this.doctor_phone = doctor_phone;
     }
 
-    public String getDoctor_specialty() {
-        return doctor_speciality;
+    public void setDoctor_speciality(String doctor_speciality) {
+        this.doctor_speciality = doctor_speciality;
     }
 
-    public void setDoctor_specialty(String doctor_specialty) {
-        this.doctor_speciality = doctor_speciality;
+    public String getDoctor_password() {
+        return doctor_password;
+    }
+
+    public void setDoctor_password(String doctor_password) {
+        this.doctor_password = doctor_password;
+    }
+
+    public DcoSchedule getDcoSchedule() {
+        return dcoSchedule;
+    }
+
+    public void setDcoSchedule(DcoSchedule dcoSchedule) {
+        this.dcoSchedule = dcoSchedule;
+    }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

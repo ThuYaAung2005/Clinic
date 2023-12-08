@@ -18,11 +18,9 @@ public class PatientController {
     PatientDao dao ;
 
     @GetMapping("/Sigin")
-    public String sigin() {
-        return "/patient/patientcreate";
+    public ModelAndView sigin() {
+        return new ModelAndView("/patient/patientcreate","patient",new Patient());
     }
-
-
     @GetMapping("/patientview")
     public String patientview(Model model){
         List<Patient> patients = dao.findAll();
@@ -32,18 +30,10 @@ public class PatientController {
 
 
     @PostMapping("/patientcreate")
-    public String patientCreatePost(@RequestParam String patient_email, String patient_password, String patient_name,String patient_address,String patient_phone,String patient_dob,String patient_age,String patient_gender){
-        Patient patient=new Patient();
-        patient.setPatient_name(patient_name);
-        patient.setPatient_email(patient_email);
-        patient.setPatient_address(patient_address);
-        patient.setPatient_phone(patient_phone);
-        patient.setPatient_dob(patient_dob);
-        patient.setPatient_age(patient_age);
-        patient.setPatient_gender(patient_gender);
-        patient.setPatient_password(patient_password);
+    public ModelAndView patientCreatePost(@ModelAttribute  Patient patient){
+
         dao.save(patient);
-        return "redirect:/patientview";
+        return new ModelAndView("redirect:/patientview");
     }
     @GetMapping("/delete/patient/{patient_id}")
     public String deletePatient(@PathVariable("patient_id")Long patient_id){

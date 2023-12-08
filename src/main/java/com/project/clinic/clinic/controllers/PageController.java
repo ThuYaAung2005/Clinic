@@ -31,5 +31,10 @@ public class PageController {
     public String patientLogin(){
         return "patient/patientlogin";
     }
+
+    @GetMapping("/test")
+    public String testshow(){
+        return "payment/sidebar";
+    }
 }
 

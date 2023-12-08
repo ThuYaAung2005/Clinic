@@ -28,21 +28,13 @@ public class DoctorController {
     }
 
     @GetMapping("/doctorcreate")
-    public String createDoctorGet(){
-        return"/doctor/doctorcreate";
+    public ModelAndView createDoctorGet(){
+        return new ModelAndView("/doctor/doctorcreate","doctor",new Doctor());
     }
     @PostMapping("/doctorcreate")
-    public String createDoctorPost(@RequestParam String doctor_name, String doctor_email,String doctor_address, String doctor_phone, String doctor_speciality , String doctor_dob, String doctor_password ){
-        Doctor doctor=new Doctor();
-        doctor.setDoctor_name(doctor_name);
-        doctor.setDoctor_email(doctor_email);
-        doctor.setDoctor_address(doctor_address);
-        doctor.setDoctor_phone(doctor_phone);
-        doctor.setDoctor_specialty(doctor_speciality);
-        doctor.setDoctor_dob(doctor_dob);
-        doctor.setDoctor_password(doctor_password);
+    public ModelAndView createDoctorPost(@ModelAttribute Doctor doctor){
         dao.save(doctor);
-        return "redirect:/doctorview";
+        return new ModelAndView("redirect:/doctorview");
     }
     @GetMapping("/doctorview")
     public String doctorview(Model model){

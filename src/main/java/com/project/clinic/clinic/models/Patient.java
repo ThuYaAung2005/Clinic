@@ -31,13 +31,6 @@ public class Patient {
         this.patient_email = patient_email;
     }
 
-    public Booking getBooking() {
-        return booking;
-    }
-
-    public void setBooking(Booking booking) {
-        this.booking = booking;
-    }
 
     public String getPatient_password() {
         return patient_password;
@@ -51,9 +44,6 @@ public class Patient {
 
         private String patient_gender;
 
-        @ManyToOne
-        @JoinColumn(name = "booking_id")
-        private Booking booking;
 
 
 
