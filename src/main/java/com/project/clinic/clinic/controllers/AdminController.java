@@ -3,6 +3,7 @@ package com.project.clinic.clinic.controllers;
 import com.project.clinic.clinic.daos.AdminDao;
 import com.project.clinic.clinic.models.Admin;
 import com.project.clinic.clinic.models.Patient;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,12 +18,13 @@ public class AdminController {
          AdminDao dao;
 
     @GetMapping("/admincreate")
-    public ModelAndView adminCreateGet(){
+    public ModelAndView adminCreateGet(HttpSession session){
+
         return new ModelAndView("/admin/admincreate","admin",new Admin());
     }
 
     @PostMapping("/admincreate")
-    public ModelAndView adminCreatePost(@ModelAttribute Admin admin){
+    public ModelAndView adminCreatePost(@ModelAttribute Admin admin, HttpSession session){
 
         dao.save(admin);
         return new ModelAndView("redirect:/admincreate");
