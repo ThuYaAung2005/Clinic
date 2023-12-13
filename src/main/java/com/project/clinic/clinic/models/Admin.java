@@ -21,26 +21,6 @@ public class Admin  {
 
         private String admin_password;
 
-        @OneToOne
-        @JoinColumn(name="role_id")
-        private Role role;
-
-        public String getAdmin_email() {
-            return admin_email;
-        }
-
-        public void setAdmin_email(String admin_email) {
-            this.admin_email = admin_email;
-        }
-
-        public String getAdmin_password() {
-            return admin_password;
-        }
-
-        public void setAdmin_password(String admin_password) {
-            this.admin_password = admin_password;
-        }
-
 
 //        @OneToMany(mappedBy = "admin")
 //        private List<Patient> patients;
@@ -48,15 +28,20 @@ public class Admin  {
 //        @OneToMany(mappedBy = "doctoradmin")
 //        private List<Doctor>  doctors;
 
-    public Long getAdmin_id() {
+    @OneToOne
+    @JoinColumn(name="role_id")
+    private Role role;
+
+
+         public Long getAdmin_id() {
         return admin_id;
     }
 
-    public void setAdmin_id(Long admin_id) {
+         public void setAdmin_id(Long admin_id) {
         this.admin_id = admin_id;
     }
 
-    public String getAdmin_name() {
+         public String getAdmin_name() {
             return admin_name;
         }
 
@@ -72,4 +57,27 @@ public class Admin  {
             this.admin_phone = admin_phone;
         }
 
+        public String getAdmin_email() {
+        return admin_email;
     }
+
+        public void setAdmin_email(String admin_email) {
+        this.admin_email = admin_email;
+    }
+
+        public String getAdmin_password() {
+        return admin_password;
+    }
+
+        public void setAdmin_password(String admin_password) {
+        this.admin_password = admin_password;
+    }
+
+        public Role getRole() {
+        return role;
+    }
+
+         public void setRole(Role role) {
+        this.role = role;
+    }
+}

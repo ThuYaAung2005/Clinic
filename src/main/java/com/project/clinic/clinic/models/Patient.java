@@ -13,7 +13,7 @@ public class Patient {
 
         private String patient_name;
 
-        private String email;
+        private String patient_email;
 
         private String patient_address;
 
@@ -24,11 +24,11 @@ public class Patient {
         private String patient_age;
 
     public String getPatient_email() {
-        return email;
+        return patient_email;
     }
 
     public void setPatient_email(String patient_email) {
-        this.email = patient_email;
+        this.patient_email = patient_email;
     }
 
 

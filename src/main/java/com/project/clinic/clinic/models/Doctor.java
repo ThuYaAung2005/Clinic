@@ -20,24 +20,6 @@ public class Doctor  {
 
     private String doctor_password;
 
-    public String getDoctor_speciality() {
-        return doctor_speciality;
-    }
-
-
-
-    @OneToOne
-    @JoinColumn(name = "schedule_id")
-    private DcoSchedule dcoSchedule;
-
-    @OneToOne
-    @JoinColumn(name="booking_id")
-    private Booking booking;
-
-    @OneToOne
-    @JoinColumn(name="role_id")
-    private Role role;
-
     public Long getDoctor_id() {
         return doctor_id;
     }
@@ -78,6 +60,10 @@ public class Doctor  {
         this.doctor_phone = doctor_phone;
     }
 
+    public String getDoctor_speciality() {
+        return doctor_speciality;
+    }
+
     public void setDoctor_speciality(String doctor_speciality) {
         this.doctor_speciality = doctor_speciality;
     }
@@ -90,21 +76,35 @@ public class Doctor  {
         this.doctor_password = doctor_password;
     }
 
-    public DcoSchedule getDcoSchedule() {
-        return dcoSchedule;
+    @OneToOne
+    @JoinColumn(name = "schedule_id")
+    private DocSchedule docSchedule;
+
+//    @OneToOne
+//    @JoinColumn(name="booking_id")
+//    private Booking booking;
+
+    @OneToOne
+    @JoinColumn(name="role_id")
+    private Role role;
+
+
+
+    public DocSchedule getDocSchedule() {
+        return docSchedule;
     }
 
-    public void setDcoSchedule(DcoSchedule dcoSchedule) {
-        this.dcoSchedule = dcoSchedule;
+    public void setDocSchedule(DocSchedule docSchedule) {
+        this.docSchedule = docSchedule;
     }
 
-    public Booking getBooking() {
-        return booking;
-    }
-
-    public void setBooking(Booking booking) {
-        this.booking = booking;
-    }
+//    public Booking getBooking() {
+//        return booking;
+//    }
+//
+//    public void setBooking(Booking booking) {
+//        this.booking = booking;
+//    }
 
     public Role getRole() {
         return role;

@@ -27,7 +27,7 @@ public class AdminController {
     public ModelAndView adminCreatePost(@ModelAttribute Admin admin, HttpSession session){
 
         dao.save(admin);
-        return new ModelAndView("redirect:/admincreate");
+        return new ModelAndView("redirect:/adminview");
     }
     @GetMapping("/adminview")
     public String adminview(Model model){
@@ -37,7 +37,7 @@ public class AdminController {
     }
 
     @GetMapping("/delete/admin/{admin_id}")
-    public String deleteadim(@PathVariable("admin_id") Long admin_id){
+    public String deleteadmin(@PathVariable("admin_id") Long admin_id){
       dao.deleteById(admin_id);
      return  "redirect:/adminview";
     }
