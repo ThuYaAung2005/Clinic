@@ -50,37 +50,35 @@ public class PageController {
 //    public String patientLogin(){
 //        return "patient/patientlogin";
 //    }
-@PostMapping("/admin/login")
-public String adminLogin(@RequestParam String email, String password, HttpSession session, Model model){
-    if(!email.equals("") && !password.equals("")) {
-        Admin admin = dao.getAdminByEmailAndPassword(email, password);
-        boolean resultAdmin = (admin != null);
-        Doctor doctor = dao2.getDoctorByEmailAndPassword(email, password);
-        boolean resultDoctor = (doctor != null);
-        if (resultAdmin == true) {
-            session.setAttribute("admin", admin);
-            //    model.addAttribute("admin345",admin.getAdmin_name());
-            return "/admin/";
-        }
 
-            else if (resultDoctor){
-            session.setAttribute("doctor",doctor);
-            return "";
-        }
-        else {
-            Patient patient=dao1.getPatientByEmailAndPassword(email,password);
-            boolean resultPatient= (patient != null);
-            if(resultPatient == true){
-                session.setAttribute("patient",patient);
-             //   model.addAttribute("staff456",staff.getName());
-                return "/admin/";
-            }else {
-                return "redirect:/";
+@PostMapping("/login")
+    public String loginPage(@RequestParam String email,String password,HttpSession session){
+        if(!email.equals("") && !password.equals("")){
+            Admin admin = dao.getAdminByEmailAndPassword(email, password);
+            session.setAttribute("admin",admin);
+            boolean resultAdmin = (admin != null);
+            if(resultAdmin){
+                return "/admin/admindashboard";
+            }else{
+                Doctor doctor = dao2.getDoctorByEmailAndPassword(email, password);
+                session.setAttribute("doctor",doctor);
+                boolean resultDoctor = (doctor != null);
+                if(resultDoctor){
+                    return "/doctor/doctordashboard";
+                }else {
+                    Patient patient=dao1.getPatientByEmailAndPassword(email,password);
+                    session.setAttribute("patient",patient);
+                    boolean resultPatient= (patient != null);
+                    if(resultPatient){
+                        return "/patient/patientdashboard";
+                    }else{
+                        return "redirect:/login";
+                    }
+                }
             }
+        }else{
+            return "redirect:/login";
         }
-    } else {
-        return "redirect:/";
-    }
 }
 
 }

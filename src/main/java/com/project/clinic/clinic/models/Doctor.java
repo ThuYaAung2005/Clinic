@@ -3,14 +3,14 @@ package com.project.clinic.clinic.models;
 import jakarta.persistence.*;
 @Entity 
 @Table(name ="doctor")
-public class Doctor  {
+public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long doctor_id;
 
     private String doctor_name;
 
-    private String doctor_email;
+    private String email;
 
     private String doctor_address;
 
@@ -18,7 +18,7 @@ public class Doctor  {
 
     private String doctor_speciality;
 
-    private String doctor_password;
+    private String password;
 
     public Long getDoctor_id() {
         return doctor_id;
@@ -37,11 +37,11 @@ public class Doctor  {
     }
 
     public String getDoctor_email() {
-        return doctor_email;
+        return email;
     }
 
     public void setDoctor_email(String doctor_email) {
-        this.doctor_email = doctor_email;
+        this.email = doctor_email;
     }
 
     public String getDoctor_address() {
@@ -69,11 +69,11 @@ public class Doctor  {
     }
 
     public String getDoctor_password() {
-        return doctor_password;
+        return password;
     }
 
     public void setDoctor_password(String doctor_password) {
-        this.doctor_password = doctor_password;
+        this.password = doctor_password;
     }
 
     @OneToOne
@@ -84,10 +84,9 @@ public class Doctor  {
 //    @JoinColumn(name="booking_id")
 //    private Booking booking;
 
-    @OneToOne
-    @JoinColumn(name="role_id")
-    private Role role;
-
+//    @OneToOne
+//    @JoinColumn(name="role_id")
+//    private Role role;
 
 
     public DocSchedule getDocSchedule() {
@@ -97,7 +96,7 @@ public class Doctor  {
     public void setDocSchedule(DocSchedule docSchedule) {
         this.docSchedule = docSchedule;
     }
-
+}
 //    public Booking getBooking() {
 //        return booking;
 //    }
@@ -106,11 +105,11 @@ public class Doctor  {
 //        this.booking = booking;
 //    }
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-}
+//    public Role getRole() {
+//        return role;
+//    }
+//
+//    public void setRole(Role role) {
+//        this.role = role;
+//    }
+//}

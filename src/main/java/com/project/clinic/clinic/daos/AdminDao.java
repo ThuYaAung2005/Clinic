@@ -13,5 +13,4 @@ public interface AdminDao extends JpaRepository<Admin,Long> {
     @Query(value = "SELECT * FROM admin WHERE email=?1 AND password=?2", nativeQuery= true )
     Admin getAdminByEmailAndPassword(String email, String password);
 
-
 }

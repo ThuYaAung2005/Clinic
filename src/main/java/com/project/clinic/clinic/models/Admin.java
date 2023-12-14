@@ -17,9 +17,9 @@ public class Admin  {
 
         private String admin_phone;
 
-        private String admin_email;
+        private String email;
 
-        private String admin_password;
+        private String password;
 
 
 //        @OneToMany(mappedBy = "admin")
@@ -28,9 +28,9 @@ public class Admin  {
 //        @OneToMany(mappedBy = "doctoradmin")
 //        private List<Doctor>  doctors;
 
-    @OneToOne
-    @JoinColumn(name="role_id")
-    private Role role;
+//    @OneToOne
+//    @JoinColumn(name="role_id")
+//    private Role role;
 
 
          public Long getAdmin_id() {
@@ -58,26 +58,26 @@ public class Admin  {
         }
 
         public String getAdmin_email() {
-        return admin_email;
+        return email;
     }
 
         public void setAdmin_email(String admin_email) {
-        this.admin_email = admin_email;
+        this.email = admin_email;
     }
 
         public String getAdmin_password() {
-        return admin_password;
+        return password;
     }
 
         public void setAdmin_password(String admin_password) {
-        this.admin_password = admin_password;
+        this.password = admin_password;
     }
 
-        public Role getRole() {
-        return role;
-    }
-
-         public void setRole(Role role) {
-        this.role = role;
-    }
+//        public Role getRole() {
+//        return role;
+//    }
+//
+//         public void setRole(Role role) {
+//        this.role = role;
+//    }
 }
