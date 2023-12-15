@@ -8,6 +8,7 @@ import com.project.clinic.clinic.models.Doctor;
 import com.project.clinic.clinic.models.Patient;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-
 public class PageController {
 
     @Autowired
@@ -29,12 +29,12 @@ public class PageController {
     DoctorDao dao2;
 
     @GetMapping("/")
-    public String home(){
+    public String home() {
         return "index";
     }
 
     @GetMapping("/login")
-    public String login(){
+    public String login() {
         return "sigin";
     }
 
@@ -51,35 +51,37 @@ public class PageController {
 //        return "patient/patientlogin";
 //    }
 
-@PostMapping("/login")
-    public String loginPage(@RequestParam String email,String password,HttpSession session){
-        if(!email.equals("") && !password.equals("")){
-            Admin admin = dao.getAdminByEmailAndPassword(email, password);
-            session.setAttribute("admin",admin);
-            boolean resultAdmin = (admin != null);
-            if(resultAdmin){
-                return "/admin/admindashboard";
-            }else{
-                Doctor doctor = dao2.getDoctorByEmailAndPassword(email, password);
-                session.setAttribute("doctor",doctor);
-                boolean resultDoctor = (doctor != null);
-                if(resultDoctor){
-                    return "/doctor/doctordashboard";
-                }else {
-                    Patient patient=dao1.getPatientByEmailAndPassword(email,password);
-                    session.setAttribute("patient",patient);
-                    boolean resultPatient= (patient != null);
-                    if(resultPatient){
-                        return "/patient/patientdashboard";
-                    }else{
-                        return "redirect:/login";
+    @PostMapping("/login")
+    public String loginPage(@RequestParam String email, String password, HttpSession session) {
+        try {
+            if (!email.equals("") && !password.equals("")) {
+                Admin admin = dao.getAdminByEmail(email);
+                if (admin != null && admin.getAdmin_password() != null && BCrypt.checkpw(password, admin.getAdmin_password()) && email.equals(email)) {
+                    session.setAttribute("admin", admin);
+                    boolean resultAdmin = (admin != null);
+                    return "/admin/admindashboard";
+                } else {
+                    Doctor doctor = dao2.getDoctorByEmailAndPassword(email, password);
+                    if (doctor != null && doctor.getDoctor_password() != null && BCrypt.checkpw(password, doctor.getDoctor_password()) && email.equals(email)) {
+                        session.setAttribute("doctor", doctor);
+                        boolean resultDoctor = (doctor != null);
+                        return "/doctor/doctordashboard";
+                    } else {
+                        Patient patient = dao1.getPatientByEmailAndPassword(email, password);
+                        if (patient != null && patient.getPatient_password() != null && BCrypt.checkpw(password, patient.getPatient_password()) && email.equals(email)) {
+                            session.setAttribute("patient", patient);
+                            boolean resultPatient = (patient != null);
+                            return "/patient/patientdashboard";
+                        } else {
+                            return "redirect:/login";
+                        }
                     }
                 }
+            } else {
+                return "redirect:/login";
             }
-        }else{
-            return "redirect:/login";
+               } catch (Exception e) {
+                return "redirect:/login";
         }
+    }
 }
-
-}
-

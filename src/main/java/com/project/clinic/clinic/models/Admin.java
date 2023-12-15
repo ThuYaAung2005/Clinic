@@ -2,12 +2,18 @@ package com.project.clinic.clinic.models;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import jakarta.persistence.*;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Entity
 @Table(name="admin")
 public class Admin  {
+
+    private static final String PASSWORD_PATTERN = "^(?=.[a-z])(?=.[A-Z])(?=.\\d)(?=.[@#$%^&+=]).{8,}$";
+    private static final Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -71,13 +77,11 @@ public class Admin  {
 
         public void setAdmin_password(String admin_password) {
         this.password = admin_password;
+         }
+
+    public boolean isValidPassword(String password) {
+        Matcher matcher = pattern.matcher(password);
+        return matcher.find();
     }
 
-//        public Role getRole() {
-//        return role;
-//    }
-//
-//         public void setRole(Role role) {
-//        this.role = role;
-//    }
 }

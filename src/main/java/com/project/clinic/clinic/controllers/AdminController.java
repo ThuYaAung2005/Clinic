@@ -5,6 +5,7 @@ import com.project.clinic.clinic.models.Admin;
 import com.project.clinic.clinic.models.Patient;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,10 @@ public class AdminController {
 
     @PostMapping("/admincreate")
     public ModelAndView adminCreatePost(@ModelAttribute Admin admin){
+        String encodepassword1=BCrypt.hashpw(admin.getAdmin_password(),BCrypt.gensalt());
+        admin.setAdmin_password(encodepassword1);
         dao.save(admin);
+
         return new ModelAndView("redirect:/adminview");
     }
     @GetMapping("/adminview")
@@ -55,11 +59,14 @@ public class AdminController {
         if (checkAdmin ==null){
             return new ModelAndView("redirect:/login");
         }
+
         Admin admin =dao.findById(admin_id).orElseThrow();
         return new ModelAndView("/admin/adminedit","admin",admin);
     }
     @PostMapping("/admin/update")
     public String updateAdmin(@ModelAttribute("admin") Admin admin){
+        String encodepassword1=BCrypt.hashpw(admin.getAdmin_password(),BCrypt.gensalt());
+        admin.setAdmin_password(encodepassword1);
         dao.save(admin);
         return "redirect:/adminview";
     }

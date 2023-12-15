@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.awt.print.Book;
 import java.net.http.HttpClient;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -27,38 +28,43 @@ public class BookingController {
     BookingDao dao;
 
     @GetMapping("/bookingcreate")
-    public ModelAndView getBooking(){
-
+    public ModelAndView getBooking(HttpSession session){
+        Patient checkPatient =(Patient) session.getAttribute("patient");
+        if (checkPatient == null){
+            return new ModelAndView("redirect:/login");
+        }
         return new ModelAndView("/booking/bookingcreate", "booking",new Booking());
     }
 
     @GetMapping("/bookingview")
-    public String bookingView(Model model){
-        
+    public String bookingView(Model model,HttpSession session){
+        Patient checkPatient =(Patient) session.getAttribute("patient");
         List <Booking> bookings= dao.findAll();
-        model.addAttribute("booking",bookings);
+        List<Booking > newBooking=new ArrayList<>();
+        for(Booking b: bookings){
+          if(b.getPatients().getPatient_id().equals(checkPatient.getPatient_id())) {
+              newBooking.add(b);
+          }
+        }
+        model.addAttribute("booking",newBooking);
         return "/booking/bookingview";
     }
+
     @PostMapping ("bookingcreate")
     public ModelAndView postBooking(@ModelAttribute("booking") Booking booking, HttpSession session){
         Patient checkPatient=(Patient) session.getAttribute("patient");
         if (checkPatient==null){
             return new ModelAndView("redirect:/login");
         }
-        Patient patient = new Patient();
-        patient.setPatient_id(1L);
-
-        Doctor doctor = new Doctor();
-        doctor.setDoctor_id(1L);
-
-        booking.setPatients(patient);
-        booking.setDoctor(doctor);
-
+//        Patient patient = new Patient();
+//        patient.setPatient_id(1L);
+//
+//        Doctor doctor = new Doctor();
+//        doctor.setDoctor_id(1L);
+//
+//        booking.setPatients(patient);
+//        booking.setDoctor(doctor);
         dao.save(booking);
-
         return new ModelAndView("redirect:/bookingview");
     }
-
-
-
 }
