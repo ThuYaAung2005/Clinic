@@ -12,4 +12,5 @@ public interface DoctorDao extends JpaRepository<Doctor, Long> {
     Doctor getDoctorByEmailAndPassword(String email, String password);
 
 
+
 }

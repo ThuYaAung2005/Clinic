@@ -46,7 +46,7 @@ public class Booking {
     @JoinColumn(name = "patient_id")
     private Patient patients;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 

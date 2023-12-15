@@ -1,7 +1,9 @@
 package com.project.clinic.clinic.models;
 
 import jakarta.persistence.*;
-@Entity 
+import java.util.List;
+
+@Entity
 @Table(name ="doctor")
 public class Doctor {
     @Id
@@ -80,13 +82,9 @@ public class Doctor {
     @JoinColumn(name = "schedule_id")
     private DocSchedule docSchedule;
 
-//    @OneToOne
-//    @JoinColumn(name="booking_id")
-//    private Booking booking;
-
-//    @OneToOne
-//    @JoinColumn(name="role_id")
-//    private Role role;
+    @OneToMany
+    @JoinColumn(name="booking_id")
+    private List<Booking> bookings;
 
 
     public DocSchedule getDocSchedule() {
@@ -97,19 +95,3 @@ public class Doctor {
         this.docSchedule = docSchedule;
     }
 }
-//    public Booking getBooking() {
-//        return booking;
-//    }
-//
-//    public void setBooking(Booking booking) {
-//        this.booking = booking;
-//    }
-
-//    public Role getRole() {
-//        return role;
-//    }
-//
-//    public void setRole(Role role) {
-//        this.role = role;
-//    }
-//}
