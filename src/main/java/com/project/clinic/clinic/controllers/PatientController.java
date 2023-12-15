@@ -3,6 +3,7 @@ package com.project.clinic.clinic.controllers;
 import com.project.clinic.clinic.daos.PatientDao;
 import com.project.clinic.clinic.models.Admin;
 import com.project.clinic.clinic.models.Patient;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,54 +19,50 @@ public class PatientController {
     PatientDao dao ;
 
     @GetMapping("/Sigin")
-    public String sigin() {
-        return "/patient/patientcreate";
+    public ModelAndView sigin() {
+        return new ModelAndView("/patient/patientcreate","patient",new Patient());
     }
 
+    @PostMapping("/patientcreate")
+    public ModelAndView patientCreatePost(@ModelAttribute  Patient patient){
+        dao.save(patient);
+        return new ModelAndView("redirect:/patientview");
+    }
 
     @GetMapping("/patientview")
-    public String patientview(Model model){
+    public String patientview(Model model,HttpSession session){
+        Admin admin=(Admin) session.getAttribute("admin");
+        if (admin ==null){
+            return "redirect:/login";
+        }
         List<Patient> patients = dao.findAll();
         model.addAttribute("patients",patients);
         return "/patient/patientview";
     }
 
-
-    @PostMapping("/patientcreate")
-    public String patientCreatePost(@RequestParam String patient_email, String patient_password, String patient_name,String patient_address,String patient_phone,String patient_dob,String patient_age,String patient_gender){
-        Patient patient=new Patient();
-        patient.setPatient_name(patient_name);
-        patient.setPatient_email(patient_email);
-        patient.setPatient_address(patient_address);
-        patient.setPatient_phone(patient_phone);
-        patient.setPatient_dob(patient_dob);
-        patient.setPatient_age(patient_age);
-        patient.setPatient_gender(patient_gender);
-        patient.setPatient_password(patient_password);
-        dao.save(patient);
-        return "redirect:/patientview";
-    }
     @GetMapping("/delete/patient/{patient_id}")
-    public String deletePatient(@PathVariable("patient_id")Long patient_id){
+    public String deletePatient(@PathVariable("patient_id")Long patient_id, HttpSession session){
+        Admin admin=(Admin) session.getAttribute("admin");
+        if (admin ==null){
+            return "redirect:/login";
+        }
         dao.deleteById(patient_id);
-        return  "/patient/patientview";
+        return  "redirect:/patientview";
     }
-//    @GetMapping("/patientview")
-//    public String patientView(Model model){
-//        List<Patient> patients=dao.findAll();
-//        model.addAttribute("patients",patients);
-//        return "/patient/patient;";
-//    }
 
-    @GetMapping("/edit/patient/{patient_id}")
-    public ModelAndView editPatient(@PathVariable("patient_id")Long patient_id){
+    @GetMapping("/patient/edit/{patient_id}")
+    public ModelAndView editPatient(@PathVariable("patient_id")Long patient_id,HttpSession session){
+        Patient checkPatient =(Patient) session.getAttribute("patient");
+        if (checkPatient == null){
+            return new ModelAndView("redirect:/login");
+        }
         Patient patient =dao.findById(patient_id).orElseThrow();
         return new ModelAndView("/patient/patientedit","patientBean",patient);
     }
-    @PostMapping("/update/patient")
+    @PostMapping("/patient/update")
     public String updatePatient(@ModelAttribute("patientBean")Patient patient){
         dao.save(patient);
-        return "redirect:/patient/patientview";
+        return "redirect:/patientview";
     }
 
 }

@@ -18,8 +18,33 @@ public class Booking {
 
     private String booking_date;
 
-    @OneToMany(mappedBy = "booking")
-    private List<Patient> patients;
+    public Long getBooking_id() {
+        return booking_id;
+    }
+
+    public void setBooking_id(Long booking_id) {
+        this.booking_id = booking_id;
+    }
+
+    public Patient getPatients() {
+        return patients;
+    }
+
+    public void setPatients(Patient patients) {
+        this.patients = patients;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "patient_id")
+    private Patient patients;
 
     @OneToOne
     @JoinColumn(name = "doctor_id")

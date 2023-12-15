@@ -11,46 +11,31 @@
 
 <h1 style= "text-align:center"> Booking Appointment</h1>
 <div class="container col-md-6 offset-md-3">
-    <form  method="post" >
+    <form  th:method="post" th:action="@{/bookingcreate}" th:object="${booking}" >
 
         <div class="form-group">
             <label for="time"> Booking Time</label>
-            <input type="time" class="form-control" id="time" name="booking_time">
+            <input type="time" class="form-control" id="time" th:field="*{booking_time}">
         </div>
 
         <div class="form-group">
             <label for="date">Booking Date</label>
-            <input type="date" class="form-control" id="date" name="booking_date">
+            <input type="date" class="form-control" id="date" th:field="*{booking_date}">
         </div>
 
-      <div class="row mb-4">
-            <div class="col-md-2"></div>
-            <label for="patient_id" class="col-md-2 col-form-label">Patient Id</label>
-            <div class="col-md-4">
-                <input type="text" disabled="disabled" class="form-control" id="patient_id" name="patient_id" value="${patient.getPatientid()}">
-            </div>
-        </div>
+<!--        <div class="form-group">-->
+<!--            <label >Booking Date</label>-->
+<!--            <input type="" hidden="hidden" class="form-control"  name="patient_id" >-->
+<!--        </div>-->
 
-        <div class="row mb-4">
-            <div class="col-md-2"></div>
-            <div class="col-md-4">
-                <input type="text" hidden="hidden" class="form-control" id="hid" name="hid" value="${patient.getPatientid()}">
-            </div>
-        </div>
+<!--        <div class="form-group">-->
+<!--            <label >Booking Date</label>-->
+<!--            <input type="" hidden="hidden" class="form-control"  name="patient_id">-->
+<!--        </div>-->
 
-        <div class="row mb-4">
-            <div class="col-md-2"></div>
-            <label for="doctor_id" class="col-md-2 col-form-label">Doctor Id</label>
-            <div class="col-md-4">
-                <input type="text" disabled="disabled" class="form-control" id="doctor_id" name="doctor_id" value="${doctor.getDoctorid()}">
-            </div>
-        </div>
-        <div class="row mb-4">
-            <div class="col-md-2"></div>
-            <div class="col-md-4">
-                <input type="text" hidden="hidden" class="form-control" id="doctor_hid" name="hid" value="${doctor.getDoctorid()}">
-            </div>
-        </div>
+
+
+
 
 
 <!--        <div class="form-group">-->

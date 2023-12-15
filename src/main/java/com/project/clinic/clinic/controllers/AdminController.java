@@ -3,6 +3,7 @@ package com.project.clinic.clinic.controllers;
 import com.project.clinic.clinic.daos.AdminDao;
 import com.project.clinic.clinic.models.Admin;
 import com.project.clinic.clinic.models.Patient;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,40 +18,48 @@ public class AdminController {
          AdminDao dao;
 
     @GetMapping("/admincreate")
-    public String adminCreateGet(){
-        return "/admin/admincreate";
+    public ModelAndView adminCreateGet(){
+
+        return new ModelAndView("/admin/admincreate","admin",new Admin());
     }
 
     @PostMapping("/admincreate")
-    public String adminCreatePost(@RequestParam String admin_name ,String admin_email,String admin_phone,String admin_password){
-        Admin admin= new Admin();
-        admin.setAdmin_name(admin_name);
-        admin.setAdmin_phone(admin_phone);
-        admin.setAdmin_email(admin_email);
-        admin.setAdmin_password(admin_password);
+    public ModelAndView adminCreatePost(@ModelAttribute Admin admin){
         dao.save(admin);
-        return "redirect:/adminview";
+        return new ModelAndView("redirect:/adminview");
     }
     @GetMapping("/adminview")
-    public String adminview(Model model){
+    public String adminview(Model model,HttpSession session){
+        Admin checkAdmin=(Admin) session.getAttribute("admin");
+        if (checkAdmin ==null){
+            return "redirect:/login";
+        }
         List<Admin> admins=dao.findAll();
         model.addAttribute("admins",admins);
         return "/admin/adminview";
     }
 
     @GetMapping("/delete/admin/{admin_id}")
-    public String deleteadim(@PathVariable("admin_id") Long admin_id){
+    public String deleteadmin(@PathVariable("admin_id") Long admin_id,HttpSession session){
+        Admin checkAdmin=(Admin) session.getAttribute("admin");
+        if (checkAdmin ==null){
+            return "redirect:/login";
+        }
       dao.deleteById(admin_id);
      return  "redirect:/adminview";
     }
 
-    @GetMapping("/edit/admin/{admin_id}")
-    public ModelAndView adminedit(@PathVariable("admin_id") Long admin_id){
+    @GetMapping("/admin/edit/{admin_id}")
+    public ModelAndView adminedit(@PathVariable("admin_id") Long admin_id,HttpSession session){
+        Admin checkAdmin=(Admin) session.getAttribute("admin");
+        if (checkAdmin ==null){
+            return new ModelAndView("redirect:/login");
+        }
         Admin admin =dao.findById(admin_id).orElseThrow();
-        return new ModelAndView("/admin/adminedit","adminBean",admin);
+        return new ModelAndView("/admin/adminedit","admin",admin);
     }
-    @PostMapping("/update/admin")
-    public String updateAdmin(@ModelAttribute("adminBean") Admin admin){
+    @PostMapping("/admin/update")
+    public String updateAdmin(@ModelAttribute("admin") Admin admin){
         dao.save(admin);
         return "redirect:/adminview";
     }
