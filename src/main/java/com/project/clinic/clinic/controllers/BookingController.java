@@ -67,4 +67,27 @@ public class BookingController {
         dao.save(booking);
         return new ModelAndView("redirect:/bookingview");
     }
+
+
+
+
+
+    @GetMapping("/imagebookingcreate")
+    public ModelAndView createGet() {
+        return new ModelAndView("/booking/bookingcreatefromdoctorimage", "booking", new Booking());
+    }
+
+    @PostMapping("/imagebookingcreate")
+    public ModelAndView createPost(@ModelAttribute Booking imagebooking) {
+        dao.save(imagebooking);
+        return new ModelAndView("redirect:/imagebookingview");
+    }
+
+    @GetMapping("/imagebookingview")
+    public String doctorView(Model model) {
+        List<Booking> books = dao.findAll();
+        model.addAttribute("books", books);
+        return "/booking/imageview";
+    }
+
 }
