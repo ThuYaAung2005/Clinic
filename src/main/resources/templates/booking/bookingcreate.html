@@ -11,62 +11,53 @@
 
 <h1 style= "text-align:center"> Booking Appointment</h1>
 <div class="container col-md-6 offset-md-3">
-    <form  th:method="post" th:action="@{/bookingcreate}" th:object="${booking}" >
+    <form  th:method="post" th:action="@{/bookingcreate}" th:object="${bookingdto}" >
+
 
         <div class="form-group">
-            <label for="time"> Booking Time</label>
-            <input type="time" class="form-control" id="time" th:field="*{booking_time}">
+            <label ></label>
+            <input type="" hidden="hidden" class="form-control"  name="patient_id" >
         </div>
 
         <div class="form-group">
-            <label for="date">Booking Date</label>
-            <input type="date" class="form-control" id="date" th:field="*{booking_date}">
+            <label ></label>
+            <input type="" hidden="hidden" class="form-control"  name="patient_id">
         </div>
 
-<!--        <div class="form-group">-->
-<!--            <label >Booking Date</label>-->
-<!--            <input type="" hidden="hidden" class="form-control"  name="patient_id" >-->
-<!--        </div>-->
+        <div class="form-group">
+            <select name="doctor_id" id="doctor_id" class="form-select">
+                <option value="">Select Doctor</option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+            </select>
+            </div>
 
-<!--        <div class="form-group">-->
-<!--            <label >Booking Date</label>-->
-<!--            <input type="" hidden="hidden" class="form-control"  name="patient_id">-->
-<!--        </div>-->
+        <button type="submit" class="btn btn-secondary col-md-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            click
+        </button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Booking </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h5 style="color: rgb(127, 209, 131);">Appointment Succesfully !</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success col-md-2" data-bs-dismiss="modal">Ok</button>
 
-
-
-
-
-
-<!--        <div class="form-group">-->
-<!--            <select name="doctor_id" id="doctor_id" class="form-select">-->
-<!--                <option value="">Select Doctor</option>-->
-<!--                <option value="Doctor 1">Doctor 1</option>-->
-<!--                <option value="Doctor 2">Doctor 2</option>-->
-<!--                <option value="Doctor 3">Doctor 3</option>-->
-<!--            </select>-->
-<!--            </div>-->
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Booking Appointment</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
-                    <h5 style="color: rgb(127, 209, 131);">Appointment Succesfully !</h5>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success col-md-2" data-bs-dismiss="modal">OK</button>
-
+                    </div>
                 </div>
             </div>
         </div>
 
     </form>
+
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

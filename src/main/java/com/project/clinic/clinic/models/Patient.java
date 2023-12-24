@@ -2,6 +2,8 @@ package com.project.clinic.clinic.models;
 
 import jakarta.persistence.*;
 
+import javax.validation.constraints.Size;
+
 @Entity
 @Table(name="patient")
 public class Patient {
@@ -25,6 +27,8 @@ public class Patient {
 
     private String password;
 
+    private String gender;
+
     public Long getPatient_id() {
         return patient_id;
     }
@@ -41,12 +45,12 @@ public class Patient {
         this.patient_name = patient_name;
     }
 
-    public String getPatient_email() {
+    public String getEmail() {
         return email;
     }
 
-    public void setPatient_email(String patient_email) {
-        this.email = patient_email;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPatient_address() {
@@ -81,11 +85,19 @@ public class Patient {
         this.patient_age = patient_age;
     }
 
-    public String getPatient_password() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPatient_password(String patient_password) {
-        this.password = patient_password;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

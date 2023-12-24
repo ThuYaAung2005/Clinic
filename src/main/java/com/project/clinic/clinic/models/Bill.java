@@ -10,6 +10,7 @@ public class Bill {
     private String bill_result ;
 
     private String bill_time;
+    private String bill_day;
 
     @OneToOne
     @JoinColumn(name ="booking_id" )

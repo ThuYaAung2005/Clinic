@@ -11,9 +11,10 @@
 <!-- Sidebar -->
 <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%" >
     <h3 class="w3-bar-item">HomeTown Clinic</h3>
-    <a href="/adminview" class="w3-bar-item w3-button">Admin</a>
+<!--    <a href="/adminview" class="w3-bar-item w3-button">Admin</a>-->
     <a href="/doctorview" class="w3-bar-item w3-button">Doctor</a>
-    <a href="/patientview" class="w3-bar-item w3-button">Patient</a>
+    <a href="/doctorview" class="w3-bar-item w3-button">Booking</a>
+<!--    <a href="/patientview" class="w3-bar-item w3-button">Patient</a>-->
 </div>
 
 <!-- Page Content -->
@@ -21,7 +22,8 @@
 
 
 <div class="container" >
-    <h1>View Doctors </h1>
+    <h1 style="text-align: center">View Doctors </h1>
+ <a th:href="@{/doctorcreat}">   <button type="button" style="margin-left: 790px; margin-top:-50px "   class="btn btn-primary">Add Doctor</button></a>
     <table class="table">
         <thead class="thead-dark">
         <tr>
@@ -37,8 +39,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="doctor : ${doctors}">
-            <td th:text="${doctor.doctor_id}"></td>
+        <tr th:each="doctor, itetstat : ${doctors}">
+            <td th:text="${itetstat.index+1}"></td>
             <td th:text="${doctor.doctor_name}"></td>
             <td th:text="${doctor.doctor_email}"></td>
             <td th:text="${doctor.doctor_address}"></td>
