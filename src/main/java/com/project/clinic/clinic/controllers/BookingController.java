@@ -36,43 +36,55 @@ public class BookingController {
     PatientDao patientDao;
 
     @GetMapping("/bookingcreate")
-    public ModelAndView getBooking(){
+    public ModelAndView getBooking(Model model){
         Patient checkPatient =(Patient) session.getAttribute("patient");
         if (checkPatient == null){
             return new ModelAndView("redirect:/login");
         }
 
       //  Patient patient = patientDao.findById(checkPatient.getPatient_id());
-        Booking booking = new Booking();
-        Long doctorId=booking.getDoctor().getDoctor_id();
-        Patient patient =new Patient();
-        Doctor doctor = new Doctor();
-        patient.setPatient_id(checkPatient.getPatient_id());
-        doctor.setDoctor_id(doctorId);
-        booking.setPatients(patient);
-        booking.setDoctor(doctor);
-        dao.save(booking);
+//        Booking booking = new Booking();
+//     //   Long doctorId=booking.getDoctor().getDoctor_id();
+//        Patient patient =patientDao.findById(checkPatient.getPatient_id()).get();
+//        Doctor doctor = doctorDao.findById(1L).get();
+//        booking.setPatients(patient);
+//        booking.setDoctor(doctor);
+        List<Doctor> doctors= doctorDao.findAll();
+        model.addAttribute("doctors",doctors);
         return new ModelAndView("/booking/bookingcreate", "bookingdto",new BookingDto());
     }
 
     @PostMapping ("bookingcreate")
     public ModelAndView postBooking(@ModelAttribute("bookingdto") BookingDto bookingDto) {
-        return new ModelAndView("redirect:/bookingview");
+        Patient checkPatient =(Patient) session.getAttribute("patient");
+        if (checkPatient == null){
+            return new ModelAndView("redirect:/login");
+        }
+        Patient patient = patientDao.findById(checkPatient.getPatient_id()).get();
+        Booking booking = new Booking();
+        Doctor doctor = doctorDao.findById(bookingDto.getDoctorId()).get();
+        booking.setPatients(patient);
+        booking.setDoctor(doctor);
+        System.out.println(bookingDto.getDoctorId());
+        dao.save(booking);
+
+
+        return new ModelAndView("redirect:/bookingcreate");
     }
-    @GetMapping("/bookingview")
+    @GetMapping("/bookingviewforpatient")
     public String bookingView(Model model){
         List <Booking> bookings= dao.findAll();
         bookings = isLoginIsPatient() ? filterBookingListByPatient(bookings,getLoginPateint()): bookings;
         model.addAttribute("booking",bookings);
         return "/booking/bookingview";
     }
-    @GetMapping("/bookingView")
+    @GetMapping("/bookingview")
     public String doctorView(Model model,HttpSession session) {
-        Doctor doctor = (Doctor) session.getAttribute("doctor");
-        Admin admin = (Admin) session.getAttribute("admin");
-        if  ( admin == null ){
-            return "redirect:/login";
-        }
+//        Doctor doctor = (Doctor) session.getAttribute("doctor");
+//        Admin admin = (Admin) session.getAttribute("admin");
+//        if  ( admin == null ){
+//            return "redirect:/login";
+//        }
         List<Booking> bookings = dao.findAll();
         model.addAttribute("bookings", bookings);
         return "/booking/bookingview";

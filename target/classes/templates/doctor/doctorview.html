@@ -21,9 +21,9 @@
 <div style="margin-left:25%">
 
 
-<div class="container" >
+<a class="container" >
     <h1 style="text-align: center">View Doctors </h1>
- <a th:href="@{/doctorcreat}">   <button type="button" style="margin-left: 790px; margin-top:-50px "   class="btn btn-primary">Add Doctor</button></a>
+    <a href="/doctorcreate"><button type="button"  style="margin-left: 790px; margin-top:-50px "   class="btn btn-primary">Add Doctor</button></a>
     <table class="table">
         <thead class="thead-dark">
         <tr>
@@ -33,7 +33,6 @@
             <th scope="col">Doctor Address</th>
             <th scope="col">Doctor Phone</th>
             <th scope="col">Doctor Speciality</th>
-            <th scope="col">Doctor Password</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
         </tr>
@@ -42,11 +41,10 @@
         <tr th:each="doctor, itetstat : ${doctors}">
             <td th:text="${itetstat.index+1}"></td>
             <td th:text="${doctor.doctor_name}"></td>
-            <td th:text="${doctor.doctor_email}"></td>
+            <td th:text="${doctor.email}"></td>
             <td th:text="${doctor.doctor_address}"></td>
             <td th:text="${doctor.doctor_phone}"></td>
             <td th:text="${doctor.doctor_speciality}"></td>
-            <td th:text="${doctor.doctor_password}"></td>
             <td><a th:href="@{/edit/doctor/{doctor_id}(doctor_id=${doctor.doctor_id})}">Edit</a></td>
             <td><a th:href="@{/delete/doctor/{doctor_id}(doctor_id=${doctor.doctor_id})}">Delete</a></td>
         </tr>

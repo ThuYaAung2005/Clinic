@@ -24,7 +24,7 @@ public class DoctorController {
 
     @GetMapping("/doctorcreate")
     public ModelAndView createDoctorGet(HttpSession session) {
-            Admin admin=(Admin) session.getAttribute("admin");
+        Admin admin=(Admin) session.getAttribute("admin");
         if (admin==null){
             return new ModelAndView("redirect:/login");
         }
@@ -33,19 +33,20 @@ public class DoctorController {
 
     @PostMapping("/doctorcreate")
     public ModelAndView createDoctorPost(@ModelAttribute Doctor doctor) {
-        String encodepassword= BCrypt.hashpw(doctor.getDoctor_password(),BCrypt.gensalt());
-        doctor.setDoctor_password(encodepassword);
+        String encodepassword= BCrypt.hashpw(doctor.getPassword(),BCrypt.gensalt());
+        doctor.setPassword(encodepassword);
+        doctor.setRoles("doctor");
         dao.save(doctor);
         return new ModelAndView("redirect:/doctorview");
     }
 
     @GetMapping("/doctorview")
     public String doctorView(Model model,HttpSession session) {
-        Doctor doctor = (Doctor) session.getAttribute("doctor");
-        Admin admin = (Admin) session.getAttribute("admin");
-        if  ( admin == null || doctor == null){
-            return "redirect:/login";
-        }
+//        Doctor doctor = (Doctor) session.getAttribute("doctor");
+//        Admin admin = (Admin) session.getAttribute("admin");
+//        if  ( admin == null || doctor == null){
+//            return "redirect:/login";
+//        }
             List<Doctor> doctors = dao.findAll();
             model.addAttribute("doctors", doctors);
             return "/doctor/doctorview";
@@ -69,8 +70,8 @@ public class DoctorController {
             return new ModelAndView("redirect:/login");
         }else{
         Doctor doctor = dao.findById(doctor_id).orElseThrow();
-            String encodepassword= BCrypt.hashpw(doctor.getDoctor_password(),BCrypt.gensalt());
-            doctor.setDoctor_password(encodepassword);
+            String encodepassword= BCrypt.hashpw(doctor.getPassword(),BCrypt.gensalt());
+            doctor.setPassword(encodepassword);
         return new ModelAndView("/doctor/doctoredit", "doctorBean", doctor);
     }
 
@@ -95,7 +96,7 @@ public class DoctorController {
     @PostMapping("/doctorschedulecreate")
     public ModelAndView createDoctorSchedulePost(@ModelAttribute DocSchedule schedule) {
         doctordao.save(schedule);
-        return new ModelAndView("redirect:/doctorscheduleview");
+        return new ModelAndView("redirect:/admindashboard");
     }
 
     @GetMapping("/doctorscheduleview")

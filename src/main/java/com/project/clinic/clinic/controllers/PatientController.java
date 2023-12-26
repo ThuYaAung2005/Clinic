@@ -25,12 +25,14 @@ public class PatientController {
     }
 
     @PostMapping("/patientcreate")
-    public ModelAndView patientCreatePost(@ModelAttribute  Patient patient,HttpSession session){
+    public ModelAndView patientCreatePost(@ModelAttribute  Patient patient,HttpSession session,Model model){
         String encodepassword= BCrypt.hashpw(patient.getPassword(),BCrypt.gensalt());
         patient.setPassword(encodepassword);
         session.setAttribute("patientid", patient);
+        patient.setRoles("paitent");
+        model.addAttribute("patientname",patient.getPatient_name());
         dao.save(patient);
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("/patient/patientdashboard");
     }
 
     @GetMapping("/patientview")

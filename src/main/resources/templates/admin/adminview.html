@@ -20,9 +20,7 @@
 <!-- Page Content -->
 <div style="margin-left:25%">
 
-    <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Sign Out"/>
-    </form>
+
 <br><br>
 
 <div class="container" >
@@ -42,7 +40,7 @@
         <tr th:each="admin : ${admins}">
             <td th:text="${admin.admin_id}"></td>
             <td th:text="${admin.admin_name}"></td>
-            <td th:text="${admin.admin_email}"></td>
+            <td th:text="${admin.email}"></td>
             <td th:text="${admin.admin_phone}"></td>
 <!--            <td th:text="${admin.admin_password}"></td>-->
             <td><a th:href="@{/admin/edit/{admin_id}(admin_id=${admin.admin_id})}">Edit</a></td>

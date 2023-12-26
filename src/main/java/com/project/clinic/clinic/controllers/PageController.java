@@ -11,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -48,10 +46,8 @@ public class PageController {
 //        System.out.println(password);
 //        System.out.println(roles);
         if (!CommonUtil.validString(email) || !CommonUtil.validString(password) || !CommonUtil.validString(roles)){
-            redirectAttributes.addFlashAttribute("error", "In valid password and email");
             return "redirect:/login";
         }
-
             if (roles.equals("admin")) {
                 Admin admin = dao.getAdminByEmail(email);
                 if (admin != null && admin.getPassword() != null && BCrypt.checkpw(password, admin.getPassword()) && email.equals(email)) {
@@ -60,7 +56,7 @@ public class PageController {
                 }
             }else if (roles.equals("doctor")){
                 Doctor doctor = dao2.getDoctorByEmail(email);
-                if (doctor != null && doctor.getDoctor_password() != null && BCrypt.checkpw(password, doctor.getDoctor_password()) && email.equals(email)) {
+                if (doctor != null && doctor.getPassword() != null && BCrypt.checkpw(password, doctor.getPassword()) && email.equals(email)) {
                     session.setAttribute("doctor", doctor);
                     return "/doctor/doctordashboard";
                 }
@@ -75,6 +71,13 @@ public class PageController {
                     return "/patient/patientdashboard";
                 }
             }
+        return "redirect:/login";
+    }
+    @RequestMapping(value = "/logout",method = RequestMethod.GET)
+    public String userLogout(RedirectAttributes redirectAttributes) {
+        session.invalidate();
+        redirectAttributes.addFlashAttribute("logout", "You have been logged out");
+
         return "redirect:/login";
     }
 }

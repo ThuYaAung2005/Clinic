@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 @Controller
 public class AdminController {
@@ -21,13 +20,14 @@ public class AdminController {
         return new ModelAndView("/admin/admincreate", "admin", new Admin());
     }
     @PostMapping("/admincreate")
-    public ModelAndView adminCreatePost(@ModelAttribute Admin admin,RedirectAttributes redirectAttributes){
+    public ModelAndView adminCreatePost(@ModelAttribute Admin admin,Model model){
         String encodepassword1=BCrypt.hashpw(admin.getPassword(),BCrypt.gensalt());
         admin.setPassword(encodepassword1);
-        redirectAttributes.addFlashAttribute("adminname",admin.getAdmin_name());
+        model.addAttribute("adminname",admin.getAdmin_name());
+        admin.setRoles("admin");
         dao.save(admin);
 
-        return new ModelAndView("redirect:/admin/admindashboard");
+        return new ModelAndView("/admin/admindashboard");
     }
 
         @GetMapping("/adminview")

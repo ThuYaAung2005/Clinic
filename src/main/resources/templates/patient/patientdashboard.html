@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -8,11 +8,18 @@
 <body>
 <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%" >
     <h3 class="w3-bar-item">HomeTown Clinic</h3>
-        <a href="/bookingcreate" class="w3-bar-item w3-button">Booking creat</a>
-        <a href="/bookingview" class="w3-bar-item w3-button">Booking view</a>
+    <a href="/doctorview" class="w3-bar-item w3-button">Doctor</a>
+    <a href="/bookingcreate" class="w3-bar-item w3-button">Booking creat</a>
+    <a href="/bookingview" class="w3-bar-item w3-button">Booking view</a>
         </div>
 <h1 style="text-align: center">welcome to patientdashboard</h1>
 
+<div style="margin-left:25%">
+    <div class="w3-container">
+        <span>Welcome </span>
+        <span th:text="${patientname}"></span>
+
+    </div>
 
 </body>
 </html>

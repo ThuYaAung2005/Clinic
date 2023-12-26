@@ -17,8 +17,8 @@ public interface BookingDao extends JpaRepository<Booking,Long> {
 //    @Query(value = "select * from request_service where status='Done'", nativeQuery = true)
 //    List<Request_Service> getRequestsByStatuss();
 
-     @Query(value ="from Booking b where b.patients.patient_id=:patient_id  And b.doctor.docSchedule.schedule_id=:schedule_id ")
-    List<Booking> findByPatientAndScheduleId(Long patient_id, Long schedule_id);
+//     @Query(value ="from Booking b where b.patients.patient_id=:patient_id  And b.doctor.docSchedule.schedule_id=:schedule_id ")
+//    List<Booking> findByPatientAndScheduleId(Long patient_id, Long schedule_id);
 
 
 }

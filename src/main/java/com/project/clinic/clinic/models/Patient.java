@@ -29,6 +29,16 @@ public class Patient {
 
     private String gender;
 
+    private String roles;
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
+
     public Long getPatient_id() {
         return patient_id;
     }

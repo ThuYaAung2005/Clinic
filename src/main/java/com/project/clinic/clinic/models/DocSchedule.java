@@ -16,7 +16,6 @@ public class DocSchedule {
 
     private String end_time;
 
-
     @OneToOne
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
