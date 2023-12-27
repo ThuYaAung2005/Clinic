@@ -29,10 +29,10 @@ public class BookingController {
 
     @GetMapping("/bookingcreate")
     public ModelAndView getBooking(HttpSession session){
-        Patient checkPatient =(Patient) session.getAttribute("patient");
-        if (checkPatient == null){
-            return new ModelAndView("redirect:/login");
-        }
+//        Patient checkPatient =(Patient) session.getAttribute("patient");
+//        if (checkPatient == null){
+//            return new ModelAndView("redirect:/login");
+//        }
         return new ModelAndView("/booking/bookingcreate", "booking",new Booking());
     }
 
@@ -52,10 +52,10 @@ public class BookingController {
 
     @PostMapping ("bookingcreate")
     public ModelAndView postBooking(@ModelAttribute("booking") Booking booking, HttpSession session){
-        Patient checkPatient=(Patient) session.getAttribute("patient");
-        if (checkPatient==null){
-            return new ModelAndView("redirect:/login");
-        }
+//        Patient checkPatient=(Patient) session.getAttribute("patient");
+//        if (checkPatient==null){
+//            return new ModelAndView("redirect:/login");
+//        }
 //        Patient patient = new Patient();
 //        patient.setPatient_id(1L);
 //
