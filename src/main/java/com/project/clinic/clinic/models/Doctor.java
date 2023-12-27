@@ -22,11 +22,19 @@ public class Doctor {
 
     private String password;
 
+    @OneToOne
+    @JoinColumn(name = "schedule_id")
+    private DocSchedule docSchedule;
+
+    @OneToMany
+    @JoinColumn(name = "booking_id")
+    private List<Booking> bookings;
+
     public Long getDoctor_id() {
         return doctor_id;
     }
 
-    public void setDoctor_id(Long doctor_id) {
+    public void setDoctor_id(Long doctor_id)  {
         this.doctor_id = doctor_id;
     }
 
@@ -73,25 +81,7 @@ public class Doctor {
     public String getDoctor_password() {
         return password;
     }
-
     public void setDoctor_password(String doctor_password) {
         this.password = doctor_password;
-    }
-
-    @OneToOne
-    @JoinColumn(name = "schedule_id")
-    private DocSchedule docSchedule;
-
-    @OneToMany
-    @JoinColumn(name="booking_id")
-    private List<Booking> bookings;
-
-
-    public DocSchedule getDocSchedule() {
-        return docSchedule;
-    }
-
-    public void setDocSchedule(DocSchedule docSchedule) {
-        this.docSchedule = docSchedule;
     }
 }

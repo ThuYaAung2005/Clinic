@@ -5,6 +5,7 @@ import com.project.clinic.clinic.models.Admin;
 import com.project.clinic.clinic.models.Patient;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,9 +25,12 @@ public class PatientController {
     }
 
     @PostMapping("/patientcreate")
-    public ModelAndView patientCreatePost(@ModelAttribute  Patient patient){
+    public ModelAndView patientCreatePost(@ModelAttribute  Patient patient,HttpSession session){
+        String encodepassword= BCrypt.hashpw(patient.getPassword(),BCrypt.gensalt());
+        patient.setPassword(encodepassword);
+        session.setAttribute("patientid", patient);
         dao.save(patient);
-        return new ModelAndView("redirect:/patientview");
+        return new ModelAndView("redirect:/");
     }
 
     @GetMapping("/patientview")
@@ -61,6 +65,8 @@ public class PatientController {
     }
     @PostMapping("/patient/update")
     public String updatePatient(@ModelAttribute("patientBean")Patient patient){
+        String encodepassword= BCrypt.hashpw(patient.getPassword(),BCrypt.gensalt());
+        patient.setPassword(encodepassword);
         dao.save(patient);
         return "redirect:/patientview";
     }

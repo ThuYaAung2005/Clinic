@@ -1,5 +1,4 @@
 package com.project.clinic.clinic.controllers;
-
 import com.project.clinic.clinic.daos.DoctorDao;
 import com.project.clinic.clinic.daos.DoctorScheduleDao;
 import com.project.clinic.clinic.models.Admin;
@@ -7,6 +6,7 @@ import com.project.clinic.clinic.models.Doctor;
 import com.project.clinic.clinic.models.DocSchedule;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +33,8 @@ public class DoctorController {
 
     @PostMapping("/doctorcreate")
     public ModelAndView createDoctorPost(@ModelAttribute Doctor doctor) {
+        String encodepassword= BCrypt.hashpw(doctor.getDoctor_password(),BCrypt.gensalt());
+        doctor.setDoctor_password(encodepassword);
         dao.save(doctor);
         return new ModelAndView("redirect:/doctorview");
     }
@@ -41,13 +43,14 @@ public class DoctorController {
     public String doctorView(Model model,HttpSession session) {
         Doctor doctor = (Doctor) session.getAttribute("doctor");
         Admin admin = (Admin) session.getAttribute("admin");
-        if  ( admin == null && doctor == null){
+        if  ( admin == null || doctor == null){
             return "redirect:/login";
         }
             List<Doctor> doctors = dao.findAll();
             model.addAttribute("doctors", doctors);
             return "/doctor/doctorview";
         }
+
 
     @GetMapping("/delete/doctor/{doctor_id}")
     public String deletedoctor(@PathVariable("doctor_id") Long doctor_id,HttpSession session) {
@@ -66,6 +69,8 @@ public class DoctorController {
             return new ModelAndView("redirect:/login");
         }else{
         Doctor doctor = dao.findById(doctor_id).orElseThrow();
+            String encodepassword= BCrypt.hashpw(doctor.getDoctor_password(),BCrypt.gensalt());
+            doctor.setDoctor_password(encodepassword);
         return new ModelAndView("/doctor/doctoredit", "doctorBean", doctor);
     }
 

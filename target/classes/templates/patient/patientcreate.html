@@ -37,7 +37,7 @@
             </div>
             <div class="bg-white rounded-15 shadow-md width-540 px-5 px-sm-7 py-10 mx-auto">
                 <h1 class="text-center mb-7">Patient Registration</h1>
-                <form method="POST" action="/patientcreate">
+                <form method="POST" action="/patientcreate" id="p-form">
 
                     <div class="row mb-4">
                         <div class="col-md-2"></div>
@@ -50,7 +50,7 @@
                         <div class="col-md-2"></div>
                         <label for="patient_email" class="col-md-2 col-form-label">patient Email</label>
                         <div class="col-md-7">
-                            <input type="text" class="form-control" id="patient_email" name="patient_email" >
+                            <input type="text" class="form-control" id="patient_email" name="email" >
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -78,7 +78,7 @@
                         <div class="col-md-2"></div>
                         <label for="password" class="col-md-2 col-form-label">Password</label>
                         <div class="col-md-7">
-                            <input type="password" class="form-control" id="password" name="patient_password" >
+                            <input type="password" class="form-control" id="password" name="password" >
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -94,19 +94,61 @@
                         <legend class="col-form-label col-md-2 pt-0">Gender</legend>
                         <div class="col-md-5">
                             <div class="form-check-inline">
-                                <input class="form-check-input" type="radio" name="patient_gender" value="Male">
+                                <input class="form-check-input" type="radio" name="gender" value="Male">
                                 <label class="form-check-label">
                                     Male
                                 </label>
                             </div>
                             <div class="form-check-inline">
-                                <input class="form-check-input" type="radio" name="patient_gender" value="Female" >
+                                <input class="form-check-input" type="radio" name="gender" value="Female" >
                                 <label class="form-check-label">
                                     Female
                                 </label>
                             </div>
                         </div>
                     </fieldset>
+
+                    <!-- ... your existing HTML code ... -->
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            var form = document.getElementById('p-form');
+                            var errorMessage = document.getElementById('error-message');
+
+                            form.addEventListener('submit', function(event) {
+                                if (!validateForm()) {
+                                    event.preventDefault();
+                                }
+                            });
+
+                            function validateForm() {
+                                var  patient_name= document.getElementById('patient_name').value.trim();
+                                var patient_phone = document.getElementById('patient_phone').value.trim();
+                                var email = document.getElementById('email').value.trim();
+                                var patient_age = document.getElementById('patient_age').value.trim();
+                                var patient_password = document.getElementById('patient_password').value.trim();
+                                var patient_address = document.getElementById('patient_address').value.trim();
+                                var patient_dob = document.getElementById('patient_dob').value.trim();
+                                var gender = document.getElementById('gender').value.trim();
+
+                                if (patient_name === '' || patient_phone === '' || email === '' || patient_age === ''|| patient_password === '' || patient_address === '' || patient_dob === '' || gender === '') {
+                                    errorMessage.textContent = 'Please fill in all required .';
+                                    return false;
+                                } else {
+                                    errorMessage.textContent = '';
+                                }
+
+
+
+                                return true;
+                            }
+                        });
+                    </script>
+
+
+
+                    <div id="error-message" style="color: antiquewhite;"></div>
+
                     <button type="submit" style="margin-left: 400px" class="btn btn-primary mb-2"> Create</button>
 
 
@@ -126,9 +168,9 @@
     </div>
 </footer>
 <!-- Scripts -->
-<script src="https://infycare.infyom.com/backend/js/vendor.js"></script>
-<script src="/assets/js/auto_fill/auto_fill.js?id=2ce01d55e867c3ab0651"></script>
-<script src="https://infycare.infyom.com/backend/js/3rd-party-custom.js"></script>
+<!--<script src="https://infycare.infyom.com/backend/js/vendor.js"></script>-->
+<!--<script src="/assets/js/auto_fill/auto_fill.js?id=2ce01d55e867c3ab0651"></script>-->
+<!--<script src="https://infycare.infyom.com/backend/js/3rd-party-custom.js"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
