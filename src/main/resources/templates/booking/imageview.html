@@ -34,8 +34,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="books : ${books}">
-                <td th:text="${books.booking_id}"></td>
+            <tr th:each="books ,num: ${books}">
+                <td th:text="${num.index+1}"></td>
 <!--                <td th:text="${books.}"></td>-->
                 <td th:text="${books.booking_time}"></td>
                 <td th:text="${books.booking_date}"></td>

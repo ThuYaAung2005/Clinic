@@ -5,7 +5,6 @@ import com.project.clinic.clinic.daos.BookingDao;
 import com.project.clinic.clinic.daos.DoctorDao;
 import com.project.clinic.clinic.daos.PatientDao;
 import com.project.clinic.clinic.dto.BookingDto;
-import com.project.clinic.clinic.models.Admin;
 import com.project.clinic.clinic.models.Booking;
 import com.project.clinic.clinic.models.Doctor;
 import com.project.clinic.clinic.models.Patient;
@@ -17,6 +16,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.thymeleaf.model.IModel;
 
 import javax.print.Doc;
 import java.awt.print.Book;
@@ -41,25 +42,18 @@ public class BookingController {
         if (checkPatient == null){
             return new ModelAndView("redirect:/login");
         }
-
-      //  Patient patient = patientDao.findById(checkPatient.getPatient_id());
-//        Booking booking = new Booking();
-//     //   Long doctorId=booking.getDoctor().getDoctor_id();
-//        Patient patient =patientDao.findById(checkPatient.getPatient_id()).get();
-//        Doctor doctor = doctorDao.findById(1L).get();
-//        booking.setPatients(patient);
-//        booking.setDoctor(doctor);
         List<Doctor> doctors= doctorDao.findAll();
         model.addAttribute("doctors",doctors);
         return new ModelAndView("/booking/bookingcreate", "bookingdto",new BookingDto());
     }
 
     @PostMapping ("bookingcreate")
-    public ModelAndView postBooking(@ModelAttribute("bookingdto") BookingDto bookingDto) {
+    public ModelAndView postBooking(@ModelAttribute("bookingdto") BookingDto bookingDto, RedirectAttributes redirectAttributes) {
         Patient checkPatient =(Patient) session.getAttribute("patient");
         if (checkPatient == null){
             return new ModelAndView("redirect:/login");
         }
+        List<Patient> patients=patientDao.findAll();
         Patient patient = patientDao.findById(checkPatient.getPatient_id()).get();
         Booking booking = new Booking();
         Doctor doctor = doctorDao.findById(bookingDto.getDoctorId()).get();
@@ -67,8 +61,6 @@ public class BookingController {
         booking.setDoctor(doctor);
         System.out.println(bookingDto.getDoctorId());
         dao.save(booking);
-
-
         return new ModelAndView("redirect:/bookingcreate");
     }
     @GetMapping("/bookingviewforpatient")

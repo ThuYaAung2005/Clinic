@@ -1,7 +1,14 @@
 package com.project.clinic.clinic.controllers;
 
 import com.project.clinic.clinic.daos.AdminDao;
+import com.project.clinic.clinic.daos.BookingDao;
+import com.project.clinic.clinic.daos.DoctorDao;
+import com.project.clinic.clinic.daos.PatientDao;
+import com.project.clinic.clinic.dto.BookingDto;
 import com.project.clinic.clinic.models.Admin;
+import com.project.clinic.clinic.models.Booking;
+import com.project.clinic.clinic.models.Doctor;
+import com.project.clinic.clinic.models.Patient;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -9,11 +16,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.print.Doc;
 import java.util.List;
 @Controller
 public class AdminController {
     @Autowired
     AdminDao dao;
+    @Autowired
+    DoctorDao doctorDao;
+    @Autowired
+    PatientDao patientDao;
+    @Autowired
+    BookingDao bookingDao;
     @GetMapping("/admincreate")
     public ModelAndView adminCreateGet() {
 
@@ -67,5 +82,23 @@ public class AdminController {
             admin.setPassword(encodepassword);
             dao.save(admin);
             return "redirect:/adminview";
+        }
+        @GetMapping("doctorviewforadmin")
+        public String doctorViewForAdmin(Model model){
+            List<Doctor> doctors = doctorDao.findAll();
+            model.addAttribute("doctors", doctors);
+            return "/admin/doctorviewforadmin";
+        }
+        @GetMapping("patientviewforadmin")
+        public  String patientViewForAdmin(Model model){
+            List<Patient> patients = patientDao.findAll();
+            model.addAttribute("patients",patients);
+            return "/admin/patientviewforadmin";
+        }
+        @GetMapping("bookingviewforadmin")
+        public String bookingViewForAdmin(Model model){
+            List<Booking> bookings = bookingDao.findAll();
+            model.addAttribute("bookings", bookings);
+            return "/admin/bookingviewforadmin";
         }
     }

@@ -37,7 +37,7 @@ public class DoctorController {
         doctor.setPassword(encodepassword);
         doctor.setRoles("doctor");
         dao.save(doctor);
-        return new ModelAndView("redirect:/doctorview");
+        return new ModelAndView("redirect:/doctorschedulecreate");
     }
 
     @GetMapping("/doctorview")
