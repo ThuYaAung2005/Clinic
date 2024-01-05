@@ -10,33 +10,69 @@
 <div></div><br>
 <h1 style= "text-align:center"> Doctor Create</h1>
 <div class="container col-md-6 offset-md-3">
-    <form  method="post" >
+    <form  method="post" th:action="@{/doctorschedulecreate}" th:object="${schedule}">
         <div class="form-group">
             <label for="name"> Doctor Name</label>
-            <input type="text" class="form-control" id=  "name" name="doctor_name"required>
+            <input type="text" class="form-control" id=  "name" name="doctor_name" th:field="*{doctor.doctor_name}"  required>
         </div>
 <!--        <div class="form-group">-->
-<!--            <input type="text" hidden="hidden" class="form-control" id="role" name="roles" value="doctor">-->
+<!--            <input type="text" hidden="hidden" class="form-control" id="role" name="roles"th:field="*{doctor.roles}" th:value="${roles}">-->
 <!--        </div>-->
         <div class="form-group">
             <label for="exampleInputEmail1">Doctor Email </label>
-            <input type="email" class="form-control" id="exampleInputEmail1" name="email"required>
+            <input type="email" class="form-control" id="exampleInputEmail1" name="email" th:field="*{doctor.email}" required>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Doctor Address</label>
-            <input type="address" class="form-control" id="exampleInputPassword1" name="doctor_address"required>
+            <input type="address" class="form-control" id="exampleInputPassword1"  th:field="*{doctor.doctor_address}" required>
         </div>
         <div class="form-group">
             <label for="phone">Doctor Phone</label>
-            <input type="tel" class="form-control" id="phone" name="doctor_phone"required>
+            <input type="tel" class="form-control" id="phone" name="doctor_phone" th:field="*{doctor.doctor_phone}" required>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Doctor Speciality</label>
-            <input type="text" class="form-control" id="doctor_speciality" name="doctor_speciality"required>
+            <input type="text" class="form-control" id="doctor_speciality" name="doctor_speciality" th:field="*{doctor.doctor_speciality}" required>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Doctor password</label>
-            <input type="password" class="form-control" id="" name="password"required>
+            <input type="password" class="form-control" id="" name="password" th:field="*{doctor.password}"required>
+        </div>
+        <div class="form-group">
+            <label for="day">Start Day:</label>
+            <select class="form-control" id="day" name="day" th:field="*{start_day}"required>
+                <option value="monday">Monday</option>
+                <option value="tuesday">Tuesday</option>
+                <option value="wednesday">Wednesday</option>
+                <option value="thursday">Thursday</option>
+                <option value="friday">Friday</option>
+                <option value="saturday">Saturday</option>
+                <option value="sunday">Sunday</option>
+                <!-- Add more options for other days -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="day">End Day:</label>
+            <select class="form-control" id="endday" name="day" th:field="*{end_day}" required>
+                <option value="monday">Monday</option>
+                <option value="tuesday">Tuesday</option>
+                <option value="wednesday">Wednesday</option>
+                <option value="thursday">Thursday</option>
+                <option value="friday">Friday</option>
+                <option value="saturday">Saturday</option>
+                <option value="sunday">Sunday</option>
+                <!-- Add more options for other days -->
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="startTime">Start Time:</label>
+            <input type="time" class="form-control" id="startTime" name="start_time" required th:field="*{start_time}">
+        </div>
+
+        <div class="form-group">
+            <label for="endTime">End Time:</label>
+            <input type="time" class="form-control" id="endTime" name="end_time" th:field="*{end_time}">
         </div>
         <button type="submit" class="btn btn-primary" style="text-align: right">Create</button>
     </form>

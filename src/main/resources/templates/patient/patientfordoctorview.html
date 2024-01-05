@@ -32,6 +32,7 @@
                 <th scope="col">Doctor Address</th>
                 <th scope="col">Doctor Phone</th>
                 <th scope="col">Doctor Speciality</th>
+                <th scope="col">Booking </th>
 <!--                <th scope="col">Edit</th>-->
 <!--                <th scope="col">Delete</th>-->
             </tr>
@@ -44,6 +45,9 @@
                 <td th:text="${doctor.doctor_address}"></td>
                 <td th:text="${doctor.doctor_phone}"></td>
                 <td th:text="${doctor.doctor_speciality}"></td>
+                <td><a th:href="@{/bookingcreate/{doctor_id}(doctor_id=${doctor.doctor_id})}">Booking</a></td>
+
+
 <!--                <td><a th:href="@{/edit/doctor/{doctor_id}(doctor_id=${doctor.doctor_id})}">Edit</a></td>-->
 <!--                <td><a th:href="@{/delete/doctor/{doctor_id}(doctor_id=${doctor.doctor_id})}">Delete</a></td>-->
             </tr>

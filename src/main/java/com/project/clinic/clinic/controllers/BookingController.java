@@ -63,32 +63,7 @@ public class BookingController {
         dao.save(booking);
         return new ModelAndView("redirect:/bookingviewforpatient");
     }
-    @GetMapping("/bookingviewforpatient")
-    public String bookingView(Model model){
-        List <Booking> bookings= dao.findAll();
-        bookings = isLoginIsPatient() ? filterBookingListByPatient(bookings,getLoginPateint()): bookings;
-        model.addAttribute("bookings",bookings);
-        return "/patient/patientbookingview";
-    }
 
-    private  boolean isLoginIsPatient(){
-        Patient checkPatient =(Patient) session.getAttribute("patient");
-        return checkPatient !=null;
-    }
-
-    private Patient getLoginPateint(){
-        return (Patient) session.getAttribute("patient");
-    }
-
-    private List<Booking> filterBookingListByPatient(List<Booking> bookings,Patient checkPatient){
-        List<Booking > newBooking=new ArrayList<>();
-        for(Booking b: bookings){
-            if(b.getPatients().getPatient_id().equals(checkPatient.getPatient_id())) {
-                newBooking.add(b);
-            }
-        }
-        return newBooking;
-    }
 
 //    @GetMapping("/bookingview")
 //    public String doctorView(Model model) {
