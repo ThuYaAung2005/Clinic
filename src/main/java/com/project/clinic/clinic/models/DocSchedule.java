@@ -20,8 +20,6 @@ public class DocSchedule {
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
-
-
     public Long getSchedule_id() {
         return schedule_id;
     }
@@ -54,5 +52,11 @@ public class DocSchedule {
         this.end_time = end_time;
     }
 
+    public Doctor getDoctor() {
+        return doctor;
+    }
 
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
 }

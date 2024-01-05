@@ -28,6 +28,7 @@ public class DoctorController {
         if (admin==null){
             return new ModelAndView("redirect:/login");
         }
+
             return new ModelAndView("/doctor/doctorcreate", "doctor", new Doctor());
         }
 
@@ -40,13 +41,14 @@ public class DoctorController {
         return new ModelAndView("redirect:/doctorschedulecreate");
     }
 
+
     @GetMapping("/doctorview")
     public String doctorView(Model model,HttpSession session) {
-//        Doctor doctor = (Doctor) session.getAttribute("doctor");
-//        Admin admin = (Admin) session.getAttribute("admin");
-//        if  ( admin == null || doctor == null){
-//            return "redirect:/login";
-//        }
+        Doctor doctor = (Doctor) session.getAttribute("doctor");
+        Admin admin = (Admin) session.getAttribute("admin");
+        if  ( admin == null || doctor == null){
+            return "redirect:/login";
+        }
             List<Doctor> doctors = dao.findAll();
             model.addAttribute("doctors", doctors);
             return "/doctor/doctorview";
@@ -70,8 +72,6 @@ public class DoctorController {
             return new ModelAndView("redirect:/login");
         }else{
         Doctor doctor = dao.findById(doctor_id).orElseThrow();
-            String encodepassword= BCrypt.hashpw(doctor.getPassword(),BCrypt.gensalt());
-            doctor.setPassword(encodepassword);
         return new ModelAndView("/doctor/doctoredit", "doctorBean", doctor);
     }
 
@@ -80,59 +80,11 @@ public class DoctorController {
 
     @PostMapping("/update/doctor")
     public String updateAdmin(@ModelAttribute("doctorBean") Doctor doctor) {
+        String encodepassword= BCrypt.hashpw(doctor.getPassword(),BCrypt.gensalt());
+        doctor.setPassword(encodepassword);
         dao.save(doctor);
-        return "redirect:/doctorview";
+        return "redirect:/doctorviewforadmin";
     }
 
-    @GetMapping("/doctorschedulecreate")
-    public ModelAndView createDoctorScheduleGet(HttpSession session) {
-        Admin admin=(Admin) session.getAttribute("admin");
-        if (admin ==null){
-            return new ModelAndView("redirect:/login");
-        }
-        return new ModelAndView("/doctorschedule/doctorschedulecreate", "schedule", new DocSchedule());
-    }
 
-    @PostMapping("/doctorschedulecreate")
-    public ModelAndView createDoctorSchedulePost(@ModelAttribute DocSchedule schedule) {
-        doctordao.save(schedule);
-        return new ModelAndView("redirect:/admindashboard");
-    }
-
-    @GetMapping("/doctorscheduleview")
-    public String doctorScheduleView(Model model,HttpSession session) {
-        Admin admin=(Admin) session.getAttribute("admin");
-        if (admin ==null){
-            return "redirect:/login";
-        }
-        List<DocSchedule> docSchedules = doctordao.findAll();
-        model.addAttribute("docSchedules", docSchedules);
-        return "/doctorschedule/doctorscheduleview";
-    }
-
-    @GetMapping("/delete/doctorschedule/{schedule_id}")
-    public String deleteDoctorSchedule(@PathVariable("schedule_id") Long schedule_id,HttpSession session) {
-        Admin admin=(Admin) session.getAttribute("admin");
-        if (admin ==null){
-            return "redirect:/login";
-        }
-        doctordao.deleteById(schedule_id);
-        return "redirect:/doctorscheduleview";
-    }
-
-    @GetMapping("/edit/doctorschedule/{schedule_id}")
-    public ModelAndView doctorScheduleEdit(@PathVariable("schedule_id") Long schedule_id,HttpSession session) {
-        Admin admin=(Admin) session.getAttribute("admin");
-        if (admin ==null){
-            return new ModelAndView("redirect:/login");
-        }
-        DocSchedule schedule = doctordao.findById(schedule_id).orElseThrow();
-        return new ModelAndView("/doctorschedule/doctorscheduleedit", "scheduleBean", schedule);
-    }
-
-    @PostMapping("/update/doctorschedule")
-    public String updateAdmin(@ModelAttribute("doctorBean") DocSchedule schedule) {
-        doctordao.save(schedule);
-        return "redirect:/doctorscheduleview";
-    }
 }

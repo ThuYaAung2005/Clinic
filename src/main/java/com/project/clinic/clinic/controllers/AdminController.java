@@ -35,7 +35,7 @@ public class AdminController {
         return new ModelAndView("/admin/admincreate", "admin", new Admin());
     }
     @PostMapping("/admincreate")
-    public ModelAndView adminCreatePost(@ModelAttribute Admin admin,Model model){
+    public ModelAndView adminCreatePost(@ModelAttribute("admin") Admin admin,Model model){
         String encodepassword1=BCrypt.hashpw(admin.getPassword(),BCrypt.gensalt());
         admin.setPassword(encodepassword1);
         model.addAttribute("adminname",admin.getAdmin_name());
@@ -56,15 +56,15 @@ public class AdminController {
             return "/admin/adminview";
         }
 
-        @GetMapping("/delete/admin/{admin_id}")
-        public String deleteadmin (@PathVariable("admin_id") Long admin_id, HttpSession session){
-            Admin checkAdmin = (Admin) session.getAttribute("admin");
-            if (checkAdmin == null) {
-                return "redirect:/login";
-            }
-            dao.deleteById(admin_id);
-            return "redirect:/adminview";
-        }
+//        @GetMapping("/delete/admin/{admin_id}")
+//        public String deleteadmin (@PathVariable("admin_id") Long admin_id, HttpSession session){
+//            Admin checkAdmin = (Admin) session.getAttribute("admin");
+//            if (checkAdmin == null) {
+//                return "redirect:/login";
+//            }
+//            dao.deleteById(admin_id);
+//            return "redirect:/adminview";
+//        }
 
         @GetMapping("/admin/edit/{admin_id}")
         public ModelAndView adminedit (@PathVariable("admin_id") Long admin_id, HttpSession session){
@@ -98,7 +98,36 @@ public class AdminController {
         @GetMapping("bookingviewforadmin")
         public String bookingViewForAdmin(Model model){
             List<Booking> bookings = bookingDao.findAll();
+//            List<Patient> patients=patientDao.findAll();
             model.addAttribute("bookings", bookings);
             return "/admin/bookingviewforadmin";
         }
+
+//        Patient scope
+
+    @GetMapping("admin/patient/edit/{patient_id}")
+    public ModelAndView editPatient(@PathVariable("patient_id")Long patient_id,HttpSession session){
+        Admin checkAdmin =(Admin) session.getAttribute("admin");
+        if (checkAdmin == null){
+            return new ModelAndView("redirect:/login");
+        }
+        Patient patient =patientDao.findById(patient_id).orElseThrow();
+        return new ModelAndView("/patient/patientedit","patientBean",patient);
+    }
+    @PostMapping("admin/patient/update")
+    public String updatePatient(@ModelAttribute("patientBean")Patient patient){
+        String encodepassword= BCrypt.hashpw(patient.getPassword(),BCrypt.gensalt());
+        patient.setPassword(encodepassword);
+        patientDao.save(patient);
+        return "redirect:/patientviewforadmin";
+    }
+    @GetMapping("admin/delete/patient/{patient_id}")
+    public String deletePatient(@PathVariable("patient_id")Long patient_id, HttpSession session){
+        Admin admin=(Admin) session.getAttribute("admin");
+        if (admin ==null){
+            return "redirect:/login";
+        }
+        dao.deleteById(patient_id);
+        return  "redirect:/patientviewforadmin";
+    }
     }

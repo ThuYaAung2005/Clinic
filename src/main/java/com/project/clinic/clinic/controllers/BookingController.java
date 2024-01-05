@@ -5,6 +5,7 @@ import com.project.clinic.clinic.daos.BookingDao;
 import com.project.clinic.clinic.daos.DoctorDao;
 import com.project.clinic.clinic.daos.PatientDao;
 import com.project.clinic.clinic.dto.BookingDto;
+import com.project.clinic.clinic.models.Admin;
 import com.project.clinic.clinic.models.Booking;
 import com.project.clinic.clinic.models.Doctor;
 import com.project.clinic.clinic.models.Patient;
@@ -52,7 +53,7 @@ public class BookingController {
         if (checkPatient == null){
             return new ModelAndView("redirect:/login");
         }
-        List<Patient> patients=patientDao.findAll();
+
         Patient patient = patientDao.findById(checkPatient.getPatient_id()).get();
         Booking booking = new Booking();
         Doctor doctor = doctorDao.findById(bookingDto.getDoctorId()).get();
@@ -60,26 +61,16 @@ public class BookingController {
         booking.setDoctor(doctor);
         System.out.println(bookingDto.getDoctorId());
         dao.save(booking);
-        return new ModelAndView("redirect:/bookingcreate");
+        return new ModelAndView("redirect:/bookingviewforpatient");
     }
     @GetMapping("/bookingviewforpatient")
     public String bookingView(Model model){
         List <Booking> bookings= dao.findAll();
         bookings = isLoginIsPatient() ? filterBookingListByPatient(bookings,getLoginPateint()): bookings;
-        model.addAttribute("booking",bookings);
-        return "/booking/bookingview";
+        model.addAttribute("bookings",bookings);
+        return "/patient/patientbookingview";
     }
-    @GetMapping("/bookingview")
-    public String doctorView(Model model,HttpSession session) {
-//        Doctor doctor = (Doctor) session.getAttribute("doctor");
-//        Admin admin = (Admin) session.getAttribute("admin");
-//        if  ( admin == null ){
-//            return "redirect:/login";
-//        }
-        List<Booking> bookings = dao.findAll();
-        model.addAttribute("bookings", bookings);
-        return "/booking/bookingview";
-    }
+
     private  boolean isLoginIsPatient(){
         Patient checkPatient =(Patient) session.getAttribute("patient");
         return checkPatient !=null;
@@ -98,6 +89,18 @@ public class BookingController {
         }
         return newBooking;
     }
+
+//    @GetMapping("/bookingview")
+//    public String doctorView(Model model) {
+//        Doctor doctor = (Doctor) session.getAttribute("doctor");
+//        Admin admin = (Admin) session.getAttribute("admin");
+//        if  ( admin == null ){
+//            return "redirect:/login";
+//        }
+//        List<Booking> bookings = dao.findAll();
+//        model.addAttribute("bookings", bookings);
+//        return "/booking/bookingview";
+//    }
 
 }
 

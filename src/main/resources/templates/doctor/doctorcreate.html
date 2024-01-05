@@ -13,30 +13,30 @@
     <form  method="post" >
         <div class="form-group">
             <label for="name"> Doctor Name</label>
-            <input type="text" class="form-control" id=  "name" name="doctor_name">
+            <input type="text" class="form-control" id=  "name" name="doctor_name"required>
         </div>
-        <div class="form-group">
-            <input type="text" hidden="hidden" class="form-control" id="role" name="roles" value="doctor">
-        </div>
+<!--        <div class="form-group">-->
+<!--            <input type="text" hidden="hidden" class="form-control" id="role" name="roles" value="doctor">-->
+<!--        </div>-->
         <div class="form-group">
             <label for="exampleInputEmail1">Doctor Email </label>
-            <input type="email" class="form-control" id="exampleInputEmail1" name="email">
+            <input type="email" class="form-control" id="exampleInputEmail1" name="email"required>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Doctor Address</label>
-            <input type="address" class="form-control" id="exampleInputPassword1" name="doctor_address">
+            <input type="address" class="form-control" id="exampleInputPassword1" name="doctor_address"required>
         </div>
         <div class="form-group">
             <label for="phone">Doctor Phone</label>
-            <input type="tel" class="form-control" id="phone" name="doctor_phone">
+            <input type="tel" class="form-control" id="phone" name="doctor_phone"required>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Doctor Speciality</label>
-            <input type="text" class="form-control" id="doctor_speciality" name="doctor_speciality">
+            <input type="text" class="form-control" id="doctor_speciality" name="doctor_speciality"required>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Doctor password</label>
-            <input type="password" class="form-control" id="" name="password">
+            <input type="password" class="form-control" id="" name="password"required>
         </div>
         <button type="submit" class="btn btn-primary" style="text-align: right">Create</button>
     </form>

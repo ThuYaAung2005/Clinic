@@ -1,7 +1,9 @@
 package com.project.clinic.clinic.controllers;
 
+import com.project.clinic.clinic.daos.DoctorDao;
 import com.project.clinic.clinic.daos.PatientDao;
 import com.project.clinic.clinic.models.Admin;
+import com.project.clinic.clinic.models.Doctor;
 import com.project.clinic.clinic.models.Patient;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +20,13 @@ import java.util.List;
 public class PatientController {
     @Autowired
     PatientDao dao ;
+    @Autowired
+    DoctorDao doctorDao;
 
     @GetMapping("/Sigin")
     public ModelAndView sigin() {
         return new ModelAndView("/patient/patientcreate","patient",new Patient());
+
     }
 
     @PostMapping("/patientcreate")
@@ -46,20 +51,11 @@ public class PatientController {
         return "/patient/patientview";
     }
 
-    @GetMapping("/delete/patient/{patient_id}")
-    public String deletePatient(@PathVariable("patient_id")Long patient_id, HttpSession session){
-        Admin admin=(Admin) session.getAttribute("admin");
-        if (admin ==null){
-            return "redirect:/login";
-        }
-        dao.deleteById(patient_id);
-        return  "redirect:/patientview";
-    }
 
     @GetMapping("/patient/edit/{patient_id}")
     public ModelAndView editPatient(@PathVariable("patient_id")Long patient_id,HttpSession session){
-        Patient checkPatient =(Patient) session.getAttribute("patient");
-        if (checkPatient == null){
+        Admin checkAdmin =(Admin) session.getAttribute("admin");
+        if (checkAdmin == null){
             return new ModelAndView("redirect:/login");
         }
         Patient patient =dao.findById(patient_id).orElseThrow();
@@ -70,7 +66,13 @@ public class PatientController {
         String encodepassword= BCrypt.hashpw(patient.getPassword(),BCrypt.gensalt());
         patient.setPassword(encodepassword);
         dao.save(patient);
-        return "redirect:/patientview";
+        return "redirect:/patientviewforadmin";
+    }
+    @GetMapping("/patientfordoctorview")
+    public String doctorViewForPatient(Model model,HttpSession session) {
+        List<Doctor> doctors = doctorDao.findAll();
+        model.addAttribute("doctors", doctors);
+        return "/patient/patientfordoctorview";
     }
 
 }

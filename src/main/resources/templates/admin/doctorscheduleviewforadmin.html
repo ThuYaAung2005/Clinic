@@ -2,51 +2,53 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head >
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title> View Doctor's Schedules </title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-</head>
 <body>
-<div></div><br>
 
 <!-- Sidebar -->
 <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%" >
     <h3 class="w3-bar-item">HomeTown Clinic</h3>
 <!--    <a href="/adminview" class="w3-bar-item w3-button">Admin</a>-->
-    <a href="/patientfordoctorview" class="w3-bar-item w3-button">Doctor</a>
-    <a href="/bookingcreate" class="w3-bar-item w3-button">Booking creat</a>
-    <a href="/bookingviewforpatient" class="w3-bar-item w3-button">Booking view</a>
-<!--    <a href="/patientview" class="w3-bar-item w3-button">Patient</a>-->
+    <a href="/doctorview" class="w3-bar-item w3-button">Doctor</a>
+    <a href="/patientview" class="w3-bar-item w3-button">Patient</a>
 </div>
 
 <!-- Page Content -->
 <div style="margin-left:25%">
 
+
     <div class="container" >
+        <h1>View Doctor's Schedule </h1>
         <table class="table">
             <thead class="thead-dark">
             <tr>
-                <th scope="col">Booking Id</th>
-                <th scope="col">Doctor Name</th>
-                <th scope="col">Patient Name</th>
-                                <th scope="col">Edit</th>
+                <th scope="col">Schedule Id</th>
+                <th scope="col"> Day</th>
+                <th scope="col">Start Time</th>
+                <th scope="col">End Time</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="booking,num : ${bookings}">
-                <td th:text="${num.index+1}"></td>
-                <td th:text="${booking.doctor.doctor_name}"></td>
-                <td th:text="${booking.patients.patient_name}"></td>
-
-                                <td><a th:href="@{/edit//{booking_id}(booking_id=${booking.booking_id})}">Edit</a></td>
-                <!--                <td><a th:href="@{/delete/patient/{booking_id}(booking_id=${booking.booking_id})}">Delete</a></td>-->
+            <tr th:each="schedules" : ${docSchedules}">
+                <td th:text="${schedules.schedule_id}"></td>
+                <td th:text="${schedules.day}"></td>
+                <td th:text="${schedules.start_time}"></td>
+                <td >to</td>
+                <td th:text="${schedules.end_time}"></td>
+                <td><a th:href="@{/edit/doctorschedule/{schedule_id}(schedule_id=${schedules.schedule_id})}">Edit</a></td>
+                <td><a th:href="@{/delete/doctorschedule/{schedule_id}(schedule_id=${schedules.schedule_id})}">Delete</a></td>
             </tr>
+
             </tbody>
         </table>
+
     </div></div>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-
 </body>
 </html>

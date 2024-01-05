@@ -12,9 +12,22 @@
 <div class="container col-md-6 offset-md-3">
     <form  method="post" >
 
+<!--        <div class="form-group">-->
+<!--            <label for="day">Start Day:</label>-->
+<!--            <select class="form-control" id="day" name="startday" required>-->
+<!--                <option value="monday">Monday</option>-->
+<!--                <option value="tuesday">Tuesday</option>-->
+<!--                <option value="wednesday">Wednesday</option>-->
+<!--                <option value="thursday">Thursday</option>-->
+<!--                <option value="friday">Friday</option>-->
+<!--                <option value="saturday">Saturday</option>-->
+<!--                <option value="sunday">Sunday</option>-->
+<!--                &lt;!&ndash; Add more options for other days &ndash;&gt;-->
+<!--            </select>-->
+<!--        </div>-->
         <div class="form-group">
             <label for="day">Start Day:</label>
-            <select class="form-control" id="day" name="startday" required>
+            <select class="form-control" id="day" name="day" required>
                 <option value="monday">Monday</option>
                 <option value="tuesday">Tuesday</option>
                 <option value="wednesday">Wednesday</option>
@@ -26,8 +39,8 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="endday">End Day:</label>
-            <select class="form-control" id="endday" name="endday" required>
+            <label for="day">End Day:</label>
+            <select class="form-control" id="endday" name="day" required>
                 <option value="monday">Monday</option>
                 <option value="tuesday">Tuesday</option>
                 <option value="wednesday">Wednesday</option>
@@ -39,15 +52,15 @@
             </select>
         </div>
 
-<!--        <div class="form-group">-->
-<!--            <label for="startTime">Start Time:</label>-->
-<!--            <input type="time" class="form-control" id="startTime" name="start_time">-->
-<!--        </div>-->
+        <div class="form-group">
+            <label for="startTime">Start Time:</label>
+            <input type="time" class="form-control" id="startTime" name="start_time">
+        </div>
 
-<!--        <div class="form-group">-->
-<!--            <label for="endTime">End Time:</label>-->
-<!--            <input type="time" class="form-control" id="endTime" name="end_time">-->
-<!--        </div>-->
+        <div class="form-group">
+            <label for="endTime">End Time:</label>
+            <input type="time" class="form-control" id="endTime" name="end_time">
+        </div>
 
         <button type="submit" class="btn btn-primary" style="text-align: right">Create Schedule</button>
     </form>
