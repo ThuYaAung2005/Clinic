@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head >
+    <meta charset="UTF-8">
+    <title>Patient View</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+<div></div><br>
+
+<!-- Sidebar -->
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%" >
+    <h3 class="w3-bar-item">HomeTown Clinic</h3>
+    <!--    <a href="adminview" class="w3-bar-item w3-button">Admin</a>-->
+    <a href="/patientfordoctorview" class="w3-bar-item w3-button">Doctor</a>
+    <a href="/bookingcreate" class="w3-bar-item w3-button">Booking creat</a>
+    <a href="/bookingviewforpatient" class="w3-bar-item w3-button">Booking view</a>
+    <a href="/patienthealthviewforpatient" class="w3-bar-item w3-button">PatientHealth view</a>
+    <a href="logout" style="color: red" class="w3-bar-item w3-button">Logout</a>
+</div>
+
+<!-- Page Content -->
+<div style="margin-left:25%">
+
+
+    <div class="container" >
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">PatientHealth Id</th>
+                <th scope="col">Patient_disease</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="p, num : ${patientHealths}">
+                <td th:text="${num.index+1}"></td>
+                <td th:text="${p.patient_disease}"></td>
+
+<!--                <td><a th:href="@{/patient/edit/{patient_id}(patient_id=${patient.patient_id})}">Edit</a></td>-->
+<!--                <td><a th:href="@{/patient/delete/{patient_id}(patient_id=${patient.patient_id})}">Delete</a></td>-->
+            </tr>
+            </tbody>
+        </table>
+    </div></div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+</body>
+</html>
