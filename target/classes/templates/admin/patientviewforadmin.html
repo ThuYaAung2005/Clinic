@@ -49,8 +49,8 @@
                 <td th:text="${patient.patient_dob}"></td>
                 <td th:text="${patient.patient_age}"></td>
                 <td th:text="${patient.gender}"></td>
-                <td><a th:href="@{/patient/edit/{patient_id}(patient_id=${patient.patient_id})}">Edit</a></td>
-                <td><a th:href="@{/patient/delete/{patient_id}(patient_id=${patient.patient_id})}">Delete</a></td>
+                <td><a th:href="@{admin/patient/edit/{patient_id}(patient_id=${patient.patient_id})}">Edit</a></td>
+                <td><a th:href="@{admin/patient/delete/{patient_id}(patient_id=${patient.patient_id})}">Delete</a></td>
             </tr>
             </tbody>
         </table>

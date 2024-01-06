@@ -87,4 +87,6 @@ public class Doctor {
     public void setDoctor_speciality(String doctor_speciality) {
         this.doctor_speciality = doctor_speciality;
     }
+
+
 }

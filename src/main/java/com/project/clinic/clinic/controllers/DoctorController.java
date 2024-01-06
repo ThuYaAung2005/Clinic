@@ -1,9 +1,11 @@
 package com.project.clinic.clinic.controllers;
+import com.project.clinic.clinic.daos.BookingDao;
 import com.project.clinic.clinic.daos.DoctorDao;
 import com.project.clinic.clinic.daos.DoctorScheduleDao;
 import com.project.clinic.clinic.models.Admin;
+import com.project.clinic.clinic.models.Booking;
 import com.project.clinic.clinic.models.Doctor;
-import com.project.clinic.clinic.models.DocSchedule;
+import com.project.clinic.clinic.models.Patient;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -11,6 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.print.Doc;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -21,32 +26,38 @@ public class DoctorController {
 
     @Autowired
     DoctorDao dao;
+    @Autowired
+    HttpSession session;
+    @Autowired
+    BookingDao bookingDao;
+//
+//    @GetMapping("/doctorcreate")
+//    public ModelAndView createDoctorGet(HttpSession session) {
+//        Admin admin=(Admin) session.getAttribute("admin");
+//        if (admin==null){
+//            return new ModelAndView("redirect:/login");
+//        }
+//
+//            return new ModelAndView("/doctor/doctorcreate", "doctor", new Doctor());
+//        }
 
-    @GetMapping("/doctorcreate")
-    public ModelAndView createDoctorGet(HttpSession session) {
-        Admin admin=(Admin) session.getAttribute("admin");
-        if (admin==null){
-            return new ModelAndView("redirect:/login");
-        }
-            return new ModelAndView("/doctor/doctorcreate", "doctor", new Doctor());
-        }
+//    @PostMapping("/doctorcreate")
+//    public ModelAndView createDoctorPost(@ModelAttribute Doctor doctor) {
+//        String encodepassword= BCrypt.hashpw(doctor.getPassword(),BCrypt.gensalt());
+//        doctor.setPassword(encodepassword);
+//        doctor.setRoles("doctor");
+//        dao.save(doctor);
+//        return new ModelAndView("redirect:/doctorschedulecreate");
+//    }
 
-    @PostMapping("/doctorcreate")
-    public ModelAndView createDoctorPost(@ModelAttribute Doctor doctor) {
-        String encodepassword= BCrypt.hashpw(doctor.getPassword(),BCrypt.gensalt());
-        doctor.setPassword(encodepassword);
-        doctor.setRoles("doctor");
-        dao.save(doctor);
-        return new ModelAndView("redirect:/doctorschedulecreate");
-    }
 
     @GetMapping("/doctorview")
     public String doctorView(Model model,HttpSession session) {
-//        Doctor doctor = (Doctor) session.getAttribute("doctor");
-//        Admin admin = (Admin) session.getAttribute("admin");
-//        if  ( admin == null || doctor == null){
-//            return "redirect:/login";
-//        }
+        Doctor doctor = (Doctor) session.getAttribute("doctor");
+        Admin admin = (Admin) session.getAttribute("admin");
+        if  ( admin == null || doctor == null){
+            return "redirect:/login";
+        }
             List<Doctor> doctors = dao.findAll();
             model.addAttribute("doctors", doctors);
             return "/doctor/doctorview";
@@ -68,71 +79,42 @@ public class DoctorController {
         Admin admin=(Admin) session.getAttribute("admin");
         if (admin ==null){
             return new ModelAndView("redirect:/login");
-        }else{
-        Doctor doctor = dao.findById(doctor_id).orElseThrow();
-            String encodepassword= BCrypt.hashpw(doctor.getPassword(),BCrypt.gensalt());
-            doctor.setPassword(encodepassword);
-        return new ModelAndView("/doctor/doctoredit", "doctorBean", doctor);
-    }
-
-    }
-
-
+        }else {
+            Doctor doctor = dao.findById(doctor_id).orElseThrow();
+            return new ModelAndView("/doctor/doctoredit", "doctorBean", doctor);
+        }}
     @PostMapping("/update/doctor")
     public String updateAdmin(@ModelAttribute("doctorBean") Doctor doctor) {
+        String encodepassword= BCrypt.hashpw(doctor.getPassword(),BCrypt.gensalt());
+        doctor.setPassword(encodepassword);
         dao.save(doctor);
-        return "redirect:/doctorview";
+        return "redirect:/doctorviewforadmin";
+    }
+    @GetMapping("/bookingviewfordoctor")
+    public String bookingView(Model model){
+        List <Booking> bookings= bookingDao.findAll();
+        bookings = isLoginIsDoctor() ? filterBookingListByPatient(bookings,getLoginDoctor()): bookings;
+        model.addAttribute("bookings",bookings);
+        return "/doctor/";
     }
 
-    @GetMapping("/doctorschedulecreate")
-    public ModelAndView createDoctorScheduleGet(HttpSession session) {
-        Admin admin=(Admin) session.getAttribute("admin");
-        if (admin ==null){
-            return new ModelAndView("redirect:/login");
+    private  boolean isLoginIsDoctor(){
+        Doctor checkDoctor =(Doctor) session.getAttribute("doctor");
+        return checkDoctor !=null;
+    }
+
+    private Doctor getLoginDoctor(){
+        return (Doctor) session.getAttribute("doctor");
+    }
+
+    private List<Booking> filterBookingListByPatient(List<Booking> bookings,Doctor checkDoctor){
+        List<Booking > newBooking=new ArrayList<>();
+        for(Booking b: bookings){
+            if(b.getPatients().getPatient_id().equals(checkDoctor.getDoctor_id())) {
+                newBooking.add(b);
+            }
         }
-        return new ModelAndView("/doctorschedule/doctorschedulecreate", "schedule", new DocSchedule());
+        return newBooking;
     }
 
-    @PostMapping("/doctorschedulecreate")
-    public ModelAndView createDoctorSchedulePost(@ModelAttribute DocSchedule schedule) {
-        doctordao.save(schedule);
-        return new ModelAndView("redirect:/admindashboard");
-    }
-
-    @GetMapping("/doctorscheduleview")
-    public String doctorScheduleView(Model model,HttpSession session) {
-        Admin admin=(Admin) session.getAttribute("admin");
-        if (admin ==null){
-            return "redirect:/login";
-        }
-        List<DocSchedule> docSchedules = doctordao.findAll();
-        model.addAttribute("docSchedules", docSchedules);
-        return "/doctorschedule/doctorscheduleview";
-    }
-
-    @GetMapping("/delete/doctorschedule/{schedule_id}")
-    public String deleteDoctorSchedule(@PathVariable("schedule_id") Long schedule_id,HttpSession session) {
-        Admin admin=(Admin) session.getAttribute("admin");
-        if (admin ==null){
-            return "redirect:/login";
-        }
-        doctordao.deleteById(schedule_id);
-        return "redirect:/doctorscheduleview";
-    }
-
-    @GetMapping("/edit/doctorschedule/{schedule_id}")
-    public ModelAndView doctorScheduleEdit(@PathVariable("schedule_id") Long schedule_id,HttpSession session) {
-        Admin admin=(Admin) session.getAttribute("admin");
-        if (admin ==null){
-            return new ModelAndView("redirect:/login");
-        }
-        DocSchedule schedule = doctordao.findById(schedule_id).orElseThrow();
-        return new ModelAndView("/doctorschedule/doctorscheduleedit", "scheduleBean", schedule);
-    }
-
-    @PostMapping("/update/doctorschedule")
-    public String updateAdmin(@ModelAttribute("doctorBean") DocSchedule schedule) {
-        doctordao.save(schedule);
-        return "redirect:/doctorscheduleview";
-    }
 }

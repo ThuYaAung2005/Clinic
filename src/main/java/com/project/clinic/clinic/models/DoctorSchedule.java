@@ -3,23 +3,24 @@ package com.project.clinic.clinic.models;
 import jakarta.persistence.*;
 @Entity
 @Table(name = "schedule")
-public class DocSchedule {
+public class DoctorSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
 
     private Long schedule_id;
 
-    private String day;
+    private String start_day;
+
+    private String end_day;
 
     private String start_time;
 
     private String end_time;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
-
 
 
     public Long getSchedule_id() {
@@ -30,12 +31,20 @@ public class DocSchedule {
         this.schedule_id = schedule_id;
     }
 
-    public String getDay() {
-        return day;
+    public String getStart_day() {
+        return start_day;
     }
 
-    public void setDay(String day) {
-        this.day = day;
+    public void setStart_day(String start_day) {
+        this.start_day = start_day;
+    }
+
+    public String getEnd_day() {
+        return end_day;
+    }
+
+    public void setEnd_day(String end_day) {
+        this.end_day = end_day;
     }
 
     public String getStart_time() {
@@ -54,5 +63,11 @@ public class DocSchedule {
         this.end_time = end_time;
     }
 
+    public Doctor getDoctor() {
+        return doctor;
+    }
 
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
 }

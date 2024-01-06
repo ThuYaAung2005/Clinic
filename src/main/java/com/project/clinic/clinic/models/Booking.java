@@ -33,8 +33,8 @@ public class Booking {
         return patients;
     }
 
-    public void setPatients(Patient patients) {
-        this.patients = patients;
+    public void setPatients(Patient patient) {
+        this.patients = patient;
     }
 
     public Doctor getDoctor() {
