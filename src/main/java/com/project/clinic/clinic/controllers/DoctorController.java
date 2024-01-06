@@ -2,10 +2,7 @@ package com.project.clinic.clinic.controllers;
 import com.project.clinic.clinic.daos.BookingDao;
 import com.project.clinic.clinic.daos.DoctorDao;
 import com.project.clinic.clinic.daos.DoctorScheduleDao;
-import com.project.clinic.clinic.models.Admin;
-import com.project.clinic.clinic.models.Booking;
-import com.project.clinic.clinic.models.Doctor;
-import com.project.clinic.clinic.models.Patient;
+import com.project.clinic.clinic.models.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -116,5 +113,7 @@ public class DoctorController {
         }
         return newBooking;
     }
+
+
 
 }

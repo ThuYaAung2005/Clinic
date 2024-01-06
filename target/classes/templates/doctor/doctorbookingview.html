@@ -15,6 +15,7 @@
 
     <h3 class="w3-bar-item">HomeTown Clinic</h3>
     <a href="/bookingviewfordoctor" class="w3-bar-item w3-button">Booking</a>
+    <a href="/patienthealthviewfordoctor" class="w3-bar-item w3-button">PatientHealth view</a>
     <a href="logout" style="color: red" class="w3-bar-item w3-button">Logout</a>
 <!--    <a href="/doctorview" class="w3-bar-item w3-button">Doctor</a>-->
 <!--    <a href="/patientview" class="w3-bar-item w3-button">Patient</a>-->
@@ -31,6 +32,7 @@
                 <th scope="col">Patient name</th>
                 <th scope="col">Patient age</th>
                 <th scope="col">Doctor Name </th>
+                <th scope="col">Patient Health </th>
                 <!--                <th scope="col">Edit</th>-->
             </tr>
             </thead>
@@ -40,8 +42,9 @@
                 <td th:text="${booking.patients.patient_name}"></td>
                 <td th:text="${booking.patients.patient_age}"></td>
                 <td th:text="${booking.doctor.doctor_name}"></td>
+                <td><a th:href="@{/patienthealth/{patient_id}(patient_id=${booking.patients.patient_id})}">Patient Health</a></td>
 
-                <!--                <td><a th:href="@{/edit//{booking_id}(booking_id=${booking.booking_id})}">Edit</a></td>-->
+<!--                                <td><a th:href="@{/edit/{booking_id}(booking_id=${booking.booking_id})}">Edit</a></td>-->
                 <!--                <td><a th:href="@{/delete/patient/{booking_id}(booking_id=${booking.booking_id})}">Delete</a></td>-->
             </tr>
             </tbody>

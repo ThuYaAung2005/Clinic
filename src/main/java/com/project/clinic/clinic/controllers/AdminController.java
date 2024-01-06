@@ -29,6 +29,14 @@ public class AdminController {
     PatientDao patientDao;
     @Autowired
     BookingDao bookingDao;
+
+    @GetMapping("adminacc")
+    public String adminacc(){
+        return "/admin/adminacc";
+    }
+
+
+
     @GetMapping("/admincreate")
     public ModelAndView adminCreateGet() {
 
@@ -121,13 +129,13 @@ public class AdminController {
         patientDao.save(patient);
         return "redirect:/patientviewforadmin";
     }
-    @GetMapping("admin/delete/patient/{patient_id}")
-    public String deletePatient(@PathVariable("patient_id")Long patient_id, HttpSession session){
-        Admin admin=(Admin) session.getAttribute("admin");
-        if (admin ==null){
-            return "redirect:/login";
-        }
-        dao.deleteById(patient_id);
-        return  "redirect:/patientviewforadmin";
-    }
+//    @GetMapping("admin/delete/patient/{patient_id}")
+//    public String deletePatient(@PathVariable("patient_id")Long patient_id, HttpSession session){
+//        Admin admin=(Admin) session.getAttribute("admin");
+//        if (admin ==null){
+//            return "redirect:/login";
+//        }
+//        dao.deleteById(patient_id);
+//        return  "redirect:/patientviewforadmin";
+//    }
     }

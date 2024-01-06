@@ -28,7 +28,6 @@ public class PageController {
 
     @Autowired
     HttpSession session;
-
     @GetMapping("/")
     public String home() {
         return "index";
@@ -57,7 +56,7 @@ public class PageController {
     }
 
     @PostMapping("/login")
-    private String login(@RequestParam String email, String password, String roles, RedirectAttributes redirectAttributes) {
+    private String login(@RequestParam String email, String password, String roles,Model model, RedirectAttributes redirectAttributes) {
 
 //        System.out.println(email);
 //        System.out.println(password);
