@@ -17,7 +17,7 @@ public class Booking {
     @JoinColumn(name = "patient_id")
     private Patient patients;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 

@@ -95,7 +95,7 @@ public class DoctorController {
         List <Booking> bookings= bookingDao.findAll();
         bookings = isLoginIsDoctor() ? filterBookingListByPatient(bookings,getLoginDoctor()): bookings;
         model.addAttribute("bookings",bookings);
-        return "/doctor/";
+        return "/doctor/doctorbookingview";
     }
 
     private  boolean isLoginIsDoctor(){
@@ -110,7 +110,7 @@ public class DoctorController {
     private List<Booking> filterBookingListByPatient(List<Booking> bookings,Doctor checkDoctor){
         List<Booking > newBooking=new ArrayList<>();
         for(Booking b: bookings){
-            if(b.getPatients().getPatient_id().equals(checkDoctor.getDoctor_id())) {
+            if(b.getDoctor().getDoctor_id().equals(checkDoctor.getDoctor_id())) {
                 newBooking.add(b);
             }
         }

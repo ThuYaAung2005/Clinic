@@ -12,9 +12,12 @@
 
 <!-- Sidebar -->
 <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%" >
+
     <h3 class="w3-bar-item">HomeTown Clinic</h3>
-    <a href="/doctorview" class="w3-bar-item w3-button">Doctor</a>
-    <a href="/patientview" class="w3-bar-item w3-button">Patient</a>
+    <a href="/bookingviewfordoctor" class="w3-bar-item w3-button">Booking</a>
+    <a href="logout" style="color: red" class="w3-bar-item w3-button">Logout</a>
+<!--    <a href="/doctorview" class="w3-bar-item w3-button">Doctor</a>-->
+<!--    <a href="/patientview" class="w3-bar-item w3-button">Patient</a>-->
 </div>
 
 <!-- Page Content -->
@@ -25,9 +28,10 @@
             <thead class="thead-dark">
             <tr>
                 <th scope="col">Booking Id</th>
-                <th scope="col">Patient Id</th>
-                <!--                <th scope="col">Booking Time</th>-->
-                <th scope="col">Booking Date</th>
+                <th scope="col">Patient name</th>
+                <th scope="col">Patient age</th>
+                <th scope="col">Doctor Name </th>
+                <th scope="col">Patient Health </th>
                 <!--                <th scope="col">Edit</th>-->
             </tr>
             </thead>
@@ -37,8 +41,9 @@
                 <td th:text="${booking.patients.patient_name}"></td>
                 <td th:text="${booking.patients.patient_age}"></td>
                 <td th:text="${booking.doctor.doctor_name}"></td>
+                <td><a th:href="@{/patienthealth/{patient_id}(patient_id=${booking.patient_id})}">Edit</a></td>
 
-                <!--                <td><a th:href="@{/edit//{booking_id}(booking_id=${booking.booking_id})}">Edit</a></td>-->
+                                <td><a th:href="@{/edit/{booking_id}(booking_id=${booking.booking_id})}">Edit</a></td>
                 <!--                <td><a th:href="@{/delete/patient/{booking_id}(booking_id=${booking.booking_id})}">Delete</a></td>-->
             </tr>
             </tbody>

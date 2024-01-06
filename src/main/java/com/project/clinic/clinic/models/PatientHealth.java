@@ -12,7 +12,7 @@ public class PatientHealth {
     @Column(length = 999999999)
     private String patient_disease;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "patient_id")
     private Patient patient;
 
