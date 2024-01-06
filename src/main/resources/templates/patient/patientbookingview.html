@@ -14,9 +14,9 @@
 <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%" >
     <h3 class="w3-bar-item">HomeTown Clinic</h3>
 <!--    <a href="/adminview" class="w3-bar-item w3-button">Admin</a>-->
-    <a href="/doctorview" class="w3-bar-item w3-button">Doctor</a>
+    <a href="/patientfordoctorview" class="w3-bar-item w3-button">Doctor</a>
     <a href="/bookingcreate" class="w3-bar-item w3-button">Booking creat</a>
-    <a href="/bookingview" class="w3-bar-item w3-button">Booking view</a>
+    <a href="/bookingviewforpatient" class="w3-bar-item w3-button">Booking view</a>
 <!--    <a href="/patientview" class="w3-bar-item w3-button">Patient</a>-->
 </div>
 
@@ -28,20 +28,18 @@
             <thead class="thead-dark">
             <tr>
                 <th scope="col">Booking Id</th>
-                <th scope="col">Patient Id</th>
-                <!--                <th scope="col">Booking Time</th>-->
-                <th scope="col">Booking Date</th>
-                <!--                <th scope="col">Edit</th>-->
+                <th scope="col">Doctor Name</th>
+                <th scope="col">Patient Name</th>
+                                <th scope="col">Edit</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="booking : ${bookings}">
-                <td th:text="${booking.booking_id}"></td>
-                <td th:text="${booking.}"></td>
-                <!--                <td th:text="${booking.booking_time}"></td>-->
-                <td th:text="${booking.booking_date}"></td>
+            <tr th:each="booking,num : ${bookings}">
+                <td th:text="${num.index+1}"></td>
+                <td th:text="${booking.doctor.doctor_name}"></td>
+                <td th:text="${booking.patients.patient_name}"></td>
 
-                <!--                <td><a th:href="@{/edit//{booking_id}(booking_id=${booking.booking_id})}">Edit</a></td>-->
+                                <td><a th:href="@{/edit//{booking_id}(booking_id=${booking.booking_id})}">Edit</a></td>
                 <!--                <td><a th:href="@{/delete/patient/{booking_id}(booking_id=${booking.booking_id})}">Delete</a></td>-->
             </tr>
             </tbody>

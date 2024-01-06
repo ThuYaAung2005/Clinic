@@ -12,7 +12,7 @@
 <!-- Sidebar -->
 <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%" >
     <h3 class="w3-bar-item">HomeTown Clinic</h3>
-    <a href="adminview" class="w3-bar-item w3-button">Admin</a>
+<!--    <a href="adminview" class="w3-bar-item w3-button">Admin</a>-->
     <a href="doctorviewforadmin" class="w3-bar-item w3-button">Doctor</a>
     <a href="patientviewforadmin" class="w3-bar-item w3-button">Patient</a>
     <a href="bookingviewforadmin" class="w3-bar-item w3-button">Booking</a>
@@ -48,8 +48,8 @@
                 <td th:text="${patient.patient_dob}"></td>
                 <td th:text="${patient.patient_age}"></td>
                 <td th:text="${patient.gender}"></td>
-                <td><a th:href="@{/patient/edit/{patient_id}(patient_id=${patient.patient_id})}">Edit</a></td>
-                <td><a th:href="@{/patient/delete/{patient_id}(patient_id=${patient.patient_id})}">Delete</a></td>
+                <td><a th:href="@{admin/patient/edit/{patient_id}(patient_id=${patient.patient_id})}">Edit</a></td>
+                <td><a th:href="@{admin/patient/delete/{patient_id}(patient_id=${patient.patient_id})}">Delete</a></td>
             </tr>
             </tbody>
         </table>

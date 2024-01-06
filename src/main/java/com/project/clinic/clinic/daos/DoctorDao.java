@@ -11,4 +11,8 @@ public interface DoctorDao extends JpaRepository<Doctor, Long> {
 
     @Query(value = "SELECT * FROM doctor WHERE email=?1 ", nativeQuery= true )
     Doctor getDoctorByEmail(String email);
+
+//    @Query
+//    Doctor findTopByOrderByDoctor_idDesc();
+
 }

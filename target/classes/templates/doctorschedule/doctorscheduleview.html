@@ -26,21 +26,21 @@
             <thead class="thead-dark">
             <tr>
                 <th scope="col">Schedule Id</th>
-                <th scope="col">Start Day</th>
-                <th scope="col">End Day</th>
-                <th scope="col"></th>
+                <th scope="col"> Day</th>
+                <th scope="col">Start time </th>
+                <th scope="col">end time</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="docSc : ${docSchedules}">
-                <td th:text="${docSc.schedule_id}"></td>
-                <td th:text="${docSc.day}"></td>
-                <td th:text="${docSc.start_time}"></td>
-                <td th:text="${docSc.end_time}"></td>
-                <td><a th:href="@{/edit/doctorschedule/{schedule_id}(schedule_id=${docSc.schedule_id})}">Edit</a></td>
-                <td><a th:href="@{/delete/doctorschedule/{schedule_id}(schedule_id=${docSc.schedule_id})}">Delete</a></td>
+            <tr th:each="scheules : ${docSchedules}">
+                <td th:text="${scheules.schedule_id}"></td>
+                <td th:text="${scheules.day}"></td>
+                <td th:text="${scheules.start_time}"></td>
+                <td th:text="${scheules.end_time}"></td>
+                <td><a th:href="@{/edit/doctorschedule/{schedule_id}(schedule_id=${scheules.schedule_id})}">Edit</a></td>
+                <td><a th:href="@{/delete/doctorschedule/{schedule_id}(schedule_id=${scheules.schedule_id})}">Delete</a></td>
             </tr>
 
             </tbody>
