@@ -34,6 +34,23 @@ public class PageController {
         return "index";
     }
 
+    @GetMapping("/profile")
+    public String profile() {
+        return "admin/adminacc";
+    }
+
+    @GetMapping("/dprofile")
+    public String dprofile() {
+        return "doctor/doctoracc";
+    }
+
+    @GetMapping("/pprofile")
+    public String pprofile() {
+        return "patient/patientacc";
+    }
+
+
+
     @GetMapping("/login")
     public String login() {
         return "sigin";
