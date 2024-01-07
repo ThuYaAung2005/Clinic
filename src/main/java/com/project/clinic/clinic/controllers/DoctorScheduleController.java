@@ -37,6 +37,7 @@ public class DoctorScheduleController {
     @PostMapping("/doctorschedulecreate")
     public ModelAndView postDoctorSchedulecreate(@ModelAttribute("schedule") DoctorSchedule schedule, RedirectAttributes redirectAttributes){
         Doctor doctor=schedule.getDoctor();
+//        System.out.println(doctor.getDoctor_address());
         String encodepassword= BCrypt.hashpw(doctor.getPassword(),BCrypt.gensalt());
         doctor.setPassword(encodepassword);
         doctor.setRoles("doctor");

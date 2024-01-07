@@ -12,9 +12,31 @@ public class PatientHealth {
     @Column(length = 999999999)
     private String patient_disease;
 
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "patient_id")
     private Patient patient;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "doctor_id")
+    private Doctor doctor;
+
+//    public String date;
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+//    public String getDate() {
+//        return date;
+//    }
+//
+//    public void setDate(String date) {
+//        this.date = date;
+//    }
 
     public long getHealth_id() {
         return health_id;

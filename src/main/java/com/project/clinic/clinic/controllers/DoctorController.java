@@ -2,10 +2,7 @@ package com.project.clinic.clinic.controllers;
 import com.project.clinic.clinic.daos.BookingDao;
 import com.project.clinic.clinic.daos.DoctorDao;
 import com.project.clinic.clinic.daos.DoctorScheduleDao;
-import com.project.clinic.clinic.models.Admin;
-import com.project.clinic.clinic.models.Booking;
-import com.project.clinic.clinic.models.Doctor;
-import com.project.clinic.clinic.models.Patient;
+import com.project.clinic.clinic.models.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -95,7 +92,7 @@ public class DoctorController {
         List <Booking> bookings= bookingDao.findAll();
         bookings = isLoginIsDoctor() ? filterBookingListByPatient(bookings,getLoginDoctor()): bookings;
         model.addAttribute("bookings",bookings);
-        return "/doctor/";
+        return "/doctor/doctorbookingview";
     }
 
     private  boolean isLoginIsDoctor(){
@@ -110,11 +107,13 @@ public class DoctorController {
     private List<Booking> filterBookingListByPatient(List<Booking> bookings,Doctor checkDoctor){
         List<Booking > newBooking=new ArrayList<>();
         for(Booking b: bookings){
-            if(b.getPatients().getPatient_id().equals(checkDoctor.getDoctor_id())) {
+            if(b.getDoctor().getDoctor_id().equals(checkDoctor.getDoctor_id())) {
                 newBooking.add(b);
             }
         }
         return newBooking;
     }
+
+
 
 }

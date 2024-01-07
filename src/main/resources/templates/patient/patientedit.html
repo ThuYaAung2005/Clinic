@@ -33,22 +33,27 @@
         </div>
 
         <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password"  th:field="*{password}"  >
+        </div>
+
+        <div class="form-group">
             <label for="age">Patient Age</label>
             <input type="text" class="form-control" id="age"  th:field="*{patient_age}"  >
         </div><br>
 
         <fieldset >
             <div class="col-md-4">
-               Choose gender: <input type="radio" id="radioMale" th:field="*{patient_gender}"value="Male">Male</input>
-                 <input type="radio" id="radioFemale" th:field="*{patient_gender}"value="Female">Female</input>
+               Choose gender: <input type="radio" id="radioMale" th:field="*{gender}"value="Male">Male</input>
+                 <input type="radio" id="radioFemale" th:field="*{gender}"value="Female">Female</input>
                 <br>
             </div>
         </fieldset>
 
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
+<!--        <div class="form-group form-check">-->
+<!--            <input type="checkbox" class="form-check-input" id="exampleCheck1">-->
+<!--            <label class="form-check-label" for="exampleCheck1">Check me out</label>-->
+<!--        </div>-->
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 

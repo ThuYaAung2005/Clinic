@@ -1,17 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/pStyle.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Admin Profile</title>
 </head>
 
 <body>
-<div class="card">
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%" >
+    <h3 class="w3-bar-item">HomeTown Clinic</h3>
+    <a href="adminacc" class="w3-bar-item w3-button"><i class="fa fa-fw fa-user"></i>Admin</a>
+    <a href="doctorviewforadmin" class="w3-bar-item w3-button"><i class="fa fa-fw fa-user-md"></i> Doctor</a>
+    <a href="patientviewforadmin" class="w3-bar-item w3-button"><i class="fa fa-fw fa-wheelchair-alt"></i>Patient</a>
+    <a href="bookingviewforadmin" class="w3-bar-item w3-button"><i class="fa fa-book"></i>Booking</a>
+    <a href="doctorscheduleview" class="w3-bar-item w3-button"><i class="fa fa-fw fa-user"></i>Doctor Schedule</a>
+    <a href="logout" style="color: red" class="w3-bar-item w3-button"><i class="fa fa-fw fa-share-alt-square"></i>Logout</a>
+</div>
+
+<div class="container" style="margin-left: 50%">
 
     <div class="card-image">
         <img src="assets/img/admin/admin.jpg" alt="Profile image">
@@ -30,9 +40,9 @@
 
 
 <script>
-    function editProfile() {
-        window.location.href = '/admin/update'; // need to insert edit page
-    }
+    // function editProfile() {
+    //     window.location.href = '/admin/update'; // need to insert edit page
+    // }
     function goBack() {
         window.history.back();
     }
