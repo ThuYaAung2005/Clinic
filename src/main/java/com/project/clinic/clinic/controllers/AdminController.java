@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.print.Doc;
 import java.util.List;
@@ -43,14 +44,19 @@ public class AdminController {
         return new ModelAndView("/admin/admincreate", "admin", new Admin());
     }
     @PostMapping("/admincreate")
-    public ModelAndView adminCreatePost(@ModelAttribute("admin") Admin admin,Model model){
+    public ModelAndView adminCreatePost(@ModelAttribute("admin") Admin admin, Model model, RedirectAttributes redirectAttributes){
         String encodepassword1=BCrypt.hashpw(admin.getPassword(),BCrypt.gensalt());
         admin.setPassword(encodepassword1);
-        model.addAttribute("adminname",admin.getAdmin_name());
-        admin.setRoles("admin");
-        dao.save(admin);
-
-        return new ModelAndView("/admin/admindashboard");
+        Admin adminQuery=dao.checkAdminQuery(admin.getAdmin_id());
+        if (adminQuery == null){
+//            model.addAttribute("adminname",admin.getAdmin_name());
+            admin.setRoles("admin");
+            dao.save(admin);
+            redirectAttributes.addFlashAttribute("logout", "Admin Create Successful");
+            return new ModelAndView("/admin/admindashboard");
+        }
+        redirectAttributes.addFlashAttribute("error","admin already exit");
+        return  new ModelAndView("redirect:/login");
     }
 
         @GetMapping("/adminview")

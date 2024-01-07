@@ -41,6 +41,7 @@
         <div class="form-group">
             <label for="confirm-password">Confirm Password</label>
             <input type="password" class="form-control" id="confirm-password" placeholder="Confirm Your Password here" required>
+            <span th:text="${error}"></span>
         </div>
         <p id="message"></p>
         <button type="button" onclick="checkPasswordAndSubmit()" class="btn btn-primary">Submit</button>

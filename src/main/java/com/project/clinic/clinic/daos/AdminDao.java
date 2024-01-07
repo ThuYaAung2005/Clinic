@@ -13,6 +13,7 @@ public interface AdminDao extends JpaRepository<Admin,Long> {
     @Query(value = "SELECT * FROM admin WHERE email=?1 ", nativeQuery= true )
     Admin getAdminByEmail(String email);
 
-
+    @Query(value = "SELECT * FROM admin WHERE admin_id=?1", nativeQuery = true)
+     Admin checkAdminQuery(Long admin_id);
 
 }
