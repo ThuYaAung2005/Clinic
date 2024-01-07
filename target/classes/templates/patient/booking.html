@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/bookingcreate}" th:object="${doctor}" method="post">
+
+    <div class="form-group">
+        <label for="id"> Doctor Id</label>
+        <input type="text" class="form-control" id="id"  th:value="*{doctor_id}" readonly>
+    </div>
+
+    <div class="form-group">
+        <label for="name"> Doctor Name</label>
+        <input type="text" class="form-control" id="name" th:value="*{doctor_name}">
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="text" class="form-control" id="phone" th:value="*{doctor_phone}"  >
+    </div>
+
+    <div class="form-group">
+        <label for="specialty">Specialty</label>
+        <input type="text" class="form-control" id="specialty"  th:value="*{doctor_speciality}"  >
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>
