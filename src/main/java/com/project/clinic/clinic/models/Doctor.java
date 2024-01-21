@@ -1,6 +1,9 @@
 package com.project.clinic.clinic.models;
 
 import jakarta.persistence.*;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -8,18 +11,26 @@ import java.util.List;
 public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long doctor_id;
 
+    @NotNull
     private String doctor_name;
 
+    @NotNull
+    @Email
     private String email;
 
+    @NotNull
     private String doctor_address;
 
+    @NotNull
     private String doctor_phone;
 
+    @NotNull
     private String doctor_speciality;
 
+    @NotNull
     private String password;
 
     private String roles;
@@ -88,5 +99,27 @@ public class Doctor {
         this.doctor_speciality = doctor_speciality;
     }
 
+    @PrePersist
+    private void validate(){
 
+        if ( doctor_name == null || doctor_name.isEmpty()) {
+            throw new IllegalStateException("Doctorname cannot be empty");
+        }
+        if (password == null || password.isEmpty()) {
+            throw new IllegalStateException("Password cannot be empty");
+        }
+        if (email == null || email.isEmpty()) {
+            throw new IllegalStateException("Email cannot be empty");
+        }
+        if (doctor_address == null || doctor_address.isEmpty()) {
+            throw new IllegalStateException("Full name cannot be empty");
+        }
+        if (doctor_phone== null || doctor_phone.isEmpty()) {
+            throw new IllegalStateException("Full name cannot be empty");
+        }
+        if (doctor_speciality== null || doctor_speciality.isEmpty()) {
+            throw new IllegalStateException("Full name cannot be empty");
+        }
+
+    }
 }

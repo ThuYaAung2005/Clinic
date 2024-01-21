@@ -12,8 +12,12 @@
 <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%" >
     <h3 class="w3-bar-item">HomeTown Clinic</h3>
 <!--    <a href="/adminview" class="w3-bar-item w3-button">Admin</a>-->
-    <a href="/doctorview" class="w3-bar-item w3-button"><i class="fa fa-fw fa-user-md"></i>Doctor</a>
-    <a href="/patientview" class="w3-bar-item w3-button"><i class="fa fa-fw fa-wheelchair-alt"></i>Patient</a>
+    <a href="adminacc" class="w3-bar-item w3-button"><i class="fa fa-fw fa-user"></i>Admin</a>
+    <a href="doctorviewforadmin" class="w3-bar-item w3-button"><i class="fa fa-fw fa-user-md"></i> Doctor</a>
+    <a href="patientviewforadmin" class="w3-bar-item w3-button"><i class="fa fa-fw fa-wheelchair-alt"></i>Patient</a>
+    <a href="bookingviewforadmin" class="w3-bar-item w3-button"><i class="fa fa-book"></i>Booking</a>
+    <a href="doctorscheduleviewforadmin" class="w3-bar-item w3-button"><i class="fa fa-fw fa-book"></i>Doctor Schedule</a>
+    <a href="logout" style="color: red" class="w3-bar-item w3-button"><i class='fas fa-arrow-circle-left'></i>Logout</a>
 </div>
 
 <!-- Page Content -->
@@ -26,22 +30,21 @@
             <thead class="thead-dark">
             <tr>
                 <th scope="col">Schedule Id</th>
-                <th scope="col"> Day</th>
+                <th scope="col">Doctor Name</th>
+                <th scope="col">Start Day</th>
+                <th scope="col">end Day</th>
                 <th scope="col">Start Time</th>
                 <th scope="col">End Time</th>
-                <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="schedules" : ${docSchedules}">
-                <td th:text="${schedules.schedule_id}"></td>
-                <td th:text="${schedules.day}"></td>
+            <tr th:each="schedules,num : ${docSchedules}">
+                <td th:text="${num.index+1}"></td>
+                <td th:text="${schedules.doctor.doctor_name}"></td>
+                <td th:text="${schedules.start_day}"></td>
+                <td th:text="${schedules.end_day}"></td>
                 <td th:text="${schedules.start_time}"></td>
-                <td >to</td>
                 <td th:text="${schedules.end_time}"></td>
-                <td><a th:href="@{/edit/doctorschedule/{schedule_id}(schedule_id=${schedules.schedule_id})}">Edit</a></td>
-                <td><a th:href="@{/delete/doctorschedule/{schedule_id}(schedule_id=${schedules.schedule_id})}">Delete</a></td>
             </tr>
 
             </tbody>

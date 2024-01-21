@@ -15,9 +15,9 @@
             <label for="name"> Doctor Name</label>
             <input type="text" class="form-control" id=  "name" name="doctor_name" th:field="*{doctor.doctor_name}"  required>
         </div>
-<!--        <div class="form-group">-->
-<!--            <input type="text" hidden="hidden" class="form-control" id="role" name="roles"th:field="*{doctor.roles}" th:value="${roles}">-->
-<!--        </div>-->
+        <!--        <div class="form-group">-->
+        <!--            <input type="text" hidden="hidden" class="form-control" id="role" name="roles"th:field="*{doctor.roles}" th:value="${roles}">-->
+        <!--        </div>-->
         <div class="form-group">
             <label for="exampleInputEmail1">Doctor Email </label>
             <input type="email" class="form-control" id="exampleInputEmail1" name="email" th:field="*{doctor.email}" required>
@@ -35,8 +35,8 @@
             <input type="text" class="form-control" id="doctor_speciality" name="doctor_speciality" th:field="*{doctor.doctor_speciality}" required>
         </div>
         <div class="form-group">
-            <label for="password">Doctor password</label>
-            <input type="password" class="form-control" id="password" name="password" th:field="*{doctor.password}"required>
+            <label for="exampleInputPassword1">Doctor password</label>
+            <input type="password" class="form-control" id="" name="password" th:field="*{doctor.password}"required>
         </div>
         <div class="form-group">
             <label for="confirm-password">Confirm Password</label>
@@ -78,12 +78,11 @@
             <label for="endTime">End Time:</label>
             <input type="time" class="form-control" id="endTime" name="end_time" th:field="*{end_time}">
         </div>
-        <span th:text="${error}"></span>
-        <p id="message"></p>
-        <button type="button" class="btn btn-primary" onclick="checkPasswordAndSubmit()"style="text-align: left">Create</button>
+        <button type="submit" class="btn btn-primary" style="text-align: right">Create</button>
     </form>
-
 </div>
+<span th:text="${error}"></span>
+<p id="message"></p>
 <script>
     function checkPasswordAndSubmit() {
         let password = document.getElementById("password").value;
@@ -98,7 +97,6 @@
         }
     }
 </script>
-
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </body>

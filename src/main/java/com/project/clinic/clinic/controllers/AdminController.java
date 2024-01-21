@@ -1,14 +1,8 @@
 package com.project.clinic.clinic.controllers;
 
-import com.project.clinic.clinic.daos.AdminDao;
-import com.project.clinic.clinic.daos.BookingDao;
-import com.project.clinic.clinic.daos.DoctorDao;
-import com.project.clinic.clinic.daos.PatientDao;
+import com.project.clinic.clinic.daos.*;
 import com.project.clinic.clinic.dto.BookingDto;
-import com.project.clinic.clinic.models.Admin;
-import com.project.clinic.clinic.models.Booking;
-import com.project.clinic.clinic.models.Doctor;
-import com.project.clinic.clinic.models.Patient;
+import com.project.clinic.clinic.models.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -30,6 +24,10 @@ public class AdminController {
     PatientDao patientDao;
     @Autowired
     BookingDao bookingDao;
+    @Autowired
+    DoctorScheduleDao doctorScheduleDao;
+    @Autowired
+    HttpSession session;
 
     @GetMapping("adminacc")
     public String adminacc(){
@@ -48,15 +46,16 @@ public class AdminController {
         String encodepassword1=BCrypt.hashpw(admin.getPassword(),BCrypt.gensalt());
         admin.setPassword(encodepassword1);
         Admin adminQuery=dao.checkAdminQuery(admin.getAdmin_id());
-        if (adminQuery == null){
+        if (adminQuery == null) {
 //            model.addAttribute("adminname",admin.getAdmin_name());
             admin.setRoles("admin");
             dao.save(admin);
             redirectAttributes.addFlashAttribute("logout", "Admin Create Successful");
             return new ModelAndView("/admin/admindashboard");
+        }else{
+            redirectAttributes.addFlashAttribute("error","admin already exit");
+            return  new ModelAndView("redirect:/admincreate");
         }
-        redirectAttributes.addFlashAttribute("error","admin already exit");
-        return  new ModelAndView("redirect:/login");
     }
 
         @GetMapping("/adminview")
@@ -99,25 +98,36 @@ public class AdminController {
         }
         @GetMapping("doctorviewforadmin")
         public String doctorViewForAdmin(Model model){
+            Admin admin=(Admin) session.getAttribute("admin");
+            if (admin ==null){
+                return ("redirect:/login");
+            }
             List<Doctor> doctors = doctorDao.findAll();
             model.addAttribute("doctors", doctors);
             return "/admin/doctorviewforadmin";
         }
         @GetMapping("patientviewforadmin")
         public  String patientViewForAdmin(Model model){
+            Admin checkAdmin = (Admin) session.getAttribute("admin");
+            if (checkAdmin == null) {
+                return ("redirect:/login");
+            }
             List<Patient> patients = patientDao.findAll();
             model.addAttribute("patients",patients);
             return "/admin/patientviewforadmin";
         }
         @GetMapping("bookingviewforadmin")
         public String bookingViewForAdmin(Model model){
+            Admin checkAdmin = (Admin) session.getAttribute("admin");
+            if (checkAdmin == null) {
+                return ("redirect:/login");
+            }
             List<Booking> bookings = bookingDao.findAll();
 //            List<Patient> patients=patientDao.findAll();
             model.addAttribute("bookings", bookings);
             return "/admin/bookingviewforadmin";
         }
 
-//        Patient scope
 
     @GetMapping("admin/patient/edit/{patient_id}")
     public ModelAndView editPatient(@PathVariable("patient_id")Long patient_id,HttpSession session){
@@ -144,4 +154,14 @@ public class AdminController {
 //        dao.deleteById(patient_id);
 //        return  "redirect:/patientviewforadmin";
 //    }
+@GetMapping("/doctorscheduleviewforadmin")
+public String doctorScheduleView(Model model, HttpSession session) {
+    Admin admin=(Admin) session.getAttribute("admin");
+    if (admin ==null){
+        return ("redirect:/login");
+    }
+    List<DoctorSchedule> docSchedules = doctorScheduleDao.findAll();
+    model.addAttribute("docSchedules", docSchedules);
+    return "/admin/doctorscheduleviewforadmin";
+}
     }

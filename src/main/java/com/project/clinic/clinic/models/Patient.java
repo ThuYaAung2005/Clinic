@@ -1,7 +1,9 @@
 package com.project.clinic.clinic.models;
 
 import jakarta.persistence.*;
-
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -10,34 +12,27 @@ public class Patient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long patient_id;
+    @NotEmpty(message = "Name cannot be empty")
+    private String name;
 
-    private String patient_name;
-
+    @Email(message = "Invalid email address")
+    @NotEmpty(message = "Email cannot be empty")
     private String email;
 
-    private String patient_address;
+    private String address;
+    private String phone;
+    private String dob;
 
-    private String patient_phone;
-
-    private String patient_dob;
-
-    private String patient_age;
-
+    @NotNull(message = "Age cannot be null")
+    @Size(min = 1, max = 3, message = "Age must be between 1 and 3 characters")
+    private String age;
+    @Size(min = 4,max = 6,message = "Confirm Password must be between 4 and 6.")
     private String password;
-
+    @NotEmpty(message = "Gender must not be empty.")
     private String gender;
-
+    @NotEmpty(message = "User Role must not be empty.")
     private String roles;
-
-    public String getRoles() {
-        return roles;
-    }
-
-    public void setRoles(String roles) {
-        this.roles = roles;
-    }
 
     public Long getPatient_id() {
         return patient_id;
@@ -47,12 +42,12 @@ public class Patient {
         this.patient_id = patient_id;
     }
 
-    public String getPatient_name() {
-        return patient_name;
+    public String getName() {
+        return name;
     }
 
-    public void setPatient_name(String patient_name) {
-        this.patient_name = patient_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -63,36 +58,36 @@ public class Patient {
         this.email = email;
     }
 
-    public String getPatient_address() {
-        return patient_address;
+    public String getAddress() {
+        return address;
     }
 
-    public void setPatient_address(String patient_address) {
-        this.patient_address = patient_address;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getPatient_phone() {
-        return patient_phone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPatient_phone(String patient_phone) {
-        this.patient_phone = patient_phone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getPatient_dob() {
-        return patient_dob;
+    public String getDob() {
+        return dob;
     }
 
-    public void setPatient_dob(String patient_dob) {
-        this.patient_dob = patient_dob;
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
-    public String getPatient_age() {
-        return patient_age;
+    public String getAge() {
+        return age;
     }
 
-    public void setPatient_age(String patient_age) {
-        this.patient_age = patient_age;
+    public void setAge(String age) {
+        this.age = age;
     }
 
     public String getPassword() {
@@ -109,5 +104,13 @@ public class Patient {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
 }

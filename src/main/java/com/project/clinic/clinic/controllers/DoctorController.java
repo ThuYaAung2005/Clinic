@@ -23,8 +23,10 @@ public class DoctorController {
 
     @Autowired
     DoctorDao dao;
+
     @Autowired
     HttpSession session;
+
     @Autowired
     BookingDao bookingDao;
 //
@@ -64,11 +66,14 @@ public class DoctorController {
     @GetMapping("/delete/doctor/{doctor_id}")
     public String deletedoctor(@PathVariable("doctor_id") Long doctor_id,HttpSession session) {
         Admin admin=(Admin) session.getAttribute("admin");
-        if (admin ==null){
+        if (admin == null){
             return "redirect:/login";
+        }else {
+            DoctorSchedule schedule=doctordao.getByDocuterId(doctor_id);
+              doctordao.deleteById(schedule.getSchedule_id());
+            dao.deleteById(doctor_id);
+            return "redirect:/doctorviewforadmin";
         }
-        dao.deleteById(doctor_id);
-        return "redirect:/doctorview";
     }
 
     @GetMapping("/edit/doctor/{doctor_id}")

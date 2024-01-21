@@ -58,14 +58,15 @@ public class PatientHealthController {
         patientHealthforsave.setPatient_disease(patientHealth.getPatient_disease());
         patientHealthDao.save(patientHealthforsave);
         return "redirect:/bookingviewfordoctor";
-
     }
+
     @GetMapping("/patienthealthviewfordoctor")
     public String patienthealthviewForDoctor(Model model){
+
         List<PatientHealth> patientHealths=patientHealthDao.findAll();
         patientHealths = isLoginIsDoctor() ? filterPatientHealthListByDoctor(patientHealths,getLoginDoctor()):patientHealths;
         model.addAttribute("patientHealths",patientHealths);
-        return "/patienthealth/phviewfordoctor";
+        return "/doctor/phviewfordoctor";
     }
 
     private List<PatientHealth> filterPatientHealthListByDoctor(List<PatientHealth> patientHealths, Doctor checkDoctor){

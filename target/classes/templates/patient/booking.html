@@ -5,25 +5,12 @@
     <title>Title</title>
 </head>
 <body>
-<<<<<<< HEAD
-<form th:action="@{/bookingcreate}" th:object="${doctor}" method="post">
-
-    <div class="form-group">
-        <label for="id"> Doctor Id</label>
-        <input type="text" class="form-control" id="id"  th:value="*{doctor_id}" readonly>
-    </div>
-
-    <div class="form-group">
-        <label for="name"> Doctor Name</label>
-        <input type="text" class="form-control" id="name" th:value="*{doctor_name}">
-=======
 <form th:action="@{/bookingcreatenextway}" th:object="${doctor}" method="post">
     <div class="form-group">
         <label for="id"> Doctor Id</label>
         <input type="text" class="form-control" id="id" th:field="*{doctor_id}" readonly>
         <input type="text" class="form-control" hidden="hidden" th:field="*{doctor_id}" >
 
-        <!--        <input type="text" class="form-control" id="" th:field="${booking}" readonly>-->
 
     </div>
 
@@ -31,34 +18,22 @@
     <div class="form-group">
         <label for="name"> Doctor Name</label>
         <input type="text" class="form-control" id="name" th:field="*{doctor_name}">
->>>>>>> 06de8a7a897c461d678eecd24ae72ad79e412f2b
     </div>
 
     <div class="form-group">
         <label for="phone">Phone</label>
-<<<<<<< HEAD
-        <input type="text" class="form-control" id="phone" th:value="*{doctor_phone}"  >
-=======
         <input type="text" class="form-control" id="phone" th:field="*{doctor_phone}"  >
->>>>>>> 06de8a7a897c461d678eecd24ae72ad79e412f2b
     </div>
 
     <div class="form-group">
         <label for="specialty">Specialty</label>
-<<<<<<< HEAD
-        <input type="text" class="form-control" id="specialty"  th:value="*{doctor_speciality}"  >
-=======
         <input type="text" class="form-control" id="specialty"  th:field="*{doctor_speciality}"  >
->>>>>>> 06de8a7a897c461d678eecd24ae72ad79e412f2b
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-<<<<<<< HEAD
-=======
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
->>>>>>> 06de8a7a897c461d678eecd24ae72ad79e412f2b
 </body>
 </html>

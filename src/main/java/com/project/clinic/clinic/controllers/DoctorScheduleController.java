@@ -5,6 +5,7 @@ import com.project.clinic.clinic.daos.DoctorScheduleDao;
 import com.project.clinic.clinic.models.Admin;
 import com.project.clinic.clinic.models.Doctor;
 import com.project.clinic.clinic.models.DoctorSchedule;
+import com.project.clinic.clinic.models.Patient;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -28,10 +29,10 @@ public class DoctorScheduleController {
 
     @GetMapping("/doctorschedulecreate")
     public ModelAndView createDoctorScheduleGet(HttpSession session) {
-//        Admin admin=(Admin) session.getAttribute("admin");
-//        if (admin ==null){
-//            return new ModelAndView("redirect:/login");
-//        }
+        Admin admin=(Admin) session.getAttribute("admin");
+        if (admin ==null){
+            return new ModelAndView("redirect:/login");
+        }
         return new ModelAndView("/doctor/doctorcreate", "schedule", new DoctorSchedule());
     }
     @PostMapping("/doctorschedulecreate")
@@ -48,11 +49,25 @@ public class DoctorScheduleController {
 
     @GetMapping("/doctorscheduleview")
     public String doctorScheduleView(Model model, HttpSession session) {
+        Patient patient = (Patient) session.getAttribute("patient");
+        if (patient ==null){
+            return "redirect:/login";
+        }
         List<DoctorSchedule> docSchedules = doctorScheduleDao.findAll();
         model.addAttribute("docSchedules", docSchedules);
         return "/doctorschedule/doctorscheduleview";
     }
 
+    @GetMapping("/doctorscheduleviewfordoctor")
+    public String doctorScheduleViewForDoctor(Model model, HttpSession session) {
+        Doctor doctor = (Doctor) session.getAttribute("doctor");
+        if (doctor ==null){
+            return "redirect:/login";
+        }
+        List<DoctorSchedule> docSchedules = doctorScheduleDao.findAll();
+        model.addAttribute("docSchedules", docSchedules);
+        return "/doctor/doctorscheduleviewfordoctor";
+    }
     @GetMapping("/delete/doctorschedule/{schedule_id}")
     public String deleteDoctorSchedule(@PathVariable("schedule_id") Long schedule_id, HttpSession session) {
         Admin admin=(Admin) session.getAttribute("admin");

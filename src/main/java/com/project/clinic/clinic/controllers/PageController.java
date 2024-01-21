@@ -57,10 +57,6 @@ public class PageController {
 
     @PostMapping("/login")
     private String login(@RequestParam String email, String password, String roles,Model model, RedirectAttributes redirectAttributes) {
-
-//        System.out.println(email);
-//        System.out.println(password);
-//        System.out.println(roles);
         if (!CommonUtil.validString(email) || !CommonUtil.validString(password) || !CommonUtil.validString(roles)){
             return "redirect:/login";
         }

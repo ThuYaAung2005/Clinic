@@ -16,7 +16,7 @@
     <a href="doctorviewforadmin" class="w3-bar-item w3-button"><i class="fa fa-fw fa-user-md"></i>Doctor</a>
     <a href="patientviewforadmin" class="w3-bar-item w3-button"><i class="fa fa-fw fa-wheelchair-alt"></i>Patient</a>
     <a href="bookingviewforadmin" class="w3-bar-item w3-button"><i class="fa fa-fw fa-book"></i>Booking</a>
-    <a href="doctorscheduleview" class="w3-bar-item w3-button"><i class='far fa-calendar-check'></i>Doctor Schedule</a>
+    <a href="doctorscheduleviewforadmin" class="w3-bar-item w3-button"><i class='far fa-calendar-check'></i>Doctor Schedule</a>
     <a href="logout" style="color: red" class="w3-bar-item w3-button"><i class='fas fa-arrow-circle-left'></i>Logout</a>
 </div>
 
@@ -36,8 +36,8 @@
                 <th scope="col">Doctor Address</th>
                 <th scope="col">Doctor Phone</th>
                 <th scope="col">Doctor Speciality</th>
-                <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
+<!--                <th scope="col">Edit</th>-->
+<!--                <th scope="col">Delete</th>-->
             </tr>
             </thead>
             <tbody>
@@ -49,7 +49,7 @@
                 <td th:text="${doctor.doctor_phone}"></td>
                 <td th:text="${doctor.doctor_speciality}"></td>
                 <td><a th:href="@{/edit/doctor/{doctor_id}(doctor_id=${doctor.doctor_id})}">Edit</a></td>
-                <td><a th:href="@{/delete/doctor/{doctor_id}(doctor_id=${doctor.doctor_id})}">Delete</a></td>
+                <td><a th:href="@{/delete/doctor/{doctor_id}(doctor_id=${doctor.doctor_id})}"><button type="button" class="btn btn-danger">Delete</button></a></td>
             </tr>
 
             </tbody>

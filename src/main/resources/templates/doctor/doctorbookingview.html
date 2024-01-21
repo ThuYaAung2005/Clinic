@@ -14,8 +14,10 @@
 <!-- Sidebar -->
 <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%" >
     <h3 class="w3-bar-item">HomeTown Clinic</h3>
-    <a href="/doctorview" class="w3-bar-item w3-button"><i class="fa fa-fw fa-user-md"></i>Doctor</a>
-    <a href="/patientview" class="w3-bar-item w3-button"><i class="fa fa-fw fa-wheelchair-alt"></i>Patient</a>
+    <a href="/bookingviewfordoctor" class="w3-bar-item w3-button"><i class="fa fa-book"></i>Booking</a>
+    <a href="/patienthealthviewfordoctor" class="w3-bar-item w3-button">PatientHealth view</a>
+    <a href="/doctorscheduleviewfordoctor" class="w3-bar-item w3-button">Doctorschedule view</a>
+    <a href="logout" style="color: red" class="w3-bar-item w3-button"><i class="fa fa-fw fa-share-alt-square">Logout</i></a>
 </div>
 
 <!-- Page Content -->
@@ -26,10 +28,10 @@
             <thead class="thead-dark">
             <tr>
                 <th scope="col">Booking Id</th>
-                <th scope="col">Patient Id</th>
-                <!--                <th scope="col">Booking Time</th>-->
-                <th scope="col">Booking Date</th>
-                <!--                <th scope="col">Edit</th>-->
+                <th scope="col">Patient Name</th>
+                <th scope="col">Patient age</th>
+                <th scope="col">Doctor Name</th>
+                <th scope="col">Patient Health </th>
             </tr>
             </thead>
             <tbody>
@@ -38,9 +40,8 @@
                 <td th:text="${booking.patients.patient_name}"></td>
                 <td th:text="${booking.patients.patient_age}"></td>
                 <td th:text="${booking.doctor.doctor_name}"></td>
+                <td><a th:href="@{/patienthealth/{patient_id}(patient_id=${booking.patients.patient_id})}">Patient Health</a></td>
 
-                <!--                <td><a th:href="@{/edit//{booking_id}(booking_id=${booking.booking_id})}">Edit</a></td>-->
-                <!--                <td><a th:href="@{/delete/patient/{booking_id}(booking_id=${booking.booking_id})}">Delete</a></td>-->
             </tr>
             </tbody>
         </table>

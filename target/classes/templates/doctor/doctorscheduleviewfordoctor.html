@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title> View Doctor's Schedules </title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
 <body>
@@ -12,12 +11,11 @@
 <!-- Sidebar -->
 <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%" >
     <h3 class="w3-bar-item">HomeTown Clinic</h3>
-    <a href="/patientfordoctorview" class="w3-bar-item w3-button">Doctor</a>
-    <a href="/bookingcreate" class="w3-bar-item w3-button">Booking creat</a>
-    <a href="/bookingviewforpatient" class="w3-bar-item w3-button">Booking view</a>
-    <a href="/doctorscheduleview" class="w3-bar-item w3-button">Doctor Schedule</a>
-    <a href="/patienthealthviewforpatient" class="w3-bar-item w3-button">PatientHealth view</a>
-    <a href="logout" style="color: red" class="w3-bar-item w3-button">Logout</a>
+    <!--    <a href="/adminview" class="w3-bar-item w3-button">Admin</a>-->
+    <a href="/bookingviewfordoctor" class="w3-bar-item w3-button"><i class="fa fa-book"></i>Booking</a>
+    <a href="/patienthealthviewfordoctor" class="w3-bar-item w3-button">PatientHealth view</a>
+    <a href="/doctorscheduleviewfordoctor" class="w3-bar-item w3-button">Doctorschedule view</a>
+    <a href="logout" style="color: red" class="w3-bar-item w3-button"><i class="fa fa-fw fa-share-alt-square">Logout</i></a>
 </div>
 
 <!-- Page Content -->
@@ -32,10 +30,9 @@
                 <th scope="col">Schedule Id</th>
                 <th scope="col">Doctor Name</th>
                 <th scope="col">Start Day</th>
-                <th scope="col">end Day</th>
-                <th scope="col">Start time </th>
-                <th scope="col">end time</th>
-
+                <th scope="col">End Day</th>
+                <th scope="col">Start Time</th>
+                <th scope="col">End Time</th>
             </tr>
             </thead>
             <tbody>
@@ -46,8 +43,6 @@
                 <td th:text="${scheules.end_day}"></td>
                 <td th:text="${scheules.start_time}"></td>
                 <td th:text="${scheules.end_time}"></td>
-<!--                <td><a th:href="@{/edit/doctorschedule/{schedule_id}(schedule_id=${scheules.schedule_id})}">Edit</a></td>-->
-<!--                <td><a th:href="@{/delete/doctorschedule/{schedule_id}(schedule_id=${scheules.schedule_id})}">Delete</a></td>-->
             </tr>
 
             </tbody>

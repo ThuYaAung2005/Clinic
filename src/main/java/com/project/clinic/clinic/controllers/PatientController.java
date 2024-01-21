@@ -12,10 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,16 +45,20 @@ public class PatientController {
     }
 
     @PostMapping("/patientcreate")
-    public ModelAndView patientCreatePost(@ModelAttribute Patient patient, HttpSession session, RedirectAttributes redirectAttributes) {
-        String encodepassword = BCrypt.hashpw(patient.getPassword(), BCrypt.gensalt());
-        patient.setPassword(encodepassword);
-        session.setAttribute("patientid", patient);
-        patient.setRoles("paitent");
-       // model.addAttribute("patientname", patient.getPatient_name());
-        dao.save(patient);
-        redirectAttributes.addFlashAttribute("logout","Patient Create Successful");
-        return new ModelAndView("redirect:/login");
-    }
+    public ModelAndView patientCreatePost(@Valid @ModelAttribute("patient") Patient patient, BindingResult result, HttpSession session, RedirectAttributes redirectAttributes) {
+        if (result.hasErrors()) {
+            return new ModelAndView("/patient/patientcreate", "patient", patient);
+        }
+
+            String encodepassword = BCrypt.hashpw(patient.getPassword(), BCrypt.gensalt());
+            patient.setPassword(encodepassword);
+            session.setAttribute("patientid", patient);
+            patient.setRoles("paitent");
+            // model.addAttribute("patientname", patient.getPatient_name());
+            dao.save(patient);
+            redirectAttributes.addFlashAttribute("logout", "Patient Create Successful");
+            return new ModelAndView("redirect:/login");
+        }
 
     @GetMapping("/patientview")
     public String patientview(Model model, HttpSession session) {
