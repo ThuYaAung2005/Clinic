@@ -41,7 +41,8 @@
                         <div class="col-md-2"></div>
                         <label for="patient_name" class="col-md-2 col-form-label">Patient Name</label>
                         <div class="col-md-7">
-                            <input type="text" class="form-control" id="patient_name" name="name" >
+                            <input type="text" class="form-control" id="patient_name" name="name" th:field="*{name}">
+                            <span class="span1 text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
                         </div>
                     </div>
 
@@ -50,34 +51,39 @@
                         <label for="patient_email" class="col-md-2 col-form-label">patient Email</label>
                         <div class="col-md-7">
                             <input type="text" class="form-control" id="patient_email" name="email" >
+                            <span class="span1 text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-md-2"></div>
-                        <label for="patient_address" class="col-md-2 col-form-label">Patient Address</label>
+                        <label for="cost" class="col-md-2 col-form-label">Patient Address</label>
                         <div class="col-md-7">
-                            <input type="text" class="form-control" id="patient_address" name="address" >
+                            <input type="text" class="form-control" id="cost" name="cost" th:field="*{address}" >
+                            <span class="span1 text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-md-2"></div>
-                        <label for="patient_phone" class="col-md-2 col-form-label">Patient Phone</label>
+                        <label for="phone" class="col-md-2 col-form-label">Patient Phone</label>
                         <div class="col-md-7">
-                            <input type="text" class="form-control" id="patient_phone" name="phone" >
+                            <input type="text" class="form-control" id="phone" name="phone"  th:field="*{phone}" >
+                            <span class="span1 text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span>
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-md-2"></div>
                         <label for="age" class="col-md-2 col-form-label">Patient Age</label>
                         <div class="col-md-7">
-                            <input type="text" class="form-control" id="age" name="age" >
+                            <input type="text" class="form-control" id="age" name="age" th:field="*{age}">
+                            <span class="span1 text-danger" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-md-2"></div>
                         <label for="password" class="col-md-2 col-form-label">Password</label>
                         <div class="col-md-7">
-                            <input type="password" class="form-control" id="password" name="password" >
+                            <input type="password" class="form-control" id="password" name="password" th:field="*{password}">
+                            <span class="span1 text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -87,20 +93,21 @@
                             <input type="password" class="form-control" id="confirm-password" name="confirm_password">
                         </div>
                     </div>
-                    <div class="row mb-4">
-                        <div class="col-md-2"></div>
-                        <label for="patient_dob" class="col-md-2 col-form-label">Patient DOB</label>
-                        <div class="col-md-7">
-                            <input type="date" class="form-control" id="patient_dob" name="dob" >
-                        </div>
-                    </div>
+<!--                    <div class="row mb-4">-->
+<!--                        <div class="col-md-2"></div>-->
+<!--                        <label for="patient_dob" class="col-md-2 col-form-label">Patient DOB</label>-->
+<!--                        <div class="col-md-7">-->
+<!--                            <input type="date" class="form-control" id="patient_dob" name="dob" >-->
+<!--                            <span class="span1 text-danger" th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"></span>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
                     <fieldset class="row mb-4">
                         <div class="col-md-2"></div>
                         <legend class="col-form-label col-md-2 pt-0">Gender</legend>
                         <div class="col-md-5">
                             <div class="form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender" value="Male">
+                                <input class="form-check-input" type="radio" th:field="*{gender}" name="gender" value="Male">
                                 <label class="form-check-label">
                                     Male
                                 </label>
@@ -110,8 +117,8 @@
                                 <label class="form-check-label">
                                     Female
                                 </label>
-                               >
                             </div>
+                            <span class="span1 text-danger" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></span>
                         </div>
                     </fieldset>
                     <p id="message"></p>

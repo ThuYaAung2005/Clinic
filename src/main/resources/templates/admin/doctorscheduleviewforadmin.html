@@ -40,7 +40,7 @@
             <tbody>
             <tr th:each="schedules,num : ${docSchedules}">
                 <td th:text="${num.index+1}"></td>
-                <td th:text="${schedules.doctor.doctor_name}"></td>
+                <td th:text="${schedules.doctor.name}"></td>
                 <td th:text="${schedules.start_day}"></td>
                 <td th:text="${schedules.end_day}"></td>
                 <td th:text="${schedules.start_time}"></td>

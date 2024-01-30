@@ -22,7 +22,7 @@ public class Patient {
 
     private String address;
     private String phone;
-    private String dob;
+//    private String dob;
 
     @NotNull(message = "Age cannot be null")
     @Size(min = 1, max = 3, message = "Age must be between 1 and 3 characters")
@@ -74,13 +74,13 @@ public class Patient {
         this.phone = phone;
     }
 
-    public String getDob() {
-        return dob;
-    }
-
-    public void setDob(String dob) {
-        this.dob = dob;
-    }
+//    public String getDob() {
+//        return dob;
+//    }
+//
+//    public void setDob(String dob) {
+//        this.dob = dob;
+//    }
 
     public String getAge() {
         return age;

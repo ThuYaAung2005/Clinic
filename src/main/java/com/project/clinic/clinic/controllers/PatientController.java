@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -45,8 +46,8 @@ public class PatientController {
     }
 
     @PostMapping("/patientcreate")
-    public ModelAndView patientCreatePost(@Valid @ModelAttribute("patient") Patient patient, BindingResult result, HttpSession session, RedirectAttributes redirectAttributes) {
-        if (result.hasErrors()) {
+    public ModelAndView patientCreatePost(@Valid @ModelAttribute("patient") Patient patient, Errors errors, HttpSession session, RedirectAttributes redirectAttributes) {
+        if (errors.hasErrors()) {
             return new ModelAndView("/patient/patientcreate", "patient", patient);
         }
 

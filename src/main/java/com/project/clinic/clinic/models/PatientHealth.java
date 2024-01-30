@@ -10,7 +10,7 @@ public class PatientHealth {
     private long health_id;
 
     @Column(length = 999999999)
-    private String patient_disease;
+    private String disease;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "patient_id")
@@ -46,12 +46,12 @@ public class PatientHealth {
         this.health_id = health_id;
     }
 
-    public String getPatient_disease() {
-        return patient_disease;
+    public String getDisease() {
+        return disease;
     }
 
-    public void setPatient_disease(String patient_disease) {
-        this.patient_disease = patient_disease;
+    public void setDisease(String disease) {
+        this.disease = disease;
     }
 
     public Patient getPatient() {

@@ -41,9 +41,9 @@
             <tbody>
             <tr th:each="booking,num : ${bookings}">
                 <td th:text="${num.index+1}"></td>
-                <td th:text="${booking.patients.patient_name}"></td>
-                <td th:text="${booking.patients.patient_age}"></td>
-                <td th:text="${booking.doctor.doctor_name}"></td>
+                <td th:text="${booking.patients.name}"></td>
+                <td th:text="${booking.patients.age}"></td>
+                <td th:text="${booking.doctor.name}"></td>
                 <td><a th:href="@{/edit/{booking_id}(booking_id=${booking.booking_id})}">Edit</a></td>
                 <td><a th:href="@{/delete/patient/{booking_id}(booking_id=${booking.booking_id})}">Delete</a></td>
             </tr>

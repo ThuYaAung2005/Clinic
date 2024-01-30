@@ -15,41 +15,25 @@ public class Doctor {
     private Long doctor_id;
 
     @NotNull
-    private String doctor_name;
+    private String name;
 
     @NotNull
     @Email
     private String email;
 
     @NotNull
-    private String doctor_address;
+    private String cost;
 
     @NotNull
-    private String doctor_phone;
+    private String phone;
 
     @NotNull
-    private String doctor_speciality;
+    private String speciality;
 
     @NotNull
     private String password;
 
     private String roles;
-
-    public String getRoles() {
-        return roles;
-    }
-
-    public void setRoles(String roles) {
-        this.roles = roles;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public Long getDoctor_id() {
         return doctor_id;
@@ -59,12 +43,12 @@ public class Doctor {
         this.doctor_id = doctor_id;
     }
 
-    public String getDoctor_name() {
-        return doctor_name;
+    public String getName() {
+        return name;
     }
 
-    public void setDoctor_name(String doctor_name) {
-        this.doctor_name = doctor_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -75,34 +59,50 @@ public class Doctor {
         this.email = email;
     }
 
-    public String getDoctor_address() {
-        return doctor_address;
+    public String getCost() {
+        return cost;
     }
 
-    public void setDoctor_address(String doctor_address) {
-        this.doctor_address = doctor_address;
+    public void setCost(String cost) {
+        this.cost = cost;
     }
 
-    public String getDoctor_phone() {
-        return doctor_phone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setDoctor_phone(String doctor_phone) {
-        this.doctor_phone = doctor_phone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getDoctor_speciality() {
-        return doctor_speciality;
+    public String getSpeciality() {
+        return speciality;
     }
 
-    public void setDoctor_speciality(String doctor_speciality) {
-        this.doctor_speciality = doctor_speciality;
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
 
     @PrePersist
     private void validate(){
 
-        if ( doctor_name == null || doctor_name.isEmpty()) {
+        if ( name == null || name.isEmpty()) {
             throw new IllegalStateException("Doctorname cannot be empty");
         }
         if (password == null || password.isEmpty()) {
@@ -111,15 +111,14 @@ public class Doctor {
         if (email == null || email.isEmpty()) {
             throw new IllegalStateException("Email cannot be empty");
         }
-        if (doctor_address == null || doctor_address.isEmpty()) {
+        if (cost == null || cost.isEmpty()) {
             throw new IllegalStateException("Full name cannot be empty");
         }
-        if (doctor_phone== null || doctor_phone.isEmpty()) {
+        if (phone== null || phone.isEmpty()) {
             throw new IllegalStateException("Full name cannot be empty");
         }
-        if (doctor_speciality== null || doctor_speciality.isEmpty()) {
+        if (speciality== null || speciality.isEmpty()) {
             throw new IllegalStateException("Full name cannot be empty");
         }
-
     }
 }

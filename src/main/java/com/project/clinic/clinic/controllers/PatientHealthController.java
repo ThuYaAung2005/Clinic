@@ -38,7 +38,7 @@ public class PatientHealthController {
     @GetMapping("/patienthealth/{patient_id}")
     public ModelAndView patienthealthcreate(@PathVariable("patient_id")long patient_id){
         Doctor doctor=(Doctor) session.getAttribute("doctor");
-        System.out.println(doctor.getDoctor_name());
+        System.out.println(doctor.getName());
         System.out.println(patient_id);
         Patient patient=new Patient();
         patient.setPatient_id(patient_id);
@@ -55,7 +55,7 @@ public class PatientHealthController {
         PatientHealth patientHealthforsave =new PatientHealth();
         patientHealthforsave.setPatient(patient);
         patientHealthforsave.setDoctor(doctor);
-        patientHealthforsave.setPatient_disease(patientHealth.getPatient_disease());
+        patientHealthforsave.setDisease(patientHealth.getDisease());
         patientHealthDao.save(patientHealthforsave);
         return "redirect:/bookingviewfordoctor";
     }

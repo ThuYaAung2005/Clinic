@@ -43,11 +43,11 @@
             <tbody>
             <tr th:each="patient,num : ${patients}">
                 <td th:text="${num.index+1}"></td>
-                <td th:text="${patient.patient_name}"></td>
-                <td th:text="${patient.patient_address}"></td>
-                <td th:text="${patient.patient_phone}"></td>
-                <td th:text="${patient.patient_dob}"></td>
-                <td th:text="${patient.patient_age}"></td>
+                <td th:text="${patient.name}"></td>
+                <td th:text="${patient.address}"></td>
+                <td th:text="${patient.phone}"></td>
+                <td th:text="${patient.dob}"></td>
+                <td th:text="${patient.age}"></td>
                 <td th:text="${patient.gender}"></td>
                 <td><a th:href="@{admin/patient/edit/{patient_id}(patient_id=${patient.patient_id})}">Edit</a></td>
                 <td><a th:href="@{admin/patient/delete/{patient_id}(patient_id=${patient.patient_id})}">Delete</a></td>

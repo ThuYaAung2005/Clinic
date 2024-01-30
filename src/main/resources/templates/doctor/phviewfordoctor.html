@@ -43,8 +43,8 @@
             <tbody>
             <tr th:each="p, num : ${patientHealths}">
                 <td th:text="${num.index+1}"></td>
-                <td th:text="${p.patient_disease}"></td>
-                <td th:text="${p.doctor.doctor_name}"></td>
+                <td th:text="${p.disease}"></td>
+                <td th:text="${p.doctor.name}"></td>
 
                 <!--                <td><a th:href="@{/patient/edit/{patient_id}(patient_id=${patient.patient_id})}">Edit</a></td>-->
                 <!--                <td><a th:href="@{/patient/delete/{patient_id}(patient_id=${patient.patient_id})}">Delete</a></td>-->

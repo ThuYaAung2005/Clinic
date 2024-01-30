@@ -42,11 +42,11 @@
         <tbody>
         <tr th:each="doctor, itetstat : ${doctors}">
             <td th:text="${itetstat.index+1}"></td>
-            <td th:text="${doctor.doctor_name}"></td>
+            <td th:text="${doctor.name}"></td>
             <td th:text="${doctor.email}"></td>
-            <td th:text="${doctor.doctor_address}"></td>
-            <td th:text="${doctor.doctor_phone}"></td>
-            <td th:text="${doctor.doctor_speciality}"></td>
+            <td th:text="${doctor.cost}"></td>
+            <td th:text="${doctor.phone}"></td>
+            <td th:text="${doctor.speciality}"></td>
             <td><a th:href="@{/edit/doctor/{doctor_id}(doctor_id=${doctor.doctor_id})}">Edit</a></td>
             <td><a th:href="@{/delete/doctor/{doctor_id}(doctor_id=${doctor.doctor_id})}">Delete</a></td>
         </tr>

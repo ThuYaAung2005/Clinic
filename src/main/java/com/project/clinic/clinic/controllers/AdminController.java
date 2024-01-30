@@ -34,8 +34,6 @@ public class AdminController {
         return "/admin/adminacc";
     }
 
-
-
     @GetMapping("/admincreate")
     public ModelAndView adminCreateGet() {
 

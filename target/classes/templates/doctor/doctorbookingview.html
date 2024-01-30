@@ -37,9 +37,9 @@
             <tbody>
             <tr th:each="booking,num : ${bookings}">
                 <td th:text="${num.index+1}"></td>
-                <td th:text="${booking.patients.patient_name}"></td>
-                <td th:text="${booking.patients.patient_age}"></td>
-                <td th:text="${booking.doctor.doctor_name}"></td>
+                <td th:text="${booking.patients.name}"></td>
+                <td th:text="${booking.patients.age}"></td>
+                <td th:text="${booking.doctor.name}"></td>
                 <td><a th:href="@{/patienthealth/{patient_id}(patient_id=${booking.patients.patient_id})}">Patient Health</a></td>
 
             </tr>

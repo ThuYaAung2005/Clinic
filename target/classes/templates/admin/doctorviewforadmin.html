@@ -33,7 +33,7 @@
                 <th scope="col">Doctor Id</th>
                 <th scope="col">Doctor Name</th>
                 <th scope="col">Doctor Email</th>
-                <th scope="col">Doctor Address</th>
+                <th scope="col">Doctor Cost</th>
                 <th scope="col">Doctor Phone</th>
                 <th scope="col">Doctor Speciality</th>
 <!--                <th scope="col">Edit</th>-->
@@ -43,11 +43,11 @@
             <tbody>
             <tr th:each="doctor, num : ${doctors}">
                 <td th:text="${num.index+1}"></td>
-                <td th:text="${doctor.doctor_name}"></td>
+                <td th:text="${doctor.name}"></td>
                 <td th:text="${doctor.email}"></td>
-                <td th:text="${doctor.doctor_address}"></td>
-                <td th:text="${doctor.doctor_phone}"></td>
-                <td th:text="${doctor.doctor_speciality}"></td>
+                <td th:text="${doctor.cost}"></td>
+                <td th:text="${doctor.phone}"></td>
+                <td th:text="${doctor.speciality}"></td>
                 <td><a th:href="@{/edit/doctor/{doctor_id}(doctor_id=${doctor.doctor_id})}">Edit</a></td>
                 <td><a th:href="@{/delete/doctor/{doctor_id}(doctor_id=${doctor.doctor_id})}"><button type="button" class="btn btn-danger">Delete</button></a></td>
             </tr>

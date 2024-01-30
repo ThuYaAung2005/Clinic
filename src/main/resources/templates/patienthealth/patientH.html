@@ -8,7 +8,7 @@
 <div class="mb-3">
     <form th:object="${patienthealth}" th:action="@{/patienthealth}" method="post">
         <label >Textarea</label>
-        <textarea class="form-control " id="" placeholder="Required example textarea" th:field="*{patient_disease}" required></textarea>
+        <textarea class="form-control " id="" placeholder="Required example textarea" th:field="*{disease}" required></textarea>
         <div class="form-group">
             <input type="text" class="form-control" id="exampleInputEmail1" hidden=hidden name="email"required th:field="*{patient.patient_id}">
         </div>
