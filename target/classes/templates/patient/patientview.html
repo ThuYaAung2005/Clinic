@@ -32,7 +32,7 @@
             <th scope="col">Patient Name</th>
             <th scope="col">Patient Address</th>
             <th scope="col">Patient Phone</th>
-            <th scope="col">Patient DOB</th>
+<!--            <th scope="col">Patient DOB</th>-->
             <th scope="col">Patient Age</th>
             <th scope="col">Patient Gender</th>
             <th scope="col">Edit</th>
@@ -42,10 +42,10 @@
         <tbody>
         <tr th:each="patient : ${patients}">
             <td th:text="${patient.patient_id}"></td>
-            <td th:text="${patient.patient_name}"></td>
-            <td th:text="${patient.patient_address}"></td>
-            <td th:text="${patient.patient_phone}"></td>
-            <td th:text="${patient.patient_dob}"></td>
+            <td th:text="${patient.name}"></td>
+            <td th:text="${patient.address}"></td>
+            <td th:text="${patient.phone}"></td>
+<!--            <td th:text="${patient.}"></td>-->
             <td th:text="${patient.patient_age}"></td>
             <td th:text="${patient.gender}"></td>
             <td><a th:href="@{/patient/edit/{patient_id}(patient_id=${patient.patient_id})}">Edit</a></td>
