@@ -36,13 +36,13 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="scheules,num : ${docSchedules}">
+            <tr th:each="schedules,num : ${docSchedules}">
                 <td th:text="${num.index+1}"></td>
                 <td th:text="${schedules.doctor.name}"></td>
-                <td th:text="${scheules.start_day}"></td>
-                <td th:text="${scheules.end_day}"></td>
-                <td th:text="${scheules.start_time}"></td>
-                <td th:text="${scheules.end_time}"></td>
+                <td th:text="${schedules.start_day}"></td>
+                <td th:text="${schedules.end_day}"></td>
+                <td th:text="${schedules.start_time}"></td>
+                <td th:text="${schedules.end_time}"></td>
             </tr>
 
             </tbody>

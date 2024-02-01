@@ -23,6 +23,10 @@ public class Admin  {
 
         private String roles;
 
+        @Lob
+        @Column(name = "image", columnDefinition = "LONGBLOB")
+        private String image;
+
     public Long getAdmin_id() {
         return admin_id;
     }
@@ -71,10 +75,11 @@ public class Admin  {
         this.roles = roles;
     }
 
+    public String getImage() {
+        return image;
+    }
 
-
-
-
-
-
+    public void setImage(String image) {
+        this.image = image;
+    }
 }

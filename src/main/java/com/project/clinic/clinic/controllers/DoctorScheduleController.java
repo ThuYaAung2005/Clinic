@@ -27,6 +27,9 @@ public class DoctorScheduleController {
     @Autowired
     DoctorScheduleDao doctorScheduleDao;
 
+    @Autowired
+    HttpSession session;
+
     @GetMapping("/doctorschedulecreate")
     public ModelAndView createDoctorScheduleGet(HttpSession session) {
         Admin admin=(Admin) session.getAttribute("admin");
@@ -38,11 +41,10 @@ public class DoctorScheduleController {
     @PostMapping("/doctorschedulecreate")
     public ModelAndView postDoctorSchedulecreate(@ModelAttribute("schedule") DoctorSchedule schedule, RedirectAttributes redirectAttributes){
         Doctor doctor=schedule.getDoctor();
-//        System.out.println(doctor.getDoctor_address());
         String encodepassword= BCrypt.hashpw(doctor.getPassword(),BCrypt.gensalt());
         doctor.setPassword(encodepassword);
         doctor.setRoles("doctor");
-//        redirectAttributes.addFlashAttribute("roles","doctor");
+        session.setAttribute("doctor", doctor);
         doctorScheduleDao.save(schedule);
         return new ModelAndView("redirect:/doctorviewforadmin");
     }

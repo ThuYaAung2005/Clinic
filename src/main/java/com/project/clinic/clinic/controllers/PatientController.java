@@ -57,8 +57,9 @@ public class PatientController {
             patient.setRoles("paitent");
             // model.addAttribute("patientname", patient.getPatient_name());
             dao.save(patient);
+             session.setAttribute("patient", patient);
             redirectAttributes.addFlashAttribute("logout", "Patient Create Successful");
-            return new ModelAndView("redirect:/login");
+            return new ModelAndView("redirect:/patient/patientdashboard");
         }
 
     @GetMapping("/patientview")

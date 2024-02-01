@@ -33,7 +33,7 @@
                 <th scope="col">Doctor Id</th>
                 <th scope="col">Doctor Name</th>
                 <th scope="col">Doctor Email</th>
-                <th scope="col">Doctor Address</th>
+                <th scope="col">Doctor cost</th>
                 <th scope="col">Doctor Phone</th>
                 <th scope="col">Doctor Speciality</th>
                 <th scope="col">Booking </th>
@@ -44,11 +44,11 @@
             <tbody>
             <tr th:each="doctor, itetstat : ${doctors}">
                 <td th:text="${itetstat.index+1}"></td>
-                <td th:text="${doctor.doctor_name}"></td>
+                <td th:text="${doctor.name}"></td>
                 <td th:text="${doctor.email}"></td>
-                <td th:text="${doctor.doctor_address}"></td>
-                <td th:text="${doctor.doctor_phone}"></td>
-                <td th:text="${doctor.doctor_speciality}"></td>
+                <td th:text="${doctor.cost}"></td>
+                <td th:text="${doctor.phone}"></td>
+                <td th:text="${doctor.speciality}"></td>
                 <td><a th:href="@{/bookingcreate/{doctor_id}(doctor_id=${doctor.doctor_id})}">Booking</a></td>
 
 

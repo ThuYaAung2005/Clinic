@@ -29,7 +29,10 @@ public class DoctorController {
 
     @Autowired
     BookingDao bookingDao;
-//
+
+    @Autowired
+    DoctorScheduleDao doctorScheduleDao;
+
 //    @GetMapping("/doctorcreate")
 //    public ModelAndView createDoctorGet(HttpSession session) {
 //        Admin admin=(Admin) session.getAttribute("admin");
@@ -84,7 +87,8 @@ public class DoctorController {
         }else {
             Doctor doctor = dao.findById(doctor_id).orElseThrow();
             return new ModelAndView("/doctor/doctoredit", "doctorBean", doctor);
-        }}
+        }
+    }
     @PostMapping("/update/doctor")
     public String updateAdmin(@ModelAttribute("doctorBean") Doctor doctor) {
         String encodepassword= BCrypt.hashpw(doctor.getPassword(),BCrypt.gensalt());
@@ -118,7 +122,5 @@ public class DoctorController {
         }
         return newBooking;
     }
-
-
 
 }

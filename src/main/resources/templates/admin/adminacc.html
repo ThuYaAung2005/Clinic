@@ -3,9 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">-->
-<!--    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">-->
-    <link rel="stylesheet" href="assets/css/pStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Admin Profile </title>
 </head>
@@ -17,29 +16,7 @@
 <a href="logout" style="color: red" class="w3-bar-item w3-button"><i class='fas fa-arrow-circle-left'></i>Logout</a>
 <body>
 
-<div class = "card" style="margin-left: 60%" >
-    <div class="card-image">
-        <img src="assets/img/admin/doctor.jpg" alt="">
-    </div>
-    <p class="name">Name</p>
-    <p> Age </p>
-    <p> Email </p>
 
-    <div class = "click">
-        <button class="back-button" onclick="goBack()">Back</button>
-        <button class="edit-button" onclick="editProfile()">Edit</button>
-    </div>
-
-    <script>
-        function editProfile() {
-            window.location.href = '/admin/update'; // need to insert edit page
-        }
-        function goBack() {
-            window.history.back();
-        }
-    </script>
-
-</div>
 
 </body>
 

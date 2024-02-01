@@ -9,10 +9,13 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.print.Doc;
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 @Controller
 public class AdminController {
@@ -40,22 +43,34 @@ public class AdminController {
         return new ModelAndView("/admin/admincreate", "admin", new Admin());
     }
     @PostMapping("/admincreate")
-    public ModelAndView adminCreatePost(@ModelAttribute("admin") Admin admin, Model model, RedirectAttributes redirectAttributes){
-        String encodepassword1=BCrypt.hashpw(admin.getPassword(),BCrypt.gensalt());
-        admin.setPassword(encodepassword1);
-        Admin adminQuery=dao.checkAdminQuery(admin.getAdmin_id());
-        if (adminQuery == null) {
-//            model.addAttribute("adminname",admin.getAdmin_name());
-            admin.setRoles("admin");
-            dao.save(admin);
-            redirectAttributes.addFlashAttribute("logout", "Admin Create Successful");
-            return new ModelAndView("/admin/admindashboard");
-        }else{
-            redirectAttributes.addFlashAttribute("error","admin already exit");
-            return  new ModelAndView("redirect:/admincreate");
+    public ModelAndView adminCreatePost(@ModelAttribute("admin") Admin admin, Model model, RedirectAttributes redirectAttributes,@RequestParam("image") MultipartFile image) {
+        Admin adminQuery = dao.checkAdminQuery(admin.getAdmin_id());
+        if (adminQuery != null) {
+            redirectAttributes.addFlashAttribute("error", "admin already exit");
+            return new ModelAndView("redirect:/admincreate");
+        } else {
+            try {
+                if (image.isEmpty()) {
+                    redirectAttributes.addFlashAttribute("showFileError", true);
+                    return new ModelAndView("redirect:/admincreate");
+                } else {
+                    byte[] bytes = image.getBytes();
+                    String encodedString = Base64.getEncoder().encodeToString(bytes);
+                    admin.setImage(encodedString);
+                    String encodepassword = BCrypt.hashpw(admin.getPassword(), BCrypt.gensalt());
+                    admin.setPassword(encodepassword);
+                    admin.setRoles("admin");
+                    dao.save(admin);
+                    redirectAttributes.addFlashAttribute("logout", "Admin Create Successful");
+                    session.setAttribute("admin", admin);
+                    return new ModelAndView("redirect:/admin/admindashboard");
+                }
+            } catch (IllegalArgumentException | IOException e) {
+//                System.out.println(e.getMessage());
+                return  new ModelAndView("redirect:/admincreate");
+            }
         }
     }
-
         @GetMapping("/adminview")
         public String adminview (Model model, HttpSession session){
             Admin checkAdmin = (Admin) session.getAttribute("admin");

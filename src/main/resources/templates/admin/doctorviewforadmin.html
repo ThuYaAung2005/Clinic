@@ -33,11 +33,12 @@
                 <th scope="col">Doctor Id</th>
                 <th scope="col">Doctor Name</th>
                 <th scope="col">Doctor Email</th>
-                <th scope="col">Doctor Cost</th>
+                <th scope="col"> Cost</th>
                 <th scope="col">Doctor Phone</th>
                 <th scope="col">Doctor Speciality</th>
-<!--                <th scope="col">Edit</th>-->
-<!--                <th scope="col">Delete</th>-->
+                <th scope="col">Action</th>
+                <th scope="col">Delete</th>
+
             </tr>
             </thead>
             <tbody>
@@ -48,7 +49,7 @@
                 <td th:text="${doctor.cost}"></td>
                 <td th:text="${doctor.phone}"></td>
                 <td th:text="${doctor.speciality}"></td>
-                <td><a th:href="@{/edit/doctor/{doctor_id}(doctor_id=${doctor.doctor_id})}">Edit</a></td>
+                <td><a th:href="@{/edit/doctor/{doctor_id}(doctor_id=${doctor.doctor_id})}"><button type="button" class="btn btn-primary">Edit</button></a></td>
                 <td><a th:href="@{/delete/doctor/{doctor_id}(doctor_id=${doctor.doctor_id})}"><button type="button" class="btn btn-danger">Delete</button></a></td>
             </tr>
 
